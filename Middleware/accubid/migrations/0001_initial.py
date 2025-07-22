@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'database',
                 'verbose_name_plural': 'databases',
-                'db_table': 'Bronze].[accubid_database',
+                'db_table': 'accubid_database',
                 'managed': True,
             },
         ),
@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'project',
                 'verbose_name_plural': 'projects',
-                'db_table': 'Bronze].[accubid_project',
+                'db_table': 'accubid_project',
                 'managed': True,
             },
         ),
@@ -87,7 +87,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'estimate',
                 'verbose_name_plural': 'estimates',
-                'db_table': 'Bronze].[accubid_estimate',
+                'db_table': 'accubid_estimate',
                 'managed': True,
             },
         ),
@@ -101,7 +101,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'bid summary',
                 'verbose_name_plural': 'bid summaries',
-                'db_table': 'Bronze].[accubid_bid_summary',
+                'db_table': 'accubid_bid_summary',
                 'managed': True,
             },
         ),

@@ -1,0 +1,88 @@
+# py-AM-Nexus Middleware
+
+This project is a Django-based application that utilizes multiple apps and custom settings. Follow the steps below to set up and run the project locally.
+
+## Prerequisites
+
+- Python 3.9 or later
+- pip
+- [Homebrew](https://brew.sh/) (for installing system dependencies on macOS)
+
+## Setup Instructions
+
+1. **Clone the repository**
+
+   If you haven’t already, clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd py-AM-Nexus/Middleware
+   ```
+
+2. **Create and activate a virtual environment**
+
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. **Install dependencies**
+
+   Ensure you have the required packages installed:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Install system dependencies (if needed)**
+
+   If you’re using `pyodbc` (for MSSQL) or any other requirement that needs system packages, install them (for example, unixODBC):
+   ```bash
+   brew install unixodbc
+   ```
+
+5. **Configure Environment Variables**
+
+   Create a file (e.g., `.env`) or set environment variables for your project. At a minimum, you may need to define:
+   - `TRELLO_KEY`
+   - `TRELLO_TOKEN`
+   - (Other DB credentials if using MSSQL; if using SQLite no additional config is needed)
+
+6. **Database Migrations & Fixture Loading**
+
+   The project uses SQLite by default. Run the following commands from the project root (where `manage.py` is located):
+
+   - Apply migrations (this creates the database schema):
+     ```bash
+     python3 manage.py migrate
+     ```
+
+   - (Optional) Create a superuser for admin access:
+     ```bash
+     python3 manage.py createsuperuser
+     ```
+
+   - (Optional) Load initial data fixtures:
+     ```bash
+     python3 manage.py loaddata forms/fixtures/initial.json
+     ```
+
+7. **Running the Development Server**
+
+   Start the Django development server:
+   ```bash
+   python3 manage.py runserver
+   ```
+
+   The server will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+
+## Additional Notes
+
+- **Custom User Creation:**  
+  The repository does not include a pre-created default user. Use the `createsuperuser` command or any custom scripts (if provided) to create users.
+
+- **Project Structure:**  
+  - Main project directory: `Amteck/py-AM-Nexus/Middleware`
+  - Django apps include `forms`, `trello`, `skillAssessments`, etc.
+  - Settings and migration files are located in the respective app directories.
+
+- **Troubleshooting:**  
+  If you encounter issues with migrations or table names (especially related to schema prefixes from MSSQL) review your migration files and adjust the `db_table` options if using SQLite.

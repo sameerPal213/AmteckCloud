@@ -30,7 +30,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name_plural': 'Activities',
-                'db_table': 'Bronze].[coins_activity',
+                'db_table': 'coins_activity',
                 'ordering': ['job_num', 'jca_activity'],
                 'managed': True,
             },
@@ -55,7 +55,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Contract Manager Job',
-                'db_table': 'Bronze].[coins_contractmanagerjob',
+                'db_table': 'coins_contractmanagerjob',
                 'ordering': ['job_num'],
                 'managed': True,
             },
@@ -89,7 +89,7 @@ class Migration(migrations.Migration):
                 ('jcc_revby', models.CharField(default='', max_length=60)),
             ],
             options={
-                'db_table': 'Bronze].[coins_costcode',
+                'db_table': 'coins_costcode',
                 'ordering': ['job_num', 'jcc_cc'],
                 'managed': True,
             },
@@ -142,7 +142,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Cost Transaction',
-                'db_table': 'Bronze].[coins_costtransaction',
+                'db_table': 'coins_costtransaction',
                 'ordering': ['job_num', 'jcc_cc'],
                 'managed': True,
             },
@@ -170,7 +170,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Employee',
-                'db_table': 'Bronze].[coins_employee',
+                'db_table': 'coins_employee',
                 'ordering': ['last_name', 'first_name'],
                 'managed': True,
             },
@@ -313,7 +313,7 @@ class Migration(migrations.Migration):
                 ('longitude', models.DecimalField(decimal_places=5, max_digits=11, null=True)),
             ],
             options={
-                'db_table': 'Bronze].[coins_job',
+                'db_table': 'coins_job',
                 'ordering': ['job_num'],
                 'managed': True,
             },
@@ -387,7 +387,7 @@ class Migration(migrations.Migration):
                 ('boxID', models.CharField(blank=True, max_length=255, null=True)),
             ],
             options={
-                'db_table': 'Bronze].[coins_project',
+                'db_table': 'coins_project',
                 'ordering': ['pij_dispno'],
                 'managed': True,
             },
@@ -402,7 +402,7 @@ class Migration(migrations.Migration):
                 ('boxID', models.CharField(max_length=255)),
             ],
             options={
-                'db_table': 'Bronze].[coins_projectdirectory',
+                'db_table': 'coins_projectdirectory',
                 'managed': True,
             },
         ),
@@ -501,7 +501,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Purchase Order',
-                'db_table': 'Bronze].[coins_purchaseorder',
+                'db_table': 'coins_purchaseorder',
                 'ordering': ['job_num', 'poh_ordno', 'poh_chgno'],
                 'managed': True,
             },
@@ -545,7 +545,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Purchase Order Item',
-                'db_table': 'Bronze].[coins_purchaseorderitem',
+                'db_table': 'coins_purchaseorderitem',
                 'ordering': ['poh_ordno'],
                 'managed': True,
             },
@@ -604,7 +604,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'Purchase Order Line',
-                'db_table': 'Bronze].[coins_purchaseorderline',
+                'db_table': 'coins_purchaseorderline',
                 'ordering': ['job_num', 'poh_ordno'],
                 'managed': True,
             },
@@ -628,7 +628,7 @@ class Migration(migrations.Migration):
                 ('jcs_manager', models.CharField(default='', max_length=66)),
             ],
             options={
-                'db_table': 'Bronze].[coins_section',
+                'db_table': 'coins_section',
                 'ordering': ['job_num', 'jcs_section'],
                 'managed': True,
             },
@@ -687,7 +687,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'SOV Change Management',
-                'db_table': 'Bronze].[coins_sovchangemanagement',
+                'db_table': 'coins_sovchangemanagement',
                 'ordering': ['job_num'],
                 'managed': True,
             },
@@ -767,7 +767,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'SOV Item',
-                'db_table': 'Bronze].[coins_sovitem',
+                'db_table': 'coins_sovitem',
                 'ordering': ['job_num'],
                 'managed': True,
             },
@@ -815,7 +815,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'SOV Resource',
-                'db_table': 'Bronze].[coins_sovresource',
+                'db_table': 'coins_sovresource',
                 'ordering': ['job_num'],
                 'managed': True,
             },
@@ -852,7 +852,7 @@ class Migration(migrations.Migration):
                 ('stl_code', models.CharField(default='', max_length=16)),
             ],
             options={
-                'db_table': 'Bronze].[coins_wbs',
+                'db_table': 'coins_wbs',
                 'ordering': ['job_num', 'jwb_code'],
                 'managed': True,
             },

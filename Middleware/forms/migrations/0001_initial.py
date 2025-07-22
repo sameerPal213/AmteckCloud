@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Hazard',
                 'verbose_name_plural': 'STA Hazards',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_hazard',
+                'db_table': 'forms_safetytaskanalysis_hazard',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -101,7 +101,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Response',
                 'verbose_name_plural': 'STA Responses',
-                'db_table': 'Bronze].[forms_safetytaskanalysisresponse',
+                'db_table': 'forms_safetytaskanalysisresponse',
                 'managed': True,
             },
         ),
@@ -114,7 +114,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Tool',
                 'verbose_name_plural': 'STA Tools',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_tools',
+                'db_table': 'forms_safetytaskanalysis_tools',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -128,7 +128,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Employee Certification',
                 'verbose_name_plural': 'STA Employee Certifications',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_employeecertifications',
+                'db_table': 'forms_safetytaskanalysis_employeecertifications',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -142,7 +142,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Permit',
                 'verbose_name_plural': 'STA Permits',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_permits',
+                'db_table': 'forms_safetytaskanalysis_permits',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -155,7 +155,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'STA PPE Category',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_ppecategory',
+                'db_table': 'forms_safetytaskanalysis_ppecategory',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -169,7 +169,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Procedure',
                 'verbose_name_plural': 'STA Procedures',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_procedures',
+                'db_table': 'forms_safetytaskanalysis_procedures',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -183,7 +183,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Special Certification',
                 'verbose_name_plural': 'STA Special Certifications',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_specialcertifications',
+                'db_table': 'forms_safetytaskanalysis_specialcertifications',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -200,7 +200,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Required Special Certification',
                 'verbose_name_plural': 'STA Required Special Certifications',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_specialcertification',
+                'db_table': 'forms_safetytaskanalysis_specialcertification',
                 'managed': True,
             },
         ),
@@ -216,7 +216,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Required Procedure',
                 'verbose_name_plural': 'STA Required Procedures',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_requiredprocedure',
+                'db_table': 'forms_safetytaskanalysis_requiredprocedure',
                 'managed': True,
             },
         ),
@@ -232,7 +232,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Required Permit',
                 'verbose_name_plural': 'STA Required Permits',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_requiredpermit',
+                'db_table': 'forms_safetytaskanalysis_requiredpermit',
                 'managed': True,
             },
         ),
@@ -248,7 +248,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Required Employee Certification',
                 'verbose_name_plural': 'STA Required Employee Certifications',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_employeecertificate',
+                'db_table': 'forms_safetytaskanalysis_employeecertificate',
                 'managed': True,
             },
         ),
@@ -261,7 +261,7 @@ class Migration(migrations.Migration):
             ],
             options={
                 'verbose_name': 'STA PPE',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_ppe',
+                'db_table': 'forms_safetytaskanalysis_ppe',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -283,7 +283,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Post Task',
                 'verbose_name_plural': 'STA Post Tasks',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_posttask',
+                'db_table': 'forms_safetytaskanalysis_posttask',
                 'managed': True,
             },
         ),
@@ -300,7 +300,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Employee Acknowledgement',
                 'verbose_name_plural': 'STA Employee Acknowledgements',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_employeeacknowledgement',
+                'db_table': 'forms_safetytaskanalysis_employeeacknowledgement',
                 'managed': True,
             },
         ),
@@ -316,7 +316,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Tool Inspection',
                 'verbose_name_plural': 'STA Tool Inspections',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_toolinspection',
+                'db_table': 'forms_safetytaskanalysis_toolinspection',
                 'managed': True,
             },
         ),
@@ -341,7 +341,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'STA Hazard Assessment',
                 'verbose_name_plural': 'STA Hazard Assessments',
-                'db_table': 'Bronze].[forms_safetytaskanalysis_hazardassessment',
+                'db_table': 'forms_safetytaskanalysis_hazardassessment',
                 'managed': True,
             },
         ),
@@ -394,7 +394,7 @@ class Migration(migrations.Migration):
                 ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='coins.job')),
             ],
             options={
-                'db_table': 'Bronze].[forms_qaqc_100_2',
+                'db_table': 'forms_qaqc_100_2',
                 'managed': True,
             },
         ),
@@ -456,7 +456,7 @@ class Migration(migrations.Migration):
                 ('project', models.ForeignKey(limit_choices_to={'job_active': 'a'}, on_delete=django.db.models.deletion.CASCADE, to='coins.job')),
             ],
             options={
-                'db_table': 'Bronze].[qaqc_100_1',
+                'db_table': 'qaqc_100_1',
                 'managed': True,
             },
         ),

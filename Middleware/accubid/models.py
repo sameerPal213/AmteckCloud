@@ -33,7 +33,7 @@ class Estimate(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[accubid_estimate"
+        db_table = "accubid_estimate"
         verbose_name = "estimate"
         verbose_name_plural = "estimates"
 
@@ -45,7 +45,7 @@ class BidSummary(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[accubid_bid_summary"
+        db_table = "accubid_bid_summary"
         verbose_name = "bid summary"
         verbose_name_plural = "bid summaries"
 
@@ -76,7 +76,7 @@ class Project(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[accubid_project"
+        db_table = "accubid_project"
         verbose_name = "project"
         verbose_name_plural = "projects"
 
@@ -88,6 +88,6 @@ class Database(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[accubid_database"
+        db_table = "accubid_database"
         verbose_name = "database"
         verbose_name_plural = "databases"

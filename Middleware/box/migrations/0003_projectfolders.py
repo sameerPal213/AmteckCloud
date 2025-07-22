@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Project Folder',
                 'verbose_name_plural': 'Project Folders',
-                'db_table': 'Bronze].[project_folders',
+                'db_table': 'project_folders',
                 'ordering': ['sta'],
                 'managed': True,
             },

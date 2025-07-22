@@ -22,7 +22,7 @@ class Enterprise(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[trello_enterprise"
+        db_table    = "trello_enterprise"
         ordering    = ["name"]
 
     def __str__(self):
@@ -63,7 +63,7 @@ class Workspace(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_workspace"
+        db_table = "trello_workspace"
         ordering    = ["display_name"]
 
     def __str__(self):
@@ -100,7 +100,7 @@ class Member(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_member"
+        db_table = "trello_member"
         ordering    = ["full_name"]
 
     def __str__(self):
@@ -151,7 +151,7 @@ class Board(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'Bronze].[trello_board'
+        db_table = 'trello_board'
         ordering    = ["name"]
 
     def __str__(self):
@@ -182,7 +182,7 @@ class Label(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_label"
+        db_table = "trello_label"
         ordering    = ["name"]
 
     def __str__(self):
@@ -209,7 +209,7 @@ class List(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'Bronze].[trello_list'
+        db_table = 'trello_list'
         ordering    = ["name"]
 
     def __str__(self):
@@ -330,7 +330,7 @@ class Card(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_card"
+        db_table = "trello_card"
         ordering    = ["name"]
 
     def __str__(self):
@@ -357,7 +357,7 @@ class Checklist(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'Bronze].[trello_checklist'
+        db_table = 'trello_checklist'
 
     def __str__(self):
         return self.name
@@ -388,7 +388,7 @@ class CustomField(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_customfield"
+        db_table = "trello_customfield"
 
     def __str__(self):
         return self.name
@@ -420,7 +420,7 @@ class CheckItem(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_checkitem"
+        db_table = "trello_checkitem"
 
     def __str__(self):
         return self.name
@@ -448,7 +448,7 @@ class CustomFieldOption(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_customfieldoption"
+        db_table = "trello_customfieldoption"
 
     def __str__(self):
         return self.trello_id
@@ -482,7 +482,7 @@ class CustomFieldItem(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_customfielditem"
+        db_table = "trello_customfielditem"
 
     def __str__(self):
         return self.trello_id
@@ -514,7 +514,7 @@ class Webhook(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_webhook"
+        db_table = "trello_webhook"
 
     def __str__(self):
         return self.description
@@ -542,7 +542,7 @@ class Action(models.Model):
     
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_action"
+        db_table = "trello_action"
 
     def __str__(self):
         return self.trello_id
@@ -567,7 +567,7 @@ class MissingAction(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'Bronze].[trello_missingaction'
+        db_table = 'trello_missingaction'
 
     def __str__(self):
         return self.id
@@ -584,7 +584,7 @@ class Comment(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[trello_comment"
+        db_table = "trello_comment"
 
     def __str__(self):
         self.trello_id

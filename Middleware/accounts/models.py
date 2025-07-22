@@ -6,7 +6,7 @@ class CustomUser(AbstractUser):
     
     class meta:
         managed = True
-        db_table = "Bronze].[accounts_user"
+        db_table = "accounts_user"
         verbose_name = "user"
         verbose_name_plural = "users"
     

@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('parent', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='children', related_query_name='child', to='menu_app.menuitem')),
             ],
             options={
-                'db_table': 'Bronze].[menuapp_menuitem',
+                'db_table': 'menuapp_menuitem',
                 'managed': True,
             },
         ),

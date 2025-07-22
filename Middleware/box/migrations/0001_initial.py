@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Folder Search Term',
                 'verbose_name_plural': 'Folder Search Terms',
-                'db_table': 'Bronze].[folder_search_terms',
+                'db_table': 'folder_search_terms',
                 'managed': True,
             },
         ),
@@ -34,7 +34,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Project Folder',
                 'verbose_name_plural': 'Project Folders',
-                'db_table': 'Bronze].[project_folders',
+                'db_table': 'project_folders',
                 'ordering': ['sta'],
                 'managed': True,
             },

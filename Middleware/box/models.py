@@ -12,7 +12,7 @@ class ProjectFolders(models.Model):
         verbose_name_plural = "Project Folders"
         ordering = ['sta']
         managed = True
-        db_table = "Bronze].[project_folders"
+        db_table = "project_folders"
 
 
 class FolderSearchTerm(models.Model):
@@ -23,4 +23,4 @@ class FolderSearchTerm(models.Model):
         verbose_name = "Folder Search Term"
         verbose_name_plural = "Folder Search Terms"
         managed = True
-        db_table = "Bronze].[folder_search_terms"
+        db_table = "folder_search_terms"

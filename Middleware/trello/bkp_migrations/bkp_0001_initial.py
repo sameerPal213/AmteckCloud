@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('prefs', models.TextField(blank=True, db_collation='SQL_Latin1_General_CP1_CI_AS', null=True)),
             ],
             options={
-                'db_table': 'Bronze].[trello_board',
+                'db_table': 'trello_board',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -76,7 +76,7 @@ class Migration(migrations.Migration):
                 ('board', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.board')),
             ],
             options={
-                'db_table': 'Bronze].[trello_card',
+                'db_table': 'trello_card',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -91,7 +91,7 @@ class Migration(migrations.Migration):
                 ('board', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.board')),
             ],
             options={
-                'db_table': 'Bronze].[trello_customfield',
+                'db_table': 'trello_customfield',
                 'managed': True,
             },
         ),
@@ -103,7 +103,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(blank=True, db_collation='SQL_Latin1_General_CP1_CI_AS', default='', max_length=50)),
             ],
             options={
-                'db_table': 'Bronze].[trello_enterprise',
+                'db_table': 'trello_enterprise',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -118,7 +118,7 @@ class Migration(migrations.Migration):
                 ('modified', models.DateTimeField(auto_now=True, null=True)),
             ],
             options={
-                'db_table': 'Bronze].[trello_missingaction',
+                'db_table': 'trello_missingaction',
                 'managed': True,
             },
         ),
@@ -132,7 +132,7 @@ class Migration(migrations.Migration):
                 ('model_type', models.CharField(blank=True, db_collation='SQL_Latin1_General_CP1_CI_AS', max_length=50, null=True)),
             ],
             options={
-                'db_table': 'Bronze].[trello_webhook',
+                'db_table': 'trello_webhook',
                 'managed': True,
             },
         ),
@@ -149,7 +149,7 @@ class Migration(migrations.Migration):
                 ('enterprise', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.enterprise')),
             ],
             options={
-                'db_table': 'Bronze].[trello_workspace',
+                'db_table': 'trello_workspace',
                 'ordering': ['display_name'],
                 'managed': True,
             },
@@ -166,7 +166,7 @@ class Migration(migrations.Migration):
                 ('workspaces', models.ManyToManyField(blank=True, to='trello.workspace')),
             ],
             options={
-                'db_table': 'Bronze].[trello_member',
+                'db_table': 'trello_member',
                 'ordering': ['full_name'],
                 'managed': True,
             },
@@ -180,7 +180,7 @@ class Migration(migrations.Migration):
                 ('board', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.board')),
             ],
             options={
-                'db_table': 'Bronze].[trello_list',
+                'db_table': 'trello_list',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -195,7 +195,7 @@ class Migration(migrations.Migration):
                 ('board', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.board')),
             ],
             options={
-                'db_table': 'Bronze].[trello_label',
+                'db_table': 'trello_label',
                 'ordering': ['name'],
                 'managed': True,
             },
@@ -209,7 +209,7 @@ class Migration(migrations.Migration):
                 ('CustomField', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.customfield')),
             ],
             options={
-                'db_table': 'Bronze].[trello_customfieldoption',
+                'db_table': 'trello_customfieldoption',
                 'managed': True,
             },
         ),
@@ -224,7 +224,7 @@ class Migration(migrations.Migration):
                 ('customFieldOption', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.customfieldoption')),
             ],
             options={
-                'db_table': 'Bronze].[trello_customfielditem',
+                'db_table': 'trello_customfielditem',
                 'managed': True,
             },
         ),
@@ -238,7 +238,7 @@ class Migration(migrations.Migration):
                 ('card', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.card')),
             ],
             options={
-                'db_table': 'Bronze].[trello_comment',
+                'db_table': 'trello_comment',
                 'managed': True,
             },
         ),
@@ -251,7 +251,7 @@ class Migration(migrations.Migration):
                 ('card', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.card')),
             ],
             options={
-                'db_table': 'Bronze].[trello_checklist',
+                'db_table': 'trello_checklist',
                 'managed': True,
             },
         ),
@@ -266,7 +266,7 @@ class Migration(migrations.Migration):
                 ('checklist', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.checklist')),
             ],
             options={
-                'db_table': 'Bronze].[trello_checkitem',
+                'db_table': 'trello_checkitem',
                 'managed': True,
             },
         ),
@@ -311,7 +311,7 @@ class Migration(migrations.Migration):
                 ('webhook', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='trello.webhook')),
             ],
             options={
-                'db_table': 'Bronze].[trello_action',
+                'db_table': 'trello_action',
                 'managed': True,
             },
         ),

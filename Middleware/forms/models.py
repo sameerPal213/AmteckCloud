@@ -86,7 +86,7 @@ class Qaqc1001Response(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[qaqc_100_1"
+        db_table = "qaqc_100_1"
 
 
 class Qaqc1002Response(models.Model):
@@ -154,7 +154,7 @@ class Qaqc1002Response(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_qaqc_100_2"
+        db_table = "forms_qaqc_100_2"
 
 
 class STAPPECategory(models.Model):
@@ -163,7 +163,7 @@ class STAPPECategory(models.Model):
     
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_ppecategory"
+        db_table = "forms_safetytaskanalysis_ppecategory"
         ordering = ['name']
         verbose_name = _("STA PPE Category")
         
@@ -178,7 +178,7 @@ class STAPPE(models.Model):
     
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_ppe"
+        db_table = "forms_safetytaskanalysis_ppe"
         ordering = ['name']
         verbose_name = _("STA PPE")
 
@@ -319,7 +319,7 @@ class SafetyTaskAnalysisResponse(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysisresponse"
+        db_table = "forms_safetytaskanalysisresponse"
         verbose_name=_("STA Response")
         verbose_name_plural=_("STA Responses")
 
@@ -337,7 +337,7 @@ class STAPostTask(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_posttask"
+        db_table = "forms_safetytaskanalysis_posttask"
         verbose_name = _("STA Post Task")
         verbose_name_plural = _("STA Post Tasks")
 
@@ -352,7 +352,7 @@ class STAPermit(models.Model):
     class Meta:
         managed = True
         ordering = ['name']
-        db_table = "Bronze].[forms_safetytaskanalysis_permits"
+        db_table = "forms_safetytaskanalysis_permits"
         verbose_name = _("STA Permit")
         verbose_name_plural = _("STA Permits")
 
@@ -367,7 +367,7 @@ class STAProcedure(models.Model):
     class Meta:
         managed = True
         ordering = ['name']
-        db_table = "Bronze].[forms_safetytaskanalysis_procedures"
+        db_table = "forms_safetytaskanalysis_procedures"
         verbose_name = _("STA Procedure")
         verbose_name_plural = _("STA Procedures")
 
@@ -382,7 +382,7 @@ class STAEmployeeCertification(models.Model):
     class Meta:
         managed = True
         ordering = ['name']
-        db_table = "Bronze].[forms_safetytaskanalysis_employeecertifications"
+        db_table = "forms_safetytaskanalysis_employeecertifications"
         verbose_name = _("STA Employee Certification")
         verbose_name_plural = _("STA Employee Certifications")
 
@@ -397,7 +397,7 @@ class STASpecialCertification(models.Model):
     class Meta:
         managed = True
         ordering = ['name']
-        db_table = "Bronze].[forms_safetytaskanalysis_specialcertifications"
+        db_table = "forms_safetytaskanalysis_specialcertifications"
         verbose_name = _("STA Special Certification")
         verbose_name_plural = _("STA Special Certifications")
 
@@ -412,7 +412,7 @@ class SafetyTaskAnalysisTool(models.Model):
     class Meta:
         managed = True
         ordering = ['name']
-        db_table = "Bronze].[forms_safetytaskanalysis_tools"
+        db_table = "forms_safetytaskanalysis_tools"
         verbose_name = _("STA Tool")
         verbose_name_plural = _("STA Tools")
 
@@ -428,7 +428,7 @@ class SafetyTaskAnalysisToolInspection(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_toolinspection"
+        db_table = "forms_safetytaskanalysis_toolinspection"
         verbose_name = _("STA Tool Inspection")
         verbose_name_plural = _("STA Tool Inspections")
 
@@ -441,7 +441,7 @@ class STARequiredPermit(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_requiredpermit"
+        db_table = "forms_safetytaskanalysis_requiredpermit"
         verbose_name = _("STA Required Permit")
         verbose_name_plural = _("STA Required Permits")
 
@@ -454,7 +454,7 @@ class STARequiredProcedure(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_requiredprocedure"
+        db_table = "forms_safetytaskanalysis_requiredprocedure"
         verbose_name = _("STA Required Procedure")
         verbose_name_plural = _("STA Required Procedures")
 
@@ -467,7 +467,7 @@ class STARequiredEmployeeCertification(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_employeecertificate"
+        db_table = "forms_safetytaskanalysis_employeecertificate"
         verbose_name = _("STA Required Employee Certification")
         verbose_name_plural = _("STA Required Employee Certifications")
 
@@ -480,7 +480,7 @@ class STARequiredSpecialCertification(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_specialcertification"
+        db_table = "forms_safetytaskanalysis_specialcertification"
         verbose_name = _("STA Required Special Certification")
         verbose_name_plural = _("STA Required Special Certifications")
 
@@ -491,7 +491,7 @@ class SafetyTaskAnalysisHazard(models.Model):
     
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_hazard"
+        db_table = "forms_safetytaskanalysis_hazard"
         ordering = ['name']
         verbose_name = _("STA Hazard")
         verbose_name_plural = _("STA Hazards")
@@ -507,7 +507,7 @@ class SafetyTaskAnalysisHazardAssessment(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_hazardassessment"
+        db_table = "forms_safetytaskanalysis_hazardassessment"
         verbose_name = _("STA Hazard Assessment")
         verbose_name_plural = _("STA Hazard Assessments")
 
@@ -521,6 +521,6 @@ class STAEmployeeAcknowledgement(models.Model):
     
     class Meta:
         managed = True
-        db_table = "Bronze].[forms_safetytaskanalysis_employeeacknowledgement"
+        db_table = "forms_safetytaskanalysis_employeeacknowledgement"
         verbose_name = _("STA Employee Acknowledgement")
         verbose_name_plural = _("STA Employee Acknowledgements")

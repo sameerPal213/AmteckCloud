@@ -11,7 +11,7 @@ class Category(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[skills_category"
+        db_table = "skills_category"
         verbose_name = _("category")
         verbose_name_plural = _("categories")
 
@@ -28,7 +28,7 @@ class Skill(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[skills_skill"
+        db_table = "skills_skill"
         verbose_name = _("skill")
         verbose_name_plural = _("skills")
 
@@ -48,7 +48,7 @@ class User(Employee):
 
     class Meta:
         managed=True
-        db_table = "Bronze].[skills_user"
+        db_table = "skills_user"
         verbose_name = _("user")
         verbose_name_plural = _("users")
     
@@ -87,7 +87,7 @@ class Assessment(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[skills_assessment"
+        db_table = "skills_assessment"
         verbose_name = _("Assessment")
         verbose_name_plural = _("Assessments")
 
@@ -127,6 +127,6 @@ class SkillScore(models.Model):
 
     class Meta:
         managed = True
-        db_table = "Bronze].[skills_skill_score"
+        db_table = "skills_skill_score"
         verbose_name = _("Skill Score")
         verbose_name_plural = _("Skill Scores")

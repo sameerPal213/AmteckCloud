@@ -13,7 +13,7 @@ class ProjectsDirectory(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_projectdirectory"
+        db_table    = "coins_projectdirectory"
 
 
 class Job(models.Model):
@@ -154,7 +154,7 @@ class Job(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_job"
+        db_table    = "coins_job"
         ordering    = ["job_num"]
 
     def __str__(self):
@@ -229,7 +229,7 @@ class Project(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_project"
+        db_table    = "coins_project"
         ordering    = ["pij_dispno"]
 
     def __str__(self):
@@ -259,7 +259,7 @@ class Section(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_section"
+        db_table    = "coins_section"
         ordering    = ["job_num","jcs_section"]
 
     def __str__(self):
@@ -295,7 +295,7 @@ class CostCode(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_costcode"
+        db_table    = "coins_costcode"
         ordering    = ["job_num","jcc_cc"]
 
     def __str__(self):
@@ -319,7 +319,7 @@ class Activity(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_activity"
+        db_table    = "coins_activity"
         ordering    = ["job_num","jca_activity"]
         verbose_name_plural = "Activities"
 
@@ -358,7 +358,7 @@ class WBS(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_wbs"
+        db_table    = "coins_wbs"
         ordering    = ["job_num","jwb_code"]
 
     def __str__(self):
@@ -411,7 +411,7 @@ class CostTransaction(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_costtransaction"
+        db_table    = "coins_costtransaction"
         ordering    = ["job_num","jcc_cc"]
         verbose_name = "Cost Transaction"
 
@@ -512,7 +512,7 @@ class PurchaseOrder(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_purchaseorder"
+        db_table    = "coins_purchaseorder"
         ordering    = ["job_num","poh_ordno", "poh_chgno"]
         verbose_name = "Purchase Order"
 
@@ -572,7 +572,7 @@ class PurchaseOrderLine(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_purchaseorderline"
+        db_table    = "coins_purchaseorderline"
         ordering    = ["job_num","poh_ordno"]
         verbose_name = "Purchase Order Line"
 
@@ -617,7 +617,7 @@ class PurchaseOrderItem(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_purchaseorderitem"
+        db_table    = "coins_purchaseorderitem"
         ordering    = ["poh_ordno"]
         verbose_name = "Purchase Order Item"
 
@@ -643,7 +643,7 @@ class ContractManagerJob(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_contractmanagerjob"
+        db_table    = "coins_contractmanagerjob"
         ordering    = ["job_num"]
         verbose_name = "Contract Manager Job"
 
@@ -724,7 +724,7 @@ class SOVItem(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_sovitem"
+        db_table    = "coins_sovitem"
         ordering    = ["job_num"]
         verbose_name = "SOV Item"
 
@@ -800,7 +800,7 @@ class SOVChangeManagement(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_sovchangemanagement"
+        db_table    = "coins_sovchangemanagement"
         ordering    = ["job_num"]
         verbose_name = "SOV Change Management"
 
@@ -849,7 +849,7 @@ class SOVResource(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[coins_sovresource"
+        db_table    = "coins_sovresource"
         ordering    = ["job_num"]
         verbose_name = "SOV Resource"
 
@@ -879,7 +879,7 @@ class Employee(models.Model):
 
     class Meta:
         managed= True
-        db_table= "Bronze].[coins_employee"
+        db_table= "coins_employee"
         ordering= ["last_name","first_name"]
         verbose_name = "Employee"
         

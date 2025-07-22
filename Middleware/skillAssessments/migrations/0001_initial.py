@@ -24,7 +24,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Assessment',
                 'verbose_name_plural': 'Assessments',
-                'db_table': 'Bronze].[skills_assessment',
+                'db_table': 'skills_assessment',
                 'managed': True,
             },
         ),
@@ -37,7 +37,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'category',
                 'verbose_name_plural': 'categories',
-                'db_table': 'Bronze].[skills_category',
+                'db_table': 'skills_category',
                 'managed': True,
             },
         ),
@@ -54,7 +54,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'skill',
                 'verbose_name_plural': 'skills',
-                'db_table': 'Bronze].[skills_skill',
+                'db_table': 'skills_skill',
                 'managed': True,
             },
         ),
@@ -68,7 +68,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'user',
                 'verbose_name_plural': 'users',
-                'db_table': 'Bronze].[skills_user',
+                'db_table': 'skills_user',
                 'managed': True,
             },
             bases=('coins.employee',),
@@ -85,7 +85,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Skill Score',
                 'verbose_name_plural': 'Skill Scores',
-                'db_table': 'Bronze].[skills_skill_score',
+                'db_table': 'skills_skill_score',
                 'managed': True,
             },
         ),

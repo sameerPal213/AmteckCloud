@@ -20,4 +20,4 @@ class MenuItem(models.Model):
 
     class Meta:
         managed     = True
-        db_table    = "Bronze].[menuapp_menuitem"
+        db_table    = "menuapp_menuitem"
