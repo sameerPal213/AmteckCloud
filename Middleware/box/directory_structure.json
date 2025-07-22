@@ -1,0 +1,338 @@
+[
+  {
+    "dept": 10,
+    "status": "L",
+    "stage": "L10",
+    "boxID": 134606269358
+  },
+  {
+    "dept": 10,
+    "status": "L",
+    "stage": "L20",
+    "boxID": 134606270558
+  },
+  {
+    "dept": 10,
+    "status": "L",
+    "stage": "L30",
+    "boxID": 134606271758
+  },
+  {
+    "dept": 10,
+    "status": "T",
+    "stage": "B10",
+    "boxID": 134606272958
+  },
+  {
+    "dept": 10,
+    "status": "T",
+    "stage": "B20",
+    "boxID": 134606274158
+  },
+  {
+    "dept": 10,
+    "status": "T",
+    "stage": "B30",
+    "boxID": 134606275358
+  },
+  {
+    "dept": 10,
+    "status": "T",
+    "stage": "B40",
+    "boxID": 134606276558
+  },
+  {
+    "dept": 10,
+    "status": "T",
+    "stage": "B50",
+    "boxID": 134606277758
+  },
+  {
+    "dept": 10,
+    "status": "T",
+    "stage": "B60",
+    "boxID": 134606278958
+  },
+  {
+    "dept": 10,
+    "status": "T",
+    "stage": "B70",
+    "boxID": 134606280158
+  },
+  {
+    "dept": 10,
+    "status": "C",
+    "stage": "C10",
+    "boxID": 134606281358
+  },
+  {
+    "dept": 10,
+    "status": "C",
+    "stage": "C20",
+    "boxID": 134606282558
+  },
+  {
+    "dept": 10,
+    "status": "S",
+    "stage": "S10",
+    "boxID": 134606283758
+  },
+  {
+    "dept": 10,
+    "status": "S",
+    "stage": "S20",
+    "boxID": 134606286158
+  },
+  {
+    "dept": 20,
+    "status": "L",
+    "stage": "L10",
+    "boxID": 134606308958
+  },
+  {
+    "dept": 20,
+    "status": "L",
+    "stage": "L20",
+    "boxID": 134606310158
+  },
+  {
+    "dept": 20,
+    "status": "L",
+    "stage": "L30",
+    "boxID": 134606311358
+  },
+  {
+    "dept": 20,
+    "status": "T",
+    "stage": "B10",
+    "boxID": 134606312558
+  },
+  {
+    "dept": 20,
+    "status": "T",
+    "stage": "B20",
+    "boxID": 134606313758
+  },
+  {
+    "dept": 20,
+    "status": "T",
+    "stage": "B30",
+    "boxID": 134606314958
+  },
+  {
+    "dept": 20,
+    "status": "T",
+    "stage": "B40",
+    "boxID": 134606316158
+  },
+  {
+    "dept": 20,
+    "status": "T",
+    "stage": "B50",
+    "boxID": 134606317358
+  },
+  {
+    "dept": 20,
+    "status": "T",
+    "stage": "B60",
+    "boxID": 134606318558
+  },
+  {
+    "dept": 20,
+    "status": "T",
+    "stage": "B70",
+    "boxID": 134606319758
+  },
+  {
+    "dept": 20,
+    "status": "C",
+    "stage": "C10",
+    "boxID": 134606322158
+  },
+  {
+    "dept": 20,
+    "status": "C",
+    "stage": "C20",
+    "boxID": 134606323358
+  },
+  {
+    "dept": 20,
+    "status": "S",
+    "stage": "S10",
+    "boxID": 134606324558
+  },
+  {
+    "dept": 20,
+    "status": "S",
+    "stage": "S20",
+    "boxID": 134606325758
+  },
+  {
+    "dept": 40,
+    "status": "L",
+    "stage": "L10",
+    "boxID": 134606336558
+  },
+  {
+    "dept": 40,
+    "status": "L",
+    "stage": "L20",
+    "boxID": 134606337758
+  },
+  {
+    "dept": 40,
+    "status": "L",
+    "stage": "L30",
+    "boxID": 134606338958
+  },
+  {
+    "dept": 40,
+    "status": "T",
+    "stage": "B10",
+    "boxID": 134606341358
+  },
+  {
+    "dept": 40,
+    "status": "T",
+    "stage": "B20",
+    "boxID": 134606342558
+  },
+  {
+    "dept": 40,
+    "status": "T",
+    "stage": "B30",
+    "boxID": 134606343758
+  },
+  {
+    "dept": 40,
+    "status": "T",
+    "stage": "B40",
+    "boxID": 134606344958
+  },
+  {
+    "dept": 40,
+    "status": "T",
+    "stage": "B50",
+    "boxID": 134606346158
+  },
+  {
+    "dept": 40,
+    "status": "T",
+    "stage": "B60",
+    "boxID": 134606347358
+  },
+  {
+    "dept": 40,
+    "status": "T",
+    "stage": "B70",
+    "boxID": 134606348558
+  },
+  {
+    "dept": 40,
+    "status": "C",
+    "stage": "C10",
+    "boxID": 134606350958
+  },
+  {
+    "dept": 40,
+    "status": "C",
+    "stage": "C20",
+    "boxID": 134606352158
+  },
+  {
+    "dept": 40,
+    "status": "S",
+    "stage": "S10",
+    "boxID": 134606354558
+  },
+  {
+    "dept": 40,
+    "status": "S",
+    "stage": "S20",
+    "boxID": 134606355758
+  },
+  {
+    "dept": 50,
+    "status": "L",
+    "stage": "L10",
+    "boxID": 134606364158
+  },
+  {
+    "dept": 50,
+    "status": "L",
+    "stage": "L20",
+    "boxID": 134606365358
+  },
+  {
+    "dept": 50,
+    "status": "L",
+    "stage": "L30",
+    "boxID": 134606366558
+  },
+  {
+    "dept": 50,
+    "status": "T",
+    "stage": "B10",
+    "boxID": 134606368958
+  },
+  {
+    "dept": 50,
+    "status": "T",
+    "stage": "B20",
+    "boxID": 134606370158
+  },
+  {
+    "dept": 50,
+    "status": "T",
+    "stage": "B30",
+    "boxID": 134606371358
+  },
+  {
+    "dept": 50,
+    "status": "T",
+    "stage": "B40",
+    "boxID": 134606372558
+  },
+  {
+    "dept": 50,
+    "status": "T",
+    "stage": "B50",
+    "boxID": 134606373758
+  },
+  {
+    "dept": 50,
+    "status": "T",
+    "stage": "B60",
+    "boxID": 134606374958
+  },
+  {
+    "dept": 50,
+    "status": "T",
+    "stage": "B70",
+    "boxID": 134606376158
+  },
+  {
+    "dept": 50,
+    "status": "C",
+    "stage": "C10",
+    "boxID": 134606377358
+  },
+  {
+    "dept": 50,
+    "status": "C",
+    "stage": "C20",
+    "boxID": 134606378558
+  },
+  {
+    "dept": 50,
+    "status": "S",
+    "stage": "S10",
+    "boxID": 134606380958
+  },
+  {
+    "dept": 50,
+    "status": "S",
+    "stage": "S20",
+    "boxID": 134606382158
+  }
+]

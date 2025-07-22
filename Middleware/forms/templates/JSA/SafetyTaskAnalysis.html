@@ -1,0 +1,543 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Safety Task Analysis (STA)</title>
+<link rel="stylesheet" href="{% static 'forms/jsa/sta.css'%}" />
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jSignature/2.1.3/jSignature.min.js" integrity="sha512-lZ7GJNAmaXw7L4bCR5ZgLFu12zSkuxHZGPJdIoAqP6lG+4eoSvwbmKvkyfauz8QyyzHGUGVHyoq/W+3gFHCLjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    // Script that handles hiding fields comment boxes and unhiding them upon
+    // the selection of a certain value in the form
+    $(document).ready(function () {
+        // Define a mapping of trigger field IDs to dependent field IDs and the trigger value
+        var fieldDependencies = {
+            'id_lockout': { 'dependent': 'id_lockout_comments' },
+            'id_hot_work': { 'dependent': 'id_hot_work_comments' },
+            'id_trench': { 'dependent': 'id_trench_comments' },
+            'id_confined': { 'dependent': 'id_confined_comments' },
+            'id_line_break': { 'dependent': 'id_line_break_comments' },
+            'id_energized_work': { 'dependent': 'id_energized_work_comments' },
+            'id_scaffolds': { 'dependent': 'id_scaffolds_comments' },
+            'id_crane_lift': { 'dependent': 'id_crane_lift_comments' },
+            'id_caution_sign': { 'dependent': 'id_caution_sign_comments' },
+            'id_danger_sign': { 'dependent': 'id_danger_sign_comments' },
+            'id_fire_watch': { 'dependent': 'id_fire_watch_comments' },
+            'id_hole_watch': { 'dependent': 'id_hole_watch_comments' },
+            'id_o2_monitoring': { 'dependent': 'id_o2_monitoring_comments' },
+            'id_door_monitor': { 'dependent': 'id_door_monitor_comments' },
+
+            // Add more mappings as needed
+        };
+
+        // Function to show/hide dependent fields based on the trigger field value
+        function updateDependentFields(triggerFieldId, dependentFieldId) {
+            if (document.getElementById(triggerFieldId).checked) {
+                $('#' + dependentFieldId).show();
+            } else {
+                $('#' + dependentFieldId).hide();
+            }
+        }
+
+        // Initially hide all dependent fields and set up change event handlers
+        $.each(fieldDependencies, function (triggerFieldId, info) {
+            $('#' + info.dependent).hide(); // Initially hide dependent field
+            $('#' + triggerFieldId).change(function () {
+                updateDependentFields(triggerFieldId, info.dependent);
+            }).change(); // Trigger change event to set initial state
+        });
+    });
+</script>
+<style>
+    .fixed {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        color: red; /* Change to any color */
+        background: white;
+        padding: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block title %}
+<h1 class="scroll-text-trigger">Safety Task Analysis</h1>
+{% endblock %}
+
+{% block content %}
+{{ response_form.media }}
+<form action="" method="post">
+    {% csrf_token %}
+    <h2>Project Information</h2>
+    <div id="project-details-section" class="grid bottom-divider">
+        <!-- Project -->
+        <label id="project-label" style="grid-column: 1; grid-row: 1">
+            {{response_form.job.label}}
+        </label>
+        <div style="grid-column:2; grid-row: 1">
+            {{response_form.job}}
+            {{response_form.errors.job}}
+        </div>
+
+        <!-- Location -->
+        <label id="location-label"
+               style="grid-column: 1; grid-row: 2">
+            {{response_form.location_of_work.label}}
+        </label>
+        <div style="grid-column:2; grid-row: 2">
+            {{response_form.location_of_work}}
+            {{response_form.errors.location_of_work}}
+        </div>
+    </div>
+
+    <h2>Supervision</h2>
+    <div id="supervisor-section" class="grid bottom-divider">
+        <!-- Supervisors -->
+        <!-- Lead Super -->
+        <h3 style="grid-area:supervisor;">
+            Lead Superintendent
+        </h3>
+        <label style="grid-area:sname;">
+            Name:
+        </label>
+        <div style="grid-area:snin;">
+            {{response_form.lead_superintendent_name}}
+            {{response_form.errors.lead_superintendent_name}}
+        </div>
+        <label style="grid-area:sphone;">
+            Phone:
+        </label>
+        <div style="grid-area:spin;">
+            {{response_form.lead_superintendent_phone}}
+            {{response_form.errors.lead_superintendent_phone}}
+        </div>
+        <!-- Foreman -->
+        <h3 style="grid-area:foreman">
+            Area Superintendent / Foreman
+        </h3>
+        <label style="grid-area:fname;">
+            Name:
+        </label>
+        <div style="grid-area:fnin;">
+            {{response_form.foreman_name}}
+            {{response_form.errors.foreman_name}}
+        </div>
+        <label style="grid-area:fphone;">
+            Phone:
+        </label>
+        <div style="grid-area:fpin;">
+            {{response_form.foreman_phone}}
+            {{response_form.errors.foreman_phone}}
+        </div>
+        <!-- Manager -->
+        <h3 style="grid-area: manager;">
+            Site Safety Coordinator / Manager
+        </h3>
+        <label style="grid-area: mname;">
+            Name:
+        </label>
+        <div style="grid-area: mnin;">
+            {{response_form.manager_name}}
+            {{response_form.errors.manager_name}}
+        </div>
+        <label style="grid-area:mphone;">
+            Phone:
+        </label>
+        <div style="grid-area: mpin;">
+            {{response_form.manager_phone}}
+            {{response_form.errors.manager_phone}}
+        </div>
+    </div>
+
+    <!-- Safety Notice -->
+    <div id="notice">
+        <p>
+            CUT 4 LEVEL GLOVES, HARD HAT, & HIGH VISIBILITY ATTIRE IS REQUIRED 100%
+            OF THE TIME WHILE ON SITE <br> THIS IS FOR YOUR SAFETY!!!!!
+        </p>
+    </div>
+
+    <!-- Work Details -->
+    <div id="details" class="bottom-divider">
+        <label style="">
+            Describe (in detail) Work to be Performed
+        </label>
+        <div style="">
+            {{response_form.performed_work}}
+            {{response_form.errors.performed_work}}
+        </div>
+        <label style="">
+            Tools & Equipment Needed for Task
+        </label>
+        <div style="">
+            {{response_form.needed_equipment}}
+            {{response_form.errors.needed_equipment}}
+        </div>
+    </div>
+
+    <!-- Elevated Work Assessment -->
+    <h2>Elevated Work Assessment</h2>
+    <h3>Ladders are to be the last resort to using an Aerial Lift</h3>
+    <div id="elevated-work" class="grid bottom-divider">
+        <label style="grid-row:1; grid-column:1">
+            Estimated Work Elevation
+        </label>
+        <div style="grid-row:1; grid-column:2/span 2">
+            {{ response_form.ladder_work_elevation }}
+            {{ response_form.errors.ladder_work_elevation }}
+        </div>
+
+        <label style="grid-row:3; grid-column:1;align-self:start;">
+            Explain why you hove to use a ladder:
+        </label>
+        <div style="grid-row:3; grid-column:2/span 2">
+            {{ response_form.ladder_reason_for_use }}
+            {{ response_form.errors.ladder_reason_for_use }}
+        </div>
+
+        <label style="grid-row:4; grid-column:1">
+            Ladder Type:
+        </label>
+        <div style="grid-row:4; grid-column:2/span 2">
+            {{ response_form.ladder_type }}
+            {{ response_form.errors.ladder_type }}
+        </div>
+
+        <label style="grid-row:5; grid-column:1">
+            Ladder Height:
+        </label>
+        <div style="grid-row:5; grid-column:2/span 2">
+            {{ response_form.ladder_height }}
+            {{ response_form.errors.ladder_height }}
+        </div>
+
+        <label style="grid-row:6; grid-column:1">
+            Superintendent/Foreman Approval:
+        </label>
+        <label style="grid-row:6; grid-column:2">
+            Type Name
+        </label>
+        <div style="grid-row:6; grid-column:3">
+            {{ response_form.ladder_approve_printed_name }}
+            {{ response_form.errors.ladder_approve_printed_name }}
+        </div>
+        <div style="grid-row:7; grid-column:2/span 2">
+            {{ response_form.ladder_approve_signature }}
+            {{ response_form.errors.ladder_approve_signature }}
+        </div>
+    </div>
+
+    <!-- Equipment -->
+    <h2>Equipment Information</h2>
+    <div id="equipment-section" class="grid grid-3-equal bottom-divider">
+        <label style="grid-row:1/span 1; grid-column:1/span 1">
+            Lift Type and Size
+        </label>
+        <div style="grid-row:1/span 1; grid-column:2/span 1">
+            {{response_form.lift}}
+            {{response_form.errors.lift}}
+        </div>
+
+        <h3 style="grid-row: 2/span 1; grid-column: 1">
+            Ground Assessment:
+        </h3>
+        <p style="color:darkred; grid-row: 2/span 1; grid-column: 2/span 2">This must be completed prior to operation of lift.</p>
+
+        <label style="grid-row:3/span 1; grid-column:1/span 2">
+            Has a safe path of travel & working area been reviewed?
+        </label>
+        <div style="grid-row:3/span 1; grid-column:3/span 1">
+            {{response_form.safe_travel}}
+            {{response_form.errors.safe_travel}}
+        </div>
+        <label style="grid-row:4/span 1; grid-column:1/span 2">
+            Are soft or unstable soils present?
+        </label>
+        <div style="grid-row:4/span 1; grid-column:3/span 1">
+            {{response_form.soils}}
+            {{response_form.errors.soils}}
+        </div>
+        <label style="grid-row:5/span 1; grid-column:1/span 2">
+            Is a Spotter required when moving lift?
+        </label>
+        <div style="grid-row:5/span 1; grid-column:3/span 1">
+            {{response_form.spotter_required}}
+            {{response_form.errors.spotter_required}}
+        </div>
+        <label id="spotter_name_label"
+               style="grid-row:6/span 1; grid-column:2/span 1; display: none;">
+            Name of Spotter
+        </label>
+        <div id="spotter_name_div"
+             style="grid-row:6/span 1; grid-column:3/span 1; display: none;">
+            {{response_form.spotter_name}}
+            {{response_form.errors.spotter_name}}
+        </div>
+        <label id="spotter_qualified_label"
+               style="grid-row:7/span 1; grid-column:2/span 1; display: none;">
+            Spotter is Qualified?
+        </label>
+        <div id="spotter_qualified_div"
+             style="grid-row:7/span 1; grid-column:3/span 1; display: none;">
+            {{response_form.spotter_qualified}}
+            {{response_form.errors.spotter_qualified}}
+        </div>
+        <label id="inspection_performed"
+               style="grid-row:8/span 1; grid-column:1/span 2;">
+            Equipment Inspection has been performed and documented?
+        </label>
+        <div id="inspection_performed_div"
+             style="grid-row:8/span 1; grid-column:3/span 1;">
+            {{response_form.inspection_performed}}
+            {{response_form.errors.inspection_performed}}
+        </div>
+        <label id="response_form_accessible"
+               style="grid-row:9/span 1; grid-column:1/span 2;">
+            Equipmnet Inspection Form is readily accessible?
+        </label>
+        <div id="response_form_accessible_div"
+             style="grid-row:9/span 1; grid-column:3/span 1;">
+            {{response_form.inspection_form_accessible}}
+            {{response_form.errors.inspection_form_accessible}}
+        </div>
+    </div>
+    <!-- Permits -->
+    <div id="permits" class="bottom-divider">
+        <h2>Permits Required</h2>
+        <h3>If yes, add any additional comments.</h3>
+        {{ required_permit_formset.management_form }}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Permit</th>
+                        <th>Required</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody id="formset-container">
+                    {% for p in required_permit_formset %}
+                    <tr>
+                        <td>{{ p.permit }} {{ p.errors.permit }}</td>
+                        <td>{{ p.required }} {{ p.errors.required }}</td>
+                        <td>{{ p.comments }} {{ p.errors.comments }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Procedures Required -->
+    <div id="procedures" class="bottom-divider">
+        <h2> Procedures Required </h2>
+        <h3>If yes, add any additional comments</h3>
+        {{ required_procedure_formset.management_form }}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Procedure</th>
+                        <th>Required</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody id="formset-container">
+                    {% for p in required_procedure_formset %}
+                    <tr>
+                        <td>{{ p.procedure }}{{ p.errors.procedure }}</td>
+                        <td>{{ p.required }}{{ p.errors.required }}</td>
+                        <td>{{ p.comments }}{{ p.errors.comments }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Required Employee Certifications -->
+    <div id="certifications" class="bottom-divider">
+        <h3> Required Employee Certifications </h3>
+        {{ required_employee_cert_formset.management_form }}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Certification</th>
+                        <th>Required</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody id="formset-container">
+                    {% for p in required_employee_cert_formset %}
+                    <tr>
+                        <td>{{ p.certification }} {{ p.errors.certification }}</td>
+                        <td>{{ p.required }} {{ p.errors.required }}</td>
+                        <td>{{ p.comments }} {{ p.errors.comments }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Required Special Certifications -->
+    <div id="special-certifications" class="bottom-divider">
+        <h3> Required Special Certifications </h3>
+        {{ required_special_cert_formset.management_form }}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Certification</th>
+                        <th>Required</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody id="formset-container">
+                    {% for p in required_special_cert_formset %}
+                    <tr>
+                        <td>{{ p.certification }} {{ p.errors.certification }}</td>
+                        <td>{{ p.required }} {{ p.errors.required }}</td>
+                        <td>{{ p.comments }} {{ p.errors.comments }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="tool-inspections" class="bottom-divider">
+        <h3> Tool Inspections for Task </h3>
+        {{ tool_inspections_formset.management_form }}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tools for Task</th>
+                        <th>Inspected</th>
+                        <th>Training Complete</th>
+                    </tr>
+                </thead>
+                <tbody id="formset-container">
+                    {% for p in tool_inspections_formset %}
+                    <tr>
+                        <td> {{ p.tool }} {{ p.errors.tool }}</td>
+                        <td> {{ p.inspection }} {{ p.errors.tool }}</td>
+                        <td> {{ p.training_received }} {{ p.errors.training_received }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Template for new forms -->
+        <table id="tool-inspection-empty-form" class="empty-form" style="display: none;">
+            <td> {{ tool_inspections_formset.empty_form.tool }} </td>
+            <td> {{ tool_inspections_formset.empty_form.inspection }} </td>
+            <td> {{ tool_inspections_formset.empty_form.training_received }} </td>
+        </table>
+    </div>
+
+    <div id="hazard-mitigation" class="bottom-divider">
+        <h3> Potential Hazards and Mitigation </h3>
+        {{ hazard_mitigation_formset.management_form }}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hazard</th>
+                        <th>Describe Hazard Elimination / Mitigation</th>
+                    </tr>
+                </thead>
+                <tbody id="formset-container">
+                    {% for p in hazard_mitigation_formset %}
+                    <tr>
+                        <td> {{ p.hazard }} {{ p.errors.hazard }}</td>
+                        <td> {{ p.comment }} {{p.errors.comment}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Template for new forms -->
+        <table id="hazard-mitigation-empty-form" class="empty-form" style="display: none;">
+            <tr>
+                <td> {{ hazard_mitigation_formset.empty_form.hazard }} {{ hazard_mitigation_formset.errors.hazard }}</td>
+                <td> {{ hazard_mitigation_formset.empty_form.comment }} {{hazard_mitigation_formset.errors.comment}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="ppe" class="bottom-divider">
+        <h3>PPE Required</h3>
+        {{ response_form.ppe }}
+    </div>
+
+    <div id="employee-acknowledgement" class="bottom-divider">
+        <h3>Employee Acknowledgment</h3>
+        <p>I have been trained to do the tasks required for my job. I acknowledge receiving and understanding these instructions. I will fully comply with the assigned tasks.</p>
+        <p>I have completed the tasks in a safe manner without damage to property or injury to myself.</p>
+        {{ employee_acknowledgement_formset.management_form }}
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Operator / Name</th>
+                        <th>Signature Start of Shift</th>
+                        <th>Signature End of Shift</th>
+                        <th>Craft Feedback / Comments</th>
+                    </tr>
+                </thead>
+                <tbody id="formset-container">
+                    {% for p in employee_acknowledgement_formset %}
+                    <tr>
+                        <td> {{ p.employee }} </td>
+                        <td> {{ p.shift_start_signature }} </td>
+                        <td> {{ p.shift_end_signature }} </td>
+                        <td> {{ p.comments }} </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Template for new forms -->
+        <table id="employee-acknowledgement-empty-form" class="empty-form" style="display: none;">
+            <td> {{ employee_acknowledgement_formset.empty_form.employee }} </td>
+            <td> {{ employee_acknowledgement_formset.empty_form.shift_start_signature }} </td>
+            <td> {{ employee_acknowledgement_formset.empty_form.shift_end_signature }} </td>
+            <td> {{ employee_acknowledgement_formset.empty_form.comments }} </td>
+        </table>
+    </div>
+
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
+
+{% block end %}
+<script src="{% static 'forms/jsa/sta.js'%}"></script>
+<script>
+    $(document).ready(function () {
+        $('select:not(.empty-form select)').width("max-content");
+        $('select:not(.empty-form select)').select2({ width: '100%' });
+        $('.jSignature').css("width", '');
+    });
+
+    window.addEventListener("scroll", function () {
+        const target = document.getElementsByClassName("scroll-text-target")[0];
+        const trigger = document.getElementsByClassName("scroll-text-trigger")[0];
+        const rect = trigger.getBoundingClientRect();
+
+        if (rect.top <= 0) {
+            target.style.display = 'block';
+        } else {
+            target.style.display = 'none';
+        }
+    })
+</script>
+{% endblock %}

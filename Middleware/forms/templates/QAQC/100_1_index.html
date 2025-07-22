@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block head %}
+    <title>QAQC 100.1 Responses</title>
+{% endblock %}
+
+
+{% block title %}
+<h1>QAQC 100.1 Responses</h1>
+{% endblock %}
+
+
+{% block content %}
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Project Name</th>
+            <th>Area</th>
+            <th>Sheet #</th>
+            <th>Drawing</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for response in object_list %}
+        <tr>
+        <td><a href="{% url 'forms:pdf-view' response.id %}">{{response.id}}</a></td>
+            <td>{{response.project.job_name}}</td>
+            <td>{{response.area}}</td>
+            <td>{{response.sheet_no}}</td>
+            <td>{{response.drawing}}</td>
+        {% empty %}
+            <td>No Responses</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'forms:100_1-new' %}">New Response</a>
+{% endblock %}

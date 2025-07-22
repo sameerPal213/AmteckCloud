@@ -1,0 +1,186 @@
+/* Smartphones (portrait and landscape) ----- */
+@media only screen and (max-device-width: 480px) {
+    /* Font Sizes --------------------------- */
+    * { font-size: 16px; }
+    p, label { font-size: 45pt; }
+    h1 { font-size: 70pt; }
+    h2 { font-size: 60pt; }
+    h3 { font-size: 50pt; margin: .2em 0em .01em 0em}
+    h4 { font-size: 45pt; }
+
+    input, select {
+        font-size: 45pt;
+        height: 2em;
+        width: 100%;
+    }
+    input[type="checkbox"] {
+        width: 2em;
+    }
+    input[type="submit"] {
+        margin: 0.5em 0em;
+    }
+    textarea {
+        font-size: 45pt;
+        width: 100%;
+        height: 4.5em;
+    }	
+
+    /* Grid Layouts ------------------------- */
+    .grid {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        row-gap: 2em;
+    }
+    #project-details-section > div {
+        width: 100%;
+    }
+    #supervisor-section {
+    }
+    #elevated-work > div {
+        width: 100%;
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 480px) and (max-device-width: 1024px) {
+    /* Font Sizes --------------------------- */
+    p, label { font-size: 1.5em; }
+    h2 { font-size: 28px; }
+    h3 { font-size: 23px; margin:10px 0px 2px 0px}
+
+    input {
+        height: 1em;
+        font-size: 2em;
+    }
+    input[type="checkbox"] {
+        width: 2em;
+    }
+
+    select {
+        height: 2em;
+        font-size: 1em;
+    }
+
+    /* Grid Layouts ------------------------- */
+    .grid {
+        display: grid;
+        column-gap: 10px;
+        row-gap: 10px;
+        align-items: center;
+    }
+    #project-details-seciton {
+        grid-template-columns: 1fr 3fr;
+    }
+    #supervisor-section {
+        justify-items: start;
+        grid-template-areas:
+            "supervisor supervisor . ."
+            "sname snin sphone spin"
+            "foreman foreman . ."
+            "fname fnin fphone fpin"
+            "manager manager . ."
+            "mname mnin mphone mpin";
+    }
+}
+
+/* Desktops and laptops --------------------- */
+@media only screen and (min-device-width: 1024px) {
+    /* Styles */
+
+    input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+    }
+
+    /* Grid Layouts ------------------------- */
+    .grid {
+        display: grid;
+        column-gap: 10px;
+        row-gap: 10px;
+        align-items: center;
+    }
+    #supervisor-section {
+        grid-template-areas:
+            "supervisor supervisor foreman foreman manager manager"
+            "sname snin fname fnin mname mnin"
+            "sphone spin fphone fpin mphone mpin";
+    }
+}
+
+/* Large screens ----------- */
+@media only screen and (min-width: 1824px) {
+    /* Styles */
+}
+
+.bold {
+    font-weight: bold;
+}
+
+
+.grid-3-equal {
+        grid-template-columns: 1fr 1fr 1fr;
+}
+
+.bottom-divider {
+    border-bottom: black 1px solid;
+    padding: 0px 0px 30px 0px;
+}
+
+.package-details {
+    grid-template-columns: 75px 200px 75px;
+}
+
+.checkitems {
+    grid-template-columns: 75px 500px 100px 100px;
+}
+
+#supervisor-section > p {
+    margin: auto;
+}
+
+#notice {
+    max-width: 700px;
+    font-size: 24pt;
+    margin: 50px auto;
+    color: red;
+    text-align: center;
+    background: #eeeeee;
+    border: grey 1px solid;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+td, th {
+    padding: 3px 10px;
+    border-left: 1px solid #DDDDDD;
+    border-right: 1px solid #DDDDDD;
+}
+
+thead {
+    background: #DDDDDD;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+thead th {
+    font-weight: normal;
+}
+
+td input[type="checkbox"] {
+    margin: auto;
+    display: flex;
+}
+
+select {
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 5px;
+    padding: 5px;
+}

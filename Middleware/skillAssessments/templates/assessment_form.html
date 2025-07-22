@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+<title>New Assessment</title>
+<!-- Pull in style sheet for search-select -->
+<link rel="stylesheet" href="{% static 'skillAssessments/skillAssessments.css' %}" type="text/css" />
+<!-- Include Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<!-- Include Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{% endblock %}
+
+{% block title %}
+<h1>New Assessment</h1>
+{% endblock %}
+
+{% block content %}
+<form id="assessment-form" method="post">
+    {% csrf_token %}
+    {{ assessment_form.as_div }}
+
+    {{ score_formset.management_form }}
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Skill</th>
+                    <th>Score</th>
+                    <th>Comment</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody id="formset-container">
+                {% for p in score_formset %}
+                <tr>
+                    <td> {{ p.skill }} {{ p.errors.skill }}</td>
+                    <td> {{ p.score }} {{ p.errors.score }}</td>
+                    <td> {{ p.comments }} {{ p.errors.comments }}</td>
+                    <td><button type="button" class="delete-row-button" onclick="deleteRow(this)">X</button></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+
+    <!-- Template for new forms -->
+    <table id="empty-form" style="display: none;">
+        <td> {{ score_formset.empty_form.skill }} </td>
+        <td> {{ score_formset.empty_form.score }} </td>
+        <td> {{ score_formset.empty_form.comments }} </td>
+        <td><button type="button" class="delete-row-button" onclick="deleteRow(this)">X</button></td>
+    </table>
+
+    <button type="submit">Save</button>
+</form>
+{% endblock %}
+
+
+{% block end %}
+<script>
+    /**
+     * Event handler for clicking on a select2 group in the open container.
+     * Toggles the visibility of the sibling elements.
+     * Retrieves the id of the closest select2-results__options element.
+     * Retrieves the index of the clicked select2-results__group element.
+     */
+    $("body").on('click', '.select2-container--open .select2-results__group', function () {
+        $(this).siblings().toggle();
+        let id = $(this).closest('.select2-results__options').attr('id');
+        let index = $('.select2-results__group').index(this);
+    })
+
+    /**
+     * Event handler for changing the selected skill option.
+     * Adds a new row to the form if the selected skill ends with '-all'.
+     * Removes the 'all' row and adds a blank row for the next response.
+     * Adds a new row if the selected skill is not empty.
+     */
+    $("body").on('change', '[name$="skill"]', function () {
+        var selectedOption = $(this).find('option:selected');
+        var selectedValue = selectedOption.val();
+        var selectedGroup = selectedOption.data('group');
+
+        if (selectedValue && selectedValue.endsWith('-all')) {
+            $(this).find('option[data-group="' + selectedGroup + '"]').each(function () {
+                if (!$(this).val().endsWith('-all')) {
+                    addRow($(this).val());
+                }
+            })
+            // remove the all row and update the count
+            $(this).closest('tr').remove();
+            // add in a blank row for next response
+            addRow(null);
+        } else if (selectedValue !== '') {
+            addRow(null);
+        }
+    });
+
+    /**
+     * Adds a new row to the form with the specified value and text.
+     * 
+     * @param {string} value - The value to set for the skill input field.
+     * @param {string} text - The text to display for the skill input field.
+     */
+    function addRow(value, text) {
+        var newRow = $('#empty-form > tbody:nth-child(1) > tr:nth-child(1)').clone();
+        var formCount = $('#id_scores-TOTAL_FORMS').val();
+        newRow.html(newRow.html().replace(/__prefix__/g, formCount));
+        newRow.find('[name$="skill"]').val(value);
+        newRow.find('span').remove(); // Remove the span item that is created on the empty form as it will be recreated when this is turned into a select2
+        $('#formset-container').append(newRow);
+        updateFormCount();
+        initializeSelect2(newRow.find('[name$="skill"'));
+    }
+
+    function initializeSelect2(element) {
+        element.select2();
+        element.on('select2:open', function () {
+            $('.select2-dropdown').css('opacity', 0);
+            setTimeout(() => {
+                $('.select2-container--open .select2-results__group').siblings().hide();
+                $('.select2-dropdown').css('opacity', 1);
+            });
+        });
+    }
+
+    function deleteRow(button) {
+        var row = button.closest('tr');
+        row.querySelectorAll('input, select, textarea').forEach(function (input) {
+            input.value = '';
+        });
+        row.style.display = 'none';
+    }
+
+    function updateFormCount() {
+        var formCountInput = document.querySelector('#id_scores-TOTAL_FORMS');
+        formCountInput.value = $('#formset-container tr').length;
+    }
+
+    // initialize select2s
+    $(document).ready(function () {
+        $('#id_user').select2();
+        $('#id_job').select2();
+    });
+</script>
+{% endblock %}

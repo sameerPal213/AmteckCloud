@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+
+{% block title %}
+<h1>Scores for {{ skill.name }}</h1>
+{% endblock %}
+{% block navigation %}
+<p>Employee Skill >> Skill Detail</p>
+{% endblock %}
+
+
+{% block content %}
+<ul>
+{% for assessment in assessments %}
+    <li>{{ assessment.user.name }}: {{ assessment.score }} on {{ assessment.recorded_at }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

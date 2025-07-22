@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>JSA Forms</h1>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Available Forms</h2>
+    <ul>
+        <li><a href="{% url 'forms:new-jsa-form' %}">JSA Form</a></li>
+    </ul>
+</div>
+{% endblock %}

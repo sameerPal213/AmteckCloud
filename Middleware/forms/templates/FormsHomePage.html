@@ -1,0 +1,16 @@
+<!-- forms/templates/FormsHomePage.html -->
+{% extends 'base.html' %}
+
+{% block title %}Forms{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h1>Safety</h1>
+    <a href="{% url 'forms:new-jsa-form' %}">New STA Response</a><br />
+    <a href="{% url 'forms:staresponse-list' %}">View STA Responses</a>
+</div>
+<div class="card">
+    <h1>People Operations</h1>
+    <a href="{% url 'new-score' %}">Skill Assessment</a>
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>Employee Skills</h1>
+{% endblock %}
+
+
+{% block content %}
+<div class="card">
+    <h2>Admin Actions</h2>
+    <ul>
+        <li><a href="{% url 'new-score' %}">New Assessment</a></li>
+        <li><a href="{% url 'add-skill' %}">Add New Skill</a></li>
+        <li><a href="{% url 'add-user' %}">Add New User</a></li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>Dashboards</h2>
+    <ul>
+        <li><a href="{% url 'user-dashboard' %}">User Dashboard</a></li>
+        <li><a href="{% url 'skill-dashboard' %}">Skill Dashboard</a></li>
+        <li><a href="{% url 'job-dashboard' %}">Job Dashboard</a></li>
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,177 @@
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'skillAssessments/skillAssessments.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+<style>
+    h1 {
+        width: 100%;
+    }
+    #user-detail-pane > div {
+        width: 50%;
+    }
+    #skill-history-container {
+        width: 100% !important;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+        #skill-history-container > div {
+            width: 25%;
+            min-width: 315px;
+        }
+</style>
+{% endblock %}
+
+
+{% block title %}
+<h1 class="card">{{ user.first_name }} {{ user.last_name }}</h1>
+{% endblock %}
+
+
+{% block content %}
+<!-- skills assessed over time line chart-->
+<div class="card" style="max-width: 400px">
+    <h2>Number of Assessed Skills Over Time</h2>
+    <canvas id="skills-over-time-chart" width="400" height="400"></canvas>
+    <script>
+        var skillsOverTimeData = JSON.parse('{{ skills_over_time|safe|escapejs }}');
+        var ctx = document.getElementById('skills-over-time-chart').getContext('2d');
+        var skillOverTimeChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: skillsOverTimeData.labels,
+                datasets: [{
+                    label: 'Number of Skills with Scores',
+                    data: skillsOverTimeData.data,
+                    fill: false,
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            usePointStyle: true,
+                            pointStyle: 'rect'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+
+<!-- skills assessed out of total skills pie chart -->
+<div style="max-width: 400px" class="card">
+    <h2>Skills Scores vs. Unscores</h2>
+    <canvas id="skills-pie-chart" width="400" height="400"></canvas>
+    <script>
+        var skillsPieData = JSON.parse('{{ skills_pie_data|safe|escapejs }}');
+        var ctx = document.getElementById('skills-pie-chart').getContext('2d');
+        var skillsPieChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: skillsPieData.labels,
+                datasets: [{
+                    label: 'Skills Distribution',
+                    data: skillsPieData.data,
+                    backgroundColor: [
+                        'rgb(75, 192, 192)',
+                        'rgb(255, 99, 132)'
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                        labels: {
+                            usePointStyle: true,
+                            pointStyle: 'rect'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</div>
+
+<div id="skill-history-container" class="card">
+    <h2 class="break">Skill Score History</h2>
+</div>
+<script>
+    var skillHistory = JSON.parse('{{ skill_history|safe|escapejs }}');
+    var container = document.getElementById('skill-history-container');
+
+    Object.keys(skillHistory).forEach(function (skill, index) {
+        var div = document.createElement('div');
+        var h3 = document.createElement('h3');
+        h3.textContent = skill;
+        var canvas = document.createElement('canvas');
+        canvas.id = 'chart-' + index;
+        canvas.width = 400;
+        canvas.height = 200;
+
+        div.appendChild(h3);
+        div.appendChild(canvas);
+        container.appendChild(div);
+
+        var ctx = canvas.getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: skillHistory[skill].assessments.map(function (entry) { return entry.date; }),
+                datasets: [{
+                    label: 'Assessed Score',
+                    data: skillHistory[skill].assessments.map(function (entry) { return entry.score; }),
+                    fill: false,
+                    borderColor: '#be4147',
+                    backgroundColor: '#be4147',
+                    tension: 0.1
+                }, {
+                    label: ' Self Assessment Score',
+                    data: skillHistory[skill].self_assessments.map(function (entry) { return entry.score; }),
+                    fill: false,
+                    borderColor: '#636363',
+                    backgroundColor: '#636363',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    x: {
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        }
+                    },
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        labels: {
+                            boxWidth: 10,
+                            boxHeight: 10
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
+{% endblock %}

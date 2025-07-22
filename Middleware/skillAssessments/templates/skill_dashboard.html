@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'skillAssessments/skillAssessments.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+{% endblock %}
+
+{% block title %}
+<h1>Skill Dashboard</h1>
+{% endblock %}
+
+{% block content %}
+<div id="table-container">
+    {% for category in categories %}
+    <div class="flex-item card">
+        <h2>{{ category.name }}</h2>
+        <table id="skill-table" class="container">
+            <thead>
+                <tr>
+                    <th>Skill</th>
+                    <th>Average Score</th>
+                    <th>Number of Assessments</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for skill in skills|dictsort:"name" %}
+                {% if skill.category == category %}
+                <tr>
+                    <td>{{ skill.name }}</td>
+                    <td>{{ skill.average_score|floatformat:2 }}</td>
+                    <td>{{ skill.num_assessments }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+    {% for chart_data in category_charts %}
+    <div class="skills-chart-container card">
+        <h2>{{ chart_data.category_name }}</h2>
+        <canvas id="skillChart_{{ forloop.counter }}" width="800" height="400"></canvas>
+    </div>
+
+    <script>
+        // Get data for current chart
+        var chartData_{{ forloop.counter }} = {{ chart_data|safe }};
+
+        // Prepare labels and datasets
+        var labels_{{ forloop.counter }} = chartData_{{ forloop.counter }}.labels;
+        var datasets_{{ forloop.counter }} = chartData_{{ forloop.counter }}.datasets;
+
+        // Prepare data for Chart.js
+        var ctx_{{ forloop.counter }} = document.getElementById('skillChart_{{ forloop.counter }}').getContext('2d');
+        var skillChart_{{ forloop.counter }} = new Chart(ctx_{{ forloop.counter }}, {
+            type: 'polarArea',
+            data: {
+                labels: labels_{{ forloop.counter }},
+                datasets: datasets_{{ forloop.counter }}
+            },
+            options: {
+                elements: {
+                    arc: {
+                        borderWidth: 0
+                    }
+                }
+            }
+        });
+    </script>
+    {% endfor %}
+
+</div>
+<h2>Skill Scores Visualization</h2>
+{% endblock %}

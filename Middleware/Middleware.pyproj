@@ -1,0 +1,381 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <Name>Middleware</Name>
+    <RootNamespace>Middleware</RootNamespace>
+    <InterpreterId>MSBuild|env|$(MSBuildProjectFullPath)</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>cd6bf79a-381b-4ee6-88af-02a29f66320d</ProjectGuid>
+    <ProjectHome>.</ProjectHome>
+    <ProjectTypeGuids>{5F0BE9CA-D677-4A4D-8806-6076C0FAAD37};{349c5851-65df-11da-9384-00065b846f21};{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <StartupFile>manage.py</StartupFile>
+    <SearchPath>
+    </SearchPath>
+    <WorkingDirectory>.</WorkingDirectory>
+    <LaunchProvider>Django launcher</LaunchProvider>
+    <DjangoSettingsModule>am_nexus.settings</DjangoSettingsModule>
+    <WebBrowserUrl>http://localhost</WebBrowserUrl>
+    <OutputPath>.</OutputPath>
+    <SuppressCollectPythonCloudServiceFiles>true</SuppressCollectPythonCloudServiceFiles>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="accounts\admin.py" />
+    <Compile Include="accounts\apps.py" />
+    <Compile Include="accounts\forms.py" />
+    <Compile Include="accounts\management\commands\exploreUsers.py" />
+    <Compile Include="accounts\management\commands\__init__.py" />
+    <Compile Include="accounts\management\__init__.py" />
+    <Compile Include="accounts\migrations\0001_initial.py" />
+    <Compile Include="accounts\migrations\__init__.py" />
+    <Compile Include="accounts\models.py" />
+    <Compile Include="accounts\signals.py" />
+    <Compile Include="accounts\tests.py" />
+    <Compile Include="accounts\views.py" />
+    <Compile Include="accounts\__init__.py" />
+    <Compile Include="accubid\admin.py" />
+    <Compile Include="accubid\apps.py" />
+    <Compile Include="accubid\management\commands\updateAllAccubidData.py" />
+    <Compile Include="accubid\management\commands\__init__.py" />
+    <Compile Include="accubid\migrations\__init__.py" />
+    <Compile Include="accubid\models.py" />
+    <Compile Include="accubid\tests.py" />
+    <Compile Include="accubid\views.py" />
+    <Compile Include="accubid\__init__.py" />
+    <Compile Include="am_nexus\asgi.py" />
+    <Compile Include="am_nexus\celery.py" />
+    <Compile Include="accubid\management\__init__.py" />
+    <Compile Include="am_nexus\settings.py" />
+    <Compile Include="am_nexus\urls.py" />
+    <Compile Include="am_nexus\wsgi.py" />
+    <Compile Include="am_nexus\__init__.py" />
+    <Compile Include="box\admin.py" />
+    <Compile Include="box\apps.py" />
+    <Compile Include="box\management\commands\searchForBoxFolder.py" />
+    <Compile Include="box\management\commands\__init__.py" />
+    <Compile Include="box\management\__init__.py" />
+    <Compile Include="box\migrations\__init__.py" />
+    <Compile Include="box\models.py" />
+    <Compile Include="box\tests.py" />
+    <Compile Include="box\tasks.py" />
+    <Compile Include="box\urls.py" />
+    <Compile Include="box\utils.py" />
+    <Compile Include="box\views.py" />
+    <Compile Include="box\__init__.py" />
+    <Compile Include="coins\admin.py" />
+    <Compile Include="coins\apps.py" />
+    <Compile Include="coins\management\commands\link_jobs_to_projects.py" />
+    <Compile Include="coins\management\commands\load_excel.py" />
+    <Compile Include="coins\management\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="coins\migrations\0001_initial.py" />
+    <Compile Include="coins\migrations\0002_project_job.py" />
+    <Compile Include="coins\migrations\0003_alter_project_job.py" />
+    <Compile Include="coins\migrations\0004_alter_project_job.py" />
+    <Compile Include="coins\migrations\0005_remove_job_id_remove_project_job_job_project.py" />
+    <Compile Include="coins\migrations\0006_alter_job_job_pogandl_alter_job_job_accruals_and_more.py" />
+    <Compile Include="coins\migrations\__init__.py" />
+    <Compile Include="coins\models.py" />
+    <Compile Include="coins\serializers.py" />
+    <Compile Include="coins\tasks.py" />
+    <Compile Include="coins\tests.py" />
+    <Compile Include="coins\urls.py" />
+    <Compile Include="coins\views.py" />
+    <Compile Include="coins\__init__.py" />
+    <Compile Include="forms\admin.py" />
+    <Compile Include="forms\apps.py" />
+    <Compile Include="forms\docs.py" />
+    <Compile Include="forms\fields.py" />
+    <Compile Include="coins\filters.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="forms\forms.py" />
+    <Compile Include="forms\migrations\__init__.py" />
+    <Compile Include="forms\models.py" />
+    <Compile Include="forms\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="forms\tests.py" />
+    <Compile Include="forms\urls.py" />
+    <Compile Include="forms\views.py" />
+    <Compile Include="forms\widgets.py" />
+    <Compile Include="forms\__init__.py" />
+    <Compile Include="initialLoad.py" />
+    <Compile Include="liquid_cloud\admin.py" />
+    <Compile Include="liquid_cloud\apps.py" />
+    <Compile Include="liquid_cloud\migrations\__init__.py" />
+    <Compile Include="liquid_cloud\models.py" />
+    <Compile Include="liquid_cloud\tasks.py" />
+    <Compile Include="liquid_cloud\tests.py" />
+    <Compile Include="liquid_cloud\views.py" />
+    <Compile Include="liquid_cloud\__init__.py" />
+    <Compile Include="manage.py" />
+    <Compile Include="menu_app\admin.py" />
+    <Compile Include="menu_app\apps.py" />
+    <Compile Include="menu_app\context_processors.py" />
+    <Compile Include="menu_app\migrations\__init__.py" />
+    <Compile Include="menu_app\models.py" />
+    <Compile Include="menu_app\__init__.py" />
+    <Compile Include="search_select\admin.py" />
+    <Compile Include="search_select\apps.py" />
+    <Compile Include="search_select\migrations\__init__.py" />
+    <Compile Include="search_select\models.py" />
+    <Compile Include="search_select\tests.py" />
+    <Compile Include="search_select\urls.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="search_select\views.py" />
+    <Compile Include="search_select\__init__.py" />
+    <Compile Include="skillAssessments\admin.py" />
+    <Compile Include="skillAssessments\apps.py" />
+    <Compile Include="skillAssessments\filters.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="skillAssessments\forms.py" />
+    <Compile Include="skillAssessments\management\commands\create_users_from_employees.py" />
+    <Compile Include="skillAssessments\management\commands\populate_db_with_sample_data.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="skillAssessments\management\commands\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="skillAssessments\management\__init__.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="skillAssessments\migrations\0001_initial.py" />
+    <Compile Include="skillAssessments\migrations\__init__.py" />
+    <Compile Include="skillAssessments\models.py" />
+    <Compile Include="skillAssessments\serializers.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="skillAssessments\tests.py" />
+    <Compile Include="skillAssessments\urls.py" />
+    <Compile Include="skillAssessments\views.py" />
+    <Compile Include="skillAssessments\__init__.py" />
+    <Compile Include="trello\admin.py" />
+    <Compile Include="trello\apps.py" />
+    <Compile Include="trello\forms.py" />
+    <Compile Include="trello\management\commands\deleteDuplicates.py" />
+    <Compile Include="trello\management\commands\updateWebhooks.py" />
+    <Compile Include="trello\management\commands\update_all_data.py" />
+    <Compile Include="trello\migrations\__init__.py" />
+    <Compile Include="trello\models.py" />
+    <Compile Include="trello\resources.py" />
+    <Compile Include="trello\tasks.py" />
+    <Compile Include="trello\urls.py" />
+    <Compile Include="trello\utils.py" />
+    <Compile Include="trello\views.py" />
+    <Compile Include="trello\__init__.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".env" />
+    <Content Include="accounts\templates\accounts\index.html" />
+    <Content Include="accubid\templates\accubid\index.html" />
+    <Content Include="am_nexus\__pycache__\celery.cpython-311.pyc" />
+    <Content Include="am_nexus\__pycache__\celery.cpython-39.pyc" />
+    <Content Include="am_nexus\__pycache__\__init__.cpython-311.pyc" />
+    <Content Include="am_nexus\__pycache__\__init__.cpython-39.pyc" />
+    <Content Include="box\config.json" />
+    <Content Include="coins\dataDumps\Employee List 9.20.24.xlsx" />
+    <Content Include="coins\dataDumps\Jobs 24.10.01.xlsx" />
+    <Content Include="coins\dataDumps\jc_costcode_20240207.xlsx" />
+    <Content Include="coins\dataDumps\jc_costtran_1000008_20240209.xlsx" />
+    <Content Include="coins\dataDumps\jc_costtran_10_20240209.xlsx" />
+    <Content Include="coins\dataDumps\jc_jactivity_20240207.xlsx" />
+    <Content Include="coins\dataDumps\jc_job_20240206.xlsx" />
+    <Content Include="coins\dataDumps\jc_section_20240207.xlsx" />
+    <Content Include="coins\dataDumps\jc_wbs_20240207.xlsx" />
+    <Content Include="coins\dataDumps\pi_project_20240131.xlsx" />
+    <Content Include="coins\dataDumps\po_hdr_10_20240209.xlsx" />
+    <Content Include="coins\dataDumps\po_item_10_20240212.xlsx" />
+    <Content Include="coins\dataDumps\po_line_10_20240212.xlsx" />
+    <Content Include="coins\dataDumps\sv_item_20240215.xlsx" />
+    <Content Include="coins\dataDumps\sv_job_20240214.xlsx" />
+    <Content Include="coins\dataDumps\sv_res_20240215.xlsx" />
+    <Content Include="coins\dataDumps\sv_vari_20240215.xlsx" />
+    <Content Include="coins\management\commands\__init__.py">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="coins\static\job\coins-job.css" />
+    <Content Include="coins\static\coins.css" />
+    <Content Include="coins\templates\base.html" />
+    <Content Include="coins\templates\job\detail.html" />
+    <Content Include="coins\templates\job\index.html" />
+    <Content Include="coins\templates\job\jobs.html" />
+    <Content Include="forms\static\forms\jsa\sta.css" />
+    <Content Include="forms\static\forms\jsa\sta.js" />
+    <Content Include="forms\static\forms\qaqc\100_1.css" />
+    <Content Include="forms\templates\FormsHomePage.html" />
+    <Content Include="forms\templates\JSA\file_embed.html" />
+    <Content Include="forms\templates\JSA\index.html" />
+    <Content Include="forms\templates\JSA\SafetyTaskAnalysis.html" />
+    <Content Include="forms\templates\JSA\staposttask.html" />
+    <Content Include="forms\templates\JSA\staresponse_list.html" />
+    <Content Include="forms\templates\QAQC\100_1.html" />
+    <Content Include="forms\templates\QAQC\100_1_index.html" />
+    <Content Include="forms\templates\QAQC\index.html" />
+    <Content Include="globalstatic\Amteck-A-3000x3000px.ico" />
+    <Content Include="globalstatic\Amteck_Vert_no_tag_Black.png" />
+    <Content Include="globalstatic\globalstyle.css" />
+    <Content Include="liquid_cloud\templates\liquid_cloud\index.html" />
+    <Content Include="menu_app\static\menu_app\script.js" />
+    <Content Include="menu_app\static\menu_app\menu_app.css" />
+    <Content Include="requirements.txt" />
+    <Content Include="search_select\static\search_select\main.js" />
+    <Content Include="search_select\static\search_select\style.css" />
+    <Content Include="search_select\static\search_select\vanilla.filterizr.min.js" />
+    <Content Include="search_select\templates\search_select\index.html" />
+    <Content Include="search_select\templates\search_select\item_form.html">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="search_select\templates\search_select\partials\search_select_bar.html" />
+    <Content Include="skillAssessments\static\skillAssessments\skillAssessments.css" />
+    <Content Include="skillAssessments\templates\add_skill.html" />
+    <Content Include="skillAssessments\templates\add_user.html" />
+    <Content Include="skillAssessments\templates\home.html" />
+    <Content Include="skillAssessments\templates\job_dashboard.html" />
+    <Content Include="skillAssessments\templates\job_detail.html" />
+    <Content Include="skillAssessments\templates\skill_dashboard.html" />
+    <Content Include="skillAssessments\templates\skill_scores.html" />
+    <Content Include="skillAssessments\templates\user_dashboard.html" />
+    <Content Include="skillAssessments\templates\assessment_form.html" />
+    <Content Include="skillAssessments\templates\user_detail.html" />
+    <Content Include="templates\base.html" />
+    <Content Include="templates\menu.html" />
+    <Content Include="templates\menu_tree_template.html" />
+    <Content Include="templates\registration\login.html" />
+    <Content Include="templates\registration\logout.html" />
+    <Content Include="trello\templates\base.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="accounts\" />
+    <Folder Include="accounts\management\commands\" />
+    <Folder Include="accounts\migrations\" />
+    <Folder Include="accounts\management\" />
+    <Folder Include="accounts\templates\" />
+    <Folder Include="accounts\templates\accounts\" />
+    <Folder Include="am_nexus\" />
+    <Folder Include="accubid\" />
+    <Folder Include="accubid\migrations\" />
+    <Folder Include="accubid\templates\" />
+    <Folder Include="accubid\templates\accubid\" />
+    <Folder Include="accubid\management\" />
+    <Folder Include="accubid\management\commands\" />
+    <Folder Include="am_nexus\__pycache__\" />
+    <Folder Include="box\" />
+    <Folder Include="box\management\commands\" />
+    <Folder Include="box\migrations\" />
+    <Folder Include="box\management\" />
+    <Folder Include="coins\" />
+    <Folder Include="coins\dataDumps\" />
+    <Folder Include="coins\management\" />
+    <Folder Include="coins\management\commands\" />
+    <Folder Include="coins\migrations\" />
+    <Folder Include="coins\static\" />
+    <Folder Include="coins\static\job\" />
+    <Folder Include="coins\templates\" />
+    <Folder Include="coins\templates\job\" />
+    <Folder Include="forms\" />
+    <Folder Include="forms\migrations\" />
+    <Folder Include="forms\static\" />
+    <Folder Include="forms\static\forms\" />
+    <Folder Include="forms\static\forms\jsa\" />
+    <Folder Include="forms\static\forms\qaqc\" />
+    <Folder Include="forms\templates\" />
+    <Folder Include="forms\templates\JSA\" />
+    <Folder Include="forms\templates\QAQC\" />
+    <Folder Include="liquid_cloud\" />
+    <Folder Include="liquid_cloud\migrations\" />
+    <Folder Include="liquid_cloud\templates\" />
+    <Folder Include="liquid_cloud\templates\liquid_cloud\" />
+    <Folder Include="menu_app\" />
+    <Folder Include="menu_app\migrations\" />
+    <Folder Include="menu_app\static\" />
+    <Folder Include="menu_app\static\menu_app\" />
+    <Folder Include="globalstatic\" />
+    <Folder Include="search_select\" />
+    <Folder Include="search_select\migrations\" />
+    <Folder Include="search_select\static\" />
+    <Folder Include="search_select\static\search_select\" />
+    <Folder Include="search_select\templates\" />
+    <Folder Include="search_select\templates\search_select\partials\" />
+    <Folder Include="search_select\templates\search_select\" />
+    <Folder Include="skillAssessments\" />
+    <Folder Include="skillAssessments\management\commands\" />
+    <Folder Include="skillAssessments\migrations\" />
+    <Folder Include="skillAssessments\management\" />
+    <Folder Include="skillAssessments\static\" />
+    <Folder Include="skillAssessments\static\skillAssessments\" />
+    <Folder Include="skillAssessments\templates\" />
+    <Folder Include="templates\" />
+    <Folder Include="templates\registration\" />
+    <Folder Include="trello\" />
+    <Folder Include="trello\management\" />
+    <Folder Include="trello\management\commands\" />
+    <Folder Include="trello\migrations\" />
+    <Folder Include="trello\templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Interpreter Include="env\">
+      <Id>env</Id>
+      <Version>3.9</Version>
+      <Description>env (Python 3.9 (64-bit))</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>X64</Architecture>
+    </Interpreter>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Django.targets" />
+  <!-- Specify pre- and post-build commands in the BeforeBuild and 
+       AfterBuild targets below. -->
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <AutoAssignPort>True</AutoAssignPort>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}" User="">
+        <WebProjectProperties>
+          <StartPageUrl>
+          </StartPageUrl>
+          <StartAction>CurrentPage</StartAction>
+          <AspNetDebugging>True</AspNetDebugging>
+          <SilverlightDebugging>False</SilverlightDebugging>
+          <NativeDebugging>False</NativeDebugging>
+          <SQLDebugging>False</SQLDebugging>
+          <ExternalProgram>
+          </ExternalProgram>
+          <StartExternalURL>
+          </StartExternalURL>
+          <StartCmdLineArguments>
+          </StartCmdLineArguments>
+          <StartWorkingDirectory>
+          </StartWorkingDirectory>
+          <EnableENC>False</EnableENC>
+          <AlwaysStartWebServerOnDebug>False</AlwaysStartWebServerOnDebug>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

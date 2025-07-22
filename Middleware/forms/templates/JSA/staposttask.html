@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>STA Post Task Assignment</title>
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jSignature/2.1.3/jSignature.min.js" integrity="sha512-lZ7GJNAmaXw7L4bCR5ZgLFu12zSkuxHZGPJdIoAqP6lG+4eoSvwbmKvkyfauz8QyyzHGUGVHyoq/W+3gFHCLjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    // hide comment boxes for checkmark fields until the field is needed
+    $(document).ready(function () {
+        var fieldDependencies = {
+            'id_injury_or_incident': { 'dependent': 'id_injury_or_incident_comment' },
+            'id_hazard_observations_made': {'dependent': 'count-row'}
+        };
+
+        function updateDependentFields(triggerFieldId, dependentFieldId) {
+            if (document.getElementById(triggerFieldId).checked) {
+                $('#' + dependentFieldId).show();
+            } else {
+                $('#' + dependentFieldId).hide();
+            }
+        }
+
+        $.each(fieldDependencies, function (triggerFieldId, info) {
+            $('#' + info.dependent).hide();
+            $('#' + triggerFieldId).change(function () {
+                updateDependentFields(triggerFieldId, info.dependent);
+            }).change()
+        });
+    });
+</script>
+{% endblock %}
+
+{% block title %}
+<h1>STA Post Task Assignment</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Summary of STA Data:</h2>
+    <p><b>Project:</b> {{ sta_data.project }}</p>
+    <p><b>Location of Work:</b> {{ sta_data.location_of_work }}</p>
+    <p><b>Date:</b> {{ sta_data.date }}</p>
+    <p><b>Lead Superintendent:</b> {{ sta_data.lead_superintendent_name }}</p>
+    <p><b>Foreman:</b> {{ sta_data.foreman_name }}</p>
+    <p><b>Manager:</b> {{ sta_data.manager_name }}</p>
+    <p><b>Performed Work:</b> {{ sta_data.performed_work }}</p>
+    <p><b>Needed Equipment:</b> {{ sta_data.needed_equipment }}</p>
+</div>
+<form method="post">
+    {% csrf_token %}
+    {{ response_form.media }}
+    <table>
+        <tbody>
+            <tr>
+                <td><b>{{ response_form.response.label }}</b></td>
+                <td> {{ response_form.response }} </td>
+            </tr>
+            <tr>
+                <td> <b>{{ response_form.injury_or_incident.label }}</b> </td>
+                <td> {{ response_form.injury_or_incident }} </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>{{ response_form.injury_or_incident_comment }}</td>
+            </tr>
+            <tr id="injury_or_indcident_reported_row">
+                <td> <b>{{ response_form.injury_or_incident_reported.label }}</b></td>
+                <td> {{ response_form.injury_or_incident_reported }}</td>
+            </tr>
+            <tr>
+                <td> <b>{{ response_form.improvements.label }}</b></td>
+                <td> {{ response_form.improvements }}</td>
+            </tr>
+            <tr>
+                <td> <b>{{ response_form.safety_violations.label }}</b></td>
+                <td> {{ response_form.safety_violations }}</td>
+            </tr>
+            <tr>
+                <td> <b>{{ response_form.hazard_observations_made.label }}</b></td>
+                <td> {{ response_form.hazard_observations_made }}</td>
+            </tr>
+            <tr id="count-row">
+                <td> <b>Count:</b></td>
+                <td> {{ response_form.hazard_observations_count }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <b>{{ response_form.supervisor_signature.label}}</b>
+    {{ response_form.supervisor_signature}}
+    <input type="submit" value="Submit">
+
+</form>
+{% endblock %}

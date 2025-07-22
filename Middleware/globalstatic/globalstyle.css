@@ -1,0 +1,247 @@
+/* apply a natrual box layout model to all elements, but allowing compnents to change*/
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit
+}
+
+
+body {
+    margin: 0 0 50vh 0;
+    padding: 0;
+    font-family: 'Josefin Sans', sans-serif;
+    background-color: #fff;
+}
+
+h1 {
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+/* GLOBAL BUTTON STYLE */
+button {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    margin-top: 15px;
+    padding: 6px 16px;
+    position: relative;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+    word-wrap: break-word;
+}
+
+    button:hover {
+        background-color: #F3F4F6;
+        text-decoration: none;
+        transition-duration: 0.1s;
+    }
+
+    button:disabled {
+        background-color: #FAFBFC;
+        border-color: rgba(27, 31, 35, 0.15);
+        color: #959DA5;
+        cursor: default;
+    }
+
+    button:active {
+        background-color: #EDEFF2;
+        box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+        transition: none 0s;
+    }
+
+    button:focus {
+        outline: 1px transparent;
+    }
+
+    button:before {
+        display: none;
+    }
+
+    button:-webkit-details-marker {
+        display: none;
+    }
+
+
+/* GLOBAL INPUT TYPE SETTINGS */
+/* INPUT WITH FLOATING PLACEHOLDER */
+.input__floating_placeholder_group {
+    position: relative;
+    padding: 15px 0 0;
+    margin-top: 10px;
+    width: 300px;
+}
+
+.input__floating_placeholder_field {
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid black;
+    outline: 0;
+    font-size: 1.3rem;
+    padding: 7px 5px;
+    background: #eeeeee;
+    transition: border-color 0.2s;
+}
+
+    .input__floating_placeholder_field::placeholder {
+        color: transparent;
+    }
+
+    .input__floating_placeholder_field:placeholder-shown ~ .input__floating_placeholder_label {
+        font-size: 1.3rem;
+        cursor: text;
+        top: 25px;
+    }
+
+    .input__floating_placeholder_field:focus {
+        border-image: linear-gradient(to right, #d73444, #202b2d);
+        border-image-slice: 1;
+    }
+
+        .input__floating_placeholder_field:focus ~ .input__floating_placeholder_label {
+            position: absolute;
+            top: -2px;
+            display: block;
+            transition: 0.2s ease-in-out;
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+.input__floating_placeholder_label {
+    position: absolute;
+    top: -2px;
+    left: 5px;
+    display: block;
+    transition: 0.2s;
+    font-size: 1rem;
+}
+
+
+#main-header {
+    display: flex;
+    align-items: center;
+    padding-left: 300px;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    height: 70px;
+    background-color: white;
+    z-index: 1001;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 20px 50px 0 rgba(0, 0, 0, 0.1);
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    justify-content: center;
+    padding: 10px;
+    flex-wrap: wrap;
+    min-height: calc(100vh - 70px);
+    margin: auto;
+}
+
+    #content .break {
+        width: 100%;
+    }
+
+/* GLOBAL CARD STYLING */
+.card {
+    margin: 1.25rem;
+    border-radius: 15px;
+    padding: 1.25rem;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 20px 50px 0 rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* GLOBAL DYNAMIC LAYOUT SETTINGS */
+@media (max-width: 1300px) {
+    #main-header {
+        padding-left: 30px;
+    }
+
+    #content {
+        padding: 10px 50px;
+    }
+}
+
+@media (max-width: 1700px) and (min-width: 1300px) {
+    #main-header {
+        padding-left: 100px;
+    }
+
+    #content {
+        padding: 10px 100px;
+    }
+}
+
+
+.banner {
+    height: 190px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+    .banner img {
+        width: 100%;
+        height: auto;
+    }
+
+    .banner::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        background-color: rgba(187,32,39,0.8);
+    }
+
+.text-container {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    color: white;
+    width: calc(100% - 40px);
+    text-align: center;
+    z-index: 1;
+}
+
+    .text-container h1 {
+        margin: 0;
+    }
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+table {
+    border-collapse: collapse;
+    border: 3px solid #eee;
+}
+tr {
+    height: 3em;
+    border-bottom: 3px solid #eee;
+}
+td, th {
+    padding: 0px 10px;
+}

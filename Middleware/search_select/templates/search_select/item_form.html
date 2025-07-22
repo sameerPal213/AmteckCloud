@@ -1,0 +1,226 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search and Select Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+            .search-bar input {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+            }
+
+        .results {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .result-item {
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            transition: box-shadow 0.3s, border-color 0.3s, transform 0.3s, opacity 0.3s;
+            animation: slideIn 0.3s forwards 0.3s;
+        }
+
+            .result-item.slide-out {
+                opacity: 0;
+                transform: translateX(20px);
+                animation: slideOut 0.3s forwards;
+            }
+
+            .result-item:hover {
+                background-color: #f0f0f0;
+                border-color: #aaa;
+            }
+
+        .selected-items {
+            margin-top: 20px;
+        }
+
+            .selected-items table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .selected-items th,
+            .selected-items td {
+                padding: 10px;
+                border: 1px solid #ddd;
+            }
+
+        @media (max-width: 600px) {
+            .result-item {
+                flex: 1 0 calc(50% - 10px);
+            }
+        }
+
+        @media (max-width: 400px) {
+            .result-item {
+                flex: 1 0 calc(100% - 10px);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="tool-search" placeholder="Search or add a tool" oninput="debouncedFetchItems()">
+        </div>
+        <div class="results" id="results">
+            <!-- Results will be dynamically inserted here -->
+        </div>
+        <div class="selected-items">
+            <table id="selected-items-table">
+                <thead>
+                    <tr>
+                        <th>Selected Items</th>
+                    </tr>
+                </thead>
+                <tbody id="selected-items-body">
+                    <!-- Selected items will be dynamically inserted here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const resultsContainer = document.getElementById('results');
+        const selectedItemsBody = document.getElementById('selected-items-body');
+        function debounce(func, wait) {
+            let timeout;
+            return function (...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        function removeItems(items) {
+            items.forEach(item => {
+                const element = Array.from(results.children).filter(child => child.textContent === item);
+                if (element) {
+                    element.forEach(element => {
+                        element.classList.add('slide-out');
+                        element.addEventListener('animationend', () => {
+                            element.remove();
+                        })
+                    });
+                }
+            });
+        }
+
+        function addItems(items, limit) {
+            items.some((item, index) => {
+                if (limit && index == limit) {
+                    const ellipsis = document.createElement('div');
+                    ellipsis.className = 'result-item';
+                    ellipsis.textContent = '...';
+                    resultsContainer.appendChild(ellipsis);
+                    return true;
+                }
+
+                const div = document.createElement('div');
+                div.className = 'result-item';
+                div.textContent = item;
+                div.addEventListener('click', () => {
+                    addToSelectedItems(item);
+                });
+                resultsContainer.appendChild(div);
+            });
+        }
+
+        function displayResults(items, limit) {
+            // Get the current items in the results
+            const currentItems = Array.from(resultsContainer.children).map(child => child.textContent);
+            // Determine which items are new and which are removed
+            const newItems = items.filter(item => !currentItems.includes(item));
+            const removedItems = currentItems.filter(item => !items.includes(item));
+
+            // Remove items with slideOut animation
+            if (removedItems.length) {
+                removeItems(removedItems);
+            }
+
+            // Add new items with slideIn animation
+            if (newItems.length) {
+                addItems(newItems, limit);
+            }
+        }
+
+        function addToSelectedItems(item) {
+            const row = document.createElement('tr');
+            const cell = document.createElement('td');
+            cell.textContent = item;
+            row.appendChild(cell);
+            selectedItemsBody.appendChild(row);
+        }
+
+        function fetchItems() {
+            const searchTerm = document.getElementById('tool-search').value.toLowerCase();
+            let url = '/coins/api/jobs/';
+            const params = new URLSearchParams();
+
+            if (searchTerm) {
+                params.append('job_name', searchTerm);
+                url += '?' + params.toString();
+            }
+            fetch(url)
+                .then(response => response.json())
+                .then(items => {
+                    displayResults(items.map(item => item.job_name), 15); // Change the limit here
+                })
+                .catch(error => {
+                    console.error('Error fetching items:', error);
+                });
+        }
+
+        const debouncedFetchItems = debounce(fetchItems, 400);
+    </script>
+</body>
+</html>

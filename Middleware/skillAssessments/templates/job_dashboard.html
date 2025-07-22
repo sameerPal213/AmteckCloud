@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'skillAssessments/skillAssessments.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block title %}
+<h1>Job Dashboard</h1>
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Job Dashboard</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Job Name</th>
+                <th>Number of Unique Skills Graded</th>
+                <th>Number of Assessors</th>
+                <th>% of Users with Graded Skills</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for job in jobs|dictsort:"job_name" %}
+            <tr>
+                <td>
+                    <a href="{% url 'job-detail' job_number=job.job_num %}">
+                        {{ job.job_name }}
+                    </a>
+                </td>
+                <td>{{ job.num_skills }}</td>
+                <td>{{ job.num_assessors }}</td>
+                <td>{{ job.users_with_grades_percentage }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

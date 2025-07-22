@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+
+{% block head %}
+	<meta charset="utf-8" />
+	<title>Coins - Jobs</title>
+	<!-- Leaflet map install -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	 integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+	 crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+	 integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+	 crossorigin=""></script>
+	<script src="https://cdn.jsdelivr.net/npm/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.min.js"></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css">
+	<!-- DataTables Installation -->
+	<link href="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.1/b-3.0.0/datatables.min.css" rel="stylesheet">
+	<script src="https://cdn.datatables.net/v/dt/jq-3.7.0/dt-2.0.1/b-3.0.0/datatables.min.js"></script>
+	<!-- Load personal stylesheet last -->
+	<link rel="stylesheet" href="{% static 'job/style.css' %}" type="text/css">
+{% endblock %}
+
+
+{% block title %}
+<h1>Jobs</h1>
+{% endblock %}
+
+
+{% block navigation %}
+<p>Coins >> Jobs</p>
+{% endblock %}
+
+
+{% block content %}
+	{% if page_obj %}
+		<div id="map" class="card"></div>
+		<script> 
+			var map = L.map('map').setView([39.8283, -98.5795], 4);
+			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{
+				maxZoom: 19,
+				attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+			}).addTo(map)
+			var markers = L.markerClusterGroup({
+				maxClusterRadius: 40});
+		</script>
+		<table id="jobs" 
+			   style="width:100%" 
+			   data-server-side="false" cellspacing='0' class='cards'
+			   data-ajax="/coins/api/jobs/?format=datatables&active=a">
+			<thead>
+				<tr>
+					<th data-data="job_name">Job Name</th>
+					<th data-data="job_num">Job Number</th>
+					<th data-data="job_desc_1">Description</th>
+					<!-- Hidden Values -->
+					<th data-data="latitude">Latitude</th>
+					<th data-data="longitude">Longitude</th>
+					<th data-data="id">ID</th>
+				</tr>
+			</thead>
+			<tbody class="row justify-content-center"></tbody>
+		</table>
+		<script> 
+			let table = $('#jobs').DataTable({
+				'initComplete': function () {
+					var api = this.api();
+					var apiTable = $(api.table().node());
+					$('colgroup', apiTable).detach();
+				},
+				 'select': 'single',
+				 'columns': [
+					{
+						'data': 'job_name',
+						'class': 'main-text',
+						'render': function(data, type, row, meta){
+							if(type=='display'){
+								data = '<a href="/coins/job/' + row.id + '/">' + data + '</a>';
+							}
+							return data;
+						}
+					},
+					{
+					   'data': 'job_num',
+						'class': 'text-right'
+					},
+					{
+						'data': 'job_desc',
+						'class': 'long-text'
+					},
+					{
+						'data': 'latitude',
+						'visible': false
+					},
+					{
+					   'data': 'longitude',
+						'visible': false
+					},
+					{
+					   'data': 'id',
+						'visible': false
+					}
+
+				 ],
+				 'drawCallback': function (settings) {
+					var api = this.api();
+					var $table = $(api.table().node());
+					
+					if ($table.hasClass('cards')) {
+
+					   // Create an array of labels containing all table headers
+					   var labels = [];
+					   $('thead th', $table).each(function () {
+						  labels.push($(this).text());
+					   });
+
+					   // Add data-label attribute to each cell
+					   $('tbody tr', $table).each(function () {
+						  $(this).find('td').each(function (column) {
+							 $(this).attr('data-label', labels[column]);
+						  });
+					   });
+
+					   var max = 0;
+					   $('tbody tr', $table).each(function () {
+						   max = Math.max($(this).height(), max);
+						   $(this).addClass("card");
+					   }).height(max);
+
+					} else {
+					   // Remove data-label attribute from each cell
+					   $('tbody td', $table).each(function () {
+						  $(this).removeAttr('data-label');
+					   });
+
+					   $('tbody tr', $table).each(function () {
+						  $(this).height('auto');
+					   });
+					}
+				 },
+				'order': {
+					name: 'job_name',
+					dir: 'asc'
+				}
+			  })
+			  .on('select', function (e, dt, type, indexes) {
+				 var rowData = table.rows(indexes).data().toArray()
+				 $('#row-data').html(JSON.stringify(rowData));
+			  })
+			  .on('deselect', function () {
+				 $('#row-data').empty();
+			  })
+
+			table.on('draw', function () {
+				// clear existing markers
+				map.removeLayer(markers)
+				markers.clearLayers()
+
+				table.rows({ 'search': 'applied', 'page': 'all' }).every(function () {
+					var rowData = this.data();
+					var lat = rowData.latitude;
+					var lng = rowData.longitude;
+
+					if ( lat != 0 && lng != 0 ) {
+						markers.addLayer(
+							L.marker([lat,lng]).bindPopup(rowData.job_name)
+						);
+					}
+				});
+
+				map.addLayer(markers);
+			});
+		</script>
+	{% else %}
+		<p>No Jobs are available.</p>
+	{% endif %}
+{% endblock %}

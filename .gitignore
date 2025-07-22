@@ -1,0 +1,26 @@
+.env
+*.DS_Store
+*.pyc
+*.swp
+__pycache__
+createMemberWebhooks.py
+deleteWebhooks.py
+general.log
+log.txt
+venv
+/.vs/
+/am_nexus/bin
+/am_nexus/env
+/am_nexus/obj/Any CPU/Debug
+/Middleware/env
+/.vs/slnx.sqlite
+/.vs/VSWorkspaceState.json
+/.vs/Middleware/copilot-chat/f0620489/sessions/634704d1-c820-4a84-bebf-923ba3f83883
+*.pdf
+/.vs/slnx.sqlite
+/Middleware/coins/dataDumps
+/Middleware/obj/Any CPU/Debug
+/Middleware/.vs
+/Middleware/static
+/Middleware/celery.log
+/env

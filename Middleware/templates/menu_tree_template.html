@@ -1,0 +1,35 @@
+<li data-menu-id="{{ item.id }}">
+    <div class="list-item">
+        <!-- If the item has children add the on click function and icon -->
+        {% if item.children.all %}
+            <button class="toggle-button" onclick="toggleChildMenu(this)">+</button>
+        <!-- Otherwise add the button but remove functionality -->
+        {% else %}
+            <button class="toggle-button"></button>
+        {% endif %}
+
+        {% if item.url %}
+            <a href="{{ item.url }}">
+                {% if item.icon %}
+                <i class="fa-solid {{ item.icon }}"></i>
+                {% endif %}
+                {{ item.title }}
+            </a>
+        {% else %}
+            {% if item.icon %}
+            <i class="fa-solid {{ item.icon }}"></i>
+            {% endif %}
+            {{ item.title }}
+        {% endif %}
+        
+    </div>
+    {% if item.children.all %}
+    <ul class="child-menu">
+        {% for child in item.children.all|dictsort:"title" %}
+            {% with item=child %}
+                {% include "menu_tree_template.html" %}
+            {% endwith %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+</li>

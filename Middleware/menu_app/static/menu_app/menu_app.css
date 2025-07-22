@@ -1,0 +1,118 @@
+.menu-container {
+    display: flex;
+    margin-top: 70px;
+}
+
+.side-menu {
+    position: fixed;
+    left: -1000px;
+    top: 0px;
+    min-width: 250px;
+    z-index: 1001;
+    overflow-x: hidden;
+    text-wrap: nowrap;
+    transition: 
+        all 0.5s,
+        width 0.25s,
+        height 0.25s;
+    border: 2px darkred solid;
+}
+
+    .side-menu li {
+        display: block;
+        position: relative;
+    }
+
+    .side-menu i {
+        margin-right: 5px;
+    }
+
+    .side-menu a {
+        display: block;
+        position: relative;
+        color: #000000;
+        text-decoration: none;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+        .side-menu a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            border-radius: 5px;
+            height: 0.2em;
+            bottom: 0;
+            left: 0;
+            background: #d73444;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+
+        .side-menu a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+    .side-menu > ul {
+        padding-left: 0em;
+    }
+
+    .side-menu ul ul {
+        padding-left: 1em;
+    }
+
+    .side-menu .child-menu {
+        display: none;
+        overflow: hidden;
+        padding-left: 1em;
+    }
+
+    .side-menu .list-item {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .side-menu .toggle-button {
+        width: 25px;
+        max-width: 25px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1em;
+        flex: none;
+    }
+
+    .side-menu button {
+        padding: unset;
+        line-height: unset;
+        margin: unset;
+    }
+
+.menu-button {
+    font-size: 50px;
+    cursor: pointer;
+    padding: 0px 15px;
+    display: inline;
+    width: 80px;
+}
+
+.main-content {
+    flex-grow: 1;
+    transition: margin-left 0.5s;
+}
+
+@media (max-width: 1700px) and (min-width: 1300px) {
+    .side-menu {
+        margin-top: 80px;
+    }
+}
+
+@media (max-width: 1300px) {
+    .side-menu {
+        margin-top: 80px;
+    }
+}

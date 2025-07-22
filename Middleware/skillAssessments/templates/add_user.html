@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>Add New User</h1>
+{% endblock %}
+{% block navigation %}
+<p>Skills >> New User</p>
+{% endblock %}
+
+
+{% block content %}
+<form method="post">
+	{% csrf_token %}
+	{{form.as_p}}
+	<button type="submit">Add User</button>
+</form>
+{% endblock %}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CustomizeVSWindowTitle>
+	<SettingsSet
+	  __SolutionName="Middleware"
+	  __ClosestParentDepth="1"
+	  __FarthestParentDepth="1"
+	  __AppendedString="&#x9;"
+	  PatternIfRunningMode="[parentPath]\[solutionName] (Running) - [ideName]"
+	  PatternIfBreakMode="[parentPath]\[solutionName] (Debugging) - [ideName]"
+	  PatternIfDesignMode="[parentPath]\[solutionName] Testing - [ideName]" />
+	<!--See following sample SettingsSet (remove -Example from the tag name to use as is). All overrides are specified as attributes.-->
+	<SettingsSet-Example
+	  SolutionName="Middleware"
+	  ClosestParentDepth="1"
+	  FarthestParentDepth="1"
+	  AppendedString="&#x9;"
+	  PatternIfRunningMode="[solutionName] (Running) - [ideName]"
+	  PatternIfBreakMode="[solutionName] (Debugging) - [ideName]"
+	  PatternIfDesignMode="[solutionName] - [ideName]" />
+</CustomizeVSWindowTitle>

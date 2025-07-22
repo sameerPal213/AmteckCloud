@@ -1,0 +1,15 @@
+{
+  "boxAppSettings": {
+    "clientID": "x7h74oz4c4b6w189o841emq1z4pe2vlj",
+    "clientSecret": "9betHanva7bHroiV48tIcmDeHo2hwNSg",
+    "appAuth": {
+      "publicKeyID": "q7mzyhw7",
+      "privateKey": "-----BEGIN ENCRYPTED PRIVATE KEY-----\nMIIFDjBABgkqhkiG9w0BBQ0wMzAbBgkqhkiG9w0BBQwwDgQIdEOAHR3/AYECAggA\nMBQGCCqGSIb3DQMHBAhPB1Vg+wTm/wSCBMizFfpRB68/I6Sn/sac5Z6hfKqMHYtb\n/IOviNo6qWlNPcVVZsaFPL+8/d8MDXWgsLZgZ1MxyQPsvlUgblQYSAR6sEG/4cIb\nVI2ROQ5a6i0XV8o7lb7BqiHKC2HrVZnbyZrKRJi3neTV3ynFZkSwn3zfkVBjlg+e\nj5pUT4DOnfvb23e9kPlhPBLNk1OyzNVmjnKeuecKJfntw2OHlMyZfIu+KCsHVmhQ\nySb9heTgOrE3Jkr0PKyvA7NTkwQNoHu/+Q1l+AGm1SWlJJpvBdt4ZzHbVRA4CI2j\nCwFZQt/cwpcbsl7DL0fxvrnswvwQCStFp1EbB6Rf2xBVHOAg9Fp+o/sSemSxItpn\npbj97Cyk+XAPUg1pE2xed7jtS/DXryG2IlTIdJB2jM1t/dWlkNlRFpoInbW7q+no\nBgA8DoFFLonyE77U4JQPnLF5vUpWlo5Jr6CDbmkLa2PrUEXjYDL95nQBnYidWlM3\naHq7KtiQdUg6ewLNgTtPGgi6/LnwHMeF/rYftBaeIiVcwbW3j45RK5cg8JIqcHls\nZ4RPPwhUAs2hsfEidnfOyx66GzzPw4DnEVOqVw2QI5mtYv4t2mlRUyKuPJAvqbnS\n0KXBcRYbQiweif8X/iQC9KSkyfMyUQd9NpXAgyP7UN5eZuhVZSRRoJH9RinqsHUi\nHN3erHAuPl+H2Gj+qA0WzeZv02c0vs2gWaxyPcqxk8Olw2Lx2bg7lFeM01vho5/P\niwTJMFLpIdAe5gISCDTxotPy64fit2G3q5Puqpudgz/W51ex0uhWrNXoecTEcfJ0\nj1Haia4smC2c2glH8c4aCX0b0tkcS5m++RhtItKIVQCwI7qg7NsDvCJ0wp/ee/UQ\nWzzyl5W1Cv4H2hingZm36tSLTbgbjiZdTNIs1/sYHT/Pa0CkwBsCt8P/ccMapaQQ\njeEtR8mq330nEnHpMLMUyGE6OMkg5LSsCFBKDjC3Y4icVQcSkZ49cR7ptxNl8biO\nowpheWxqAHnIzhK3W6oCIG343fH3b0ACiY8yaGFVHng/YyNSYJPSoWyRnDeOQS6o\nqE1knwh8iVhAR/RorQyVVEJivesfzRoig6BMZv4J2GEjhCLbhs7dkJruSTgEVlI2\nSENiYEIWW8LbtbxPOleiYeuqIwbZOWRQk1wJahJTFEFjNLvWFVob6Zh6faCsfj9f\nX3PzJpA4usbouZ+4ZkBZoBqs1q/XhP1DrBene3aEaFkn25KOBAPIKpVO/iGBhnbE\nLhyBFxuHL/fuEOyc5SYRJY9oBSuI91//m597gE7sDbfV+ZFSWD5cA5Jn8NTSxFp3\nU+2DF+k0Wu3zqK+ka28YfHapVuB4u76dL0Jz7qxubppbrn1PGd+yLkFARxajoodF\nUcUFMA06tLl/tWiug0PTW6tXLcla23mzdZqMmurx3UpG9GaomQj0wEsR5Afk0y4x\nZOZgPnoNciTBlSvEB4OZr+CGMUnQz/HzFOnppXJsj/oV1xKLB2lYKrcjwO0mC+A1\nfuU8Y8a6VBHcYGrKNj5UYB8RQr9n/WdA9EQH3vMTIbhAg+V5Omc/ocnQjIgoQen7\nqbw8PnUS/EiXesR9A4/3sfoSmsJGikwJ9Qo/H2/QDs4aVK0Lp8JfDmDhdWDLrfP4\nrdI=\n-----END ENCRYPTED PRIVATE KEY-----\n",
+      "passphrase": "a96ee5e2283a31a4a89c17fd3a0e4e20"
+    }
+  },
+  "enterpriseID": "896490",
+  "webhooks": {
+    "primaryKey": "VBfFhoVzzCQ9onZgZsmGT1SI71IrPW3r"
+  }
+}

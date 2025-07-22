@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'skillAssessments/skillAssessments.css' %}">
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<style>
+    .container {
+        display: flex !important;
+    }
+
+    .left-pane {
+        width: 40%;
+        padding: 10px;
+    }
+
+    .right-pane {
+        width: 60%;
+        padding: 10px;
+        overflow: scroll;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+</style>
+{% endblock %}
+
+
+{% block title %}
+<h1>User Dashboard</h1>
+{% endblock %}
+
+{% block content %}
+<div class="container card">
+    <div class="left-pane">
+        <h2>All User Information</h2>
+        <div id="table-container">
+            <table id="userTable" class="display">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Skills Assessed</th>
+                        <th>Self Assessments</th>
+                        <th>Average Score</th>
+                        <th>Most Recent</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users_info|dictsort:"last_name" %}
+                    <tr onclick="loadUserDetail({{ user.id }})">
+                        <td>{{ user.first_name }} {{user.last_name}}</td>
+                        <td>{{ user.skills_assessed }}</td>
+                        <td>{{ user.self_assessments }}</td>
+                        <td>{{ user.average_score|floatformat:2 }}</td>
+                        <td>{{ user.most_recent_assessment|date:"Y-m-d" }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        let table = new DataTable("#userTable")
+    </script>
+    <div class="right-pane unset" id="user-detail-pane">
+        <h2>Select a user to see details</h2>
+    </div>
+</div>
+
+<script>
+    function loadUserDetail(userId) {
+        fetch(`/skills/user-view/${userId}/`)
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('user-detail-pane').innerHTML = html;
+                executeScripts(document.getElementById('user-detail-pane'));
+            });
+        document.getElementById("user-detail-pane").classList.remove("unset")
+    }
+
+    function executeScripts(element) {
+        const scripts = element.getElementsByTagName('script');
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement('script');
+            script.text = scripts[i].text;
+            document.head.appendChild(script).parentNode.removeChild(script);
+        }
+    }
+</script>
+{% endblock %}

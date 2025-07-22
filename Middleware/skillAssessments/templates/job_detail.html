@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'skillAssessments/skillAssessments.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% endblock %}
+
+{% block title %}
+<h1>Job Detail - {{ job.job_name }}</h1>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h2>Assessments Completed</h2>
+    <h1 style="color: darkred">{{ assessments_completed }}</h1>
+</div>
+<div>
+<h2>Top 5 Skills by Average Score</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Skill</th>
+            <th>Average Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for skill in highest_scores %}
+        <tr>
+            <td>{{ skill.name }}</td>
+            <td>{{ skill.average_score }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+<div>
+    <h2>Bottom 5 Skills by Average Score</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Skill</th>
+                <th>Average Score</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for skill in lowest_scores %}
+            <tr>
+                <td>{{ skill.name }}</td>
+                <td>{{ skill.average_score }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div>
+    <h2>Percentage of Onsite Employees Scored per Skill</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Skill</th>
+                <th>% of Onsite Employees Scored</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for skill in skills_scored_percentage|dictsort:"name" %}
+            <tr>
+                <td>{{ skill.name }}</td>
+                <td>{{ skill.percentage_scored|floatformat:2 }}%</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>{% endblock %}

@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- amteck.com stylesheet install -->
+	<link rel="stylesheet"
+		  id="astra-google-fonts-css"
+		  href="https://fonts.googleapis.com/css?family=Open+Sans%3A400%2C%7CJosefin+Sans%3A400%2C%7CRoboto%3A500&amp;display=fallback&amp;ver=4.1.5"
+		  media="all">
+	<link rel="stylesheet" href="{% static 'globalstyle.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+	<link rel="stylesheet" href="{% static 'menu_app/menu_app.css' %}"
+		  type="text/css">
+	<script src="https://kit.fontawesome.com/cf47a3df34.js" crossorigin="anonymous"></script>
+	<link rel="icon" href="https://www.amteck.com/wp-content/uploads/2022/02/favicon.png" sizes="32x32">
+	<link rel="icon" href="https://www.amteck.com/wp-content/uploads/2022/02/favicon.png" sizes="192x192">
+	{% block head %}
+	{% endblock %}
+</head>
+
+	<body>
+		<div id="main-header">
+			<div class="menu-button" id="menuButton">&#9776;</div>
+			<img width="184" height="54" 
+				src="https://www.amteck.com/wp-content/uploads/2022/02/logo.png" 
+				class="custom-logo" alt="Amteck" decoding="async">
+			{% block header-title %}
+			{% endblock %}
+		</div>
+		<div class="menu-container">
+			<div class="side-menu card" id="sideMenu">
+				<ul>
+				{% for item in menu_items %}
+					{% include "menu_tree_template.html" %}
+				{% endfor %}
+				</ul>
+			</div>
+
+			<main class="main-content">
+
+				<div class="banner">
+					<img src="https://www.amteck.com/wp-content/uploads/2022/03/page-header.jpg">
+					<div class="text-container">
+						<div class="title">
+							{% block title %}
+							{% endblock %}
+						</div>
+						<div class="navigation">
+							{% block navigation %} {%endblock%}
+						</div>
+					</div>
+				</div>
+
+				<div id="content">
+					{% block content %}
+					{% endblock %}
+				</div>
+			</main>
+		</div>
+		<script src="{% static 'menu_app/script.js' %}"></script>
+		{% block end %}
+		{% endblock %}
+	</body>
+</html>

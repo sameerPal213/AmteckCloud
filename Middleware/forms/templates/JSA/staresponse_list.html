@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+
+{% block title %}
+STA Responses
+{% endblock %}
+
+{% block head %}
+<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+    #content {
+        display: grid;
+        grid-template-columns: [first] 60vw [second] 40vw;
+        grid-template-rows: 50vh 50vh;
+        grid-template-areas:
+            "table chart1"
+            "table chart1";
+        padding: unset;
+    }
+
+    .table-container {
+        grid-area: table;
+        overflow: auto;
+    }
+
+    .chart1-container {
+        grid-area: chart1;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="card table-container">
+    <h2>STA Responses</h2>
+    <table id="staResponses" class="display">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Submitted By</th>
+                <th>Project</th>
+                <th>Location of Work</th>
+                <th>Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for response in responses %}
+            <tr>
+                <td><a href="{% url 'forms:view-jsa-pdf' response.boxID %}">{{ response.id }}</a></td>
+                <td>{{ response.assessor.full_name }}</td>
+                <td>{{ response.job.job_name }}</td>
+                <td>{{ response.location_of_work }}</td>
+                <td>{{ response.date|date:"m/d/Y" }}</td>
+                <td>
+                    {% if response.staposttask_set.exists %}
+                    <a href="">Frozen</a>
+                    {% else %}
+                    <a href="{% url 'forms:post-task-assignment' response.id %}">Complete Post Task</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <script>
+        $(document).ready(function () {
+            var table = $('#staResponses').DataTable({
+                "paging": true,
+                "searching": true,
+                "ordering": true
+            });
+
+            // Function to filter the DataTable based on chart click
+            function filterTable(columnIndex, filterValue) {
+                table.column(columnIndex).search(filterValue).draw();
+            }
+
+            // Function to filter the DataTable based on chart click
+            function unfilterTable() {
+                table.columns().search("").draw();
+            }
+
+            // Function to update chart title
+            function updateChartTitle(chart, title) {
+                chart.options.plugins.title.text = title;
+                chart.update();
+            }
+
+            function removeOutlineFromDatasets(dataset) {
+                dataset.backgroundColor = dataset.backgroundColor.map((color) => color.slice(0,7))
+                return dataset
+            }
+
+            // Function to outline the selected data point
+            function outlineDataPoint(chart, itemIndex, datasetIndex) {
+                chart.data.datasets.forEach((dataset, index) => {
+                    if (index === datasetIndex) {
+                        dataset.backgroundColor = dataset.backgroundColor.map((color, i) => i === itemIndex ? color.slice(0, 7) : color.slice(0, 7) + '50');
+                    } else {
+                        dataset.backgroundColor = dataset.backgroundColor.map((color) => color.slice(0, 7) + '50');
+                    }
+                })
+                chart.update();
+            }
+
+            // Variable to store the last clicked element
+            var lastClickedElement = null;
+
+            // Event listener for Project Chart
+            document.getElementById('projectChart').onclick = function (evt) {
+                var activePoints = projectChart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, true);
+                if (activePoints.length > 0) {
+                    var clickedElementIndex = activePoints[0].index;
+                    var datasetIndex = activePoints[0].datasetIndex;
+                    var label = projectChart.data.labels[clickedElementIndex];
+
+                    // Check if the clicked element is the same as the last clicked element
+                    if (lastClickedElement && lastClickedElement.index === clickedElementIndex && lastClickedElement.datasetIndex === datasetIndex) {
+                        unfilterTable()
+                        projectChart.data.datasets.forEach((dataset) => { dataset = removeOutlineFromDatasets(dataset) })
+                        projectChart.update()
+                        lastClickedElement = null;
+                    } else {
+                        filterTable(2, label); // Filter by Project column
+                        updateChartTitle(projectChart, 'STA Responses by Project: ' + label);
+                        outlineDataPoint(projectChart, clickedElementIndex, datasetIndex);
+                        lastClickedElement = { index: clickedElementIndex, datasetIndex: datasetIndex };
+                    }
+
+                    // Update the last clicked element
+                }
+            };
+        });
+    </script>
+</div>
+
+<div class="card chart1-container">
+    <h2>STA Responses by Project</h2>
+    <canvas id="projectChart"></canvas>
+</div>
+
+<script>
+    // Data for STA Responses by Project
+    const projectData = {
+        labels: [{% for project in projects %}'{{ project.job__job_name }}', {% endfor %}],
+        datasets: [
+            {
+                label: 'Incomplete',
+                data: [{% for project in projects %}'{{ project.incomplete }}', {% endfor %}],
+                backgroundColor: Array({{ projects| length }}).fill('#FFCE56'),
+                borderColor: Array({{ projects| length }}).fill('#FFCE56'),
+                borderWidth: Array({{ projects| length }}).fill(1)
+            },
+            {
+                label: 'Complete',
+                data: [{% for project in projects %} '{{ project.complete }}', {% endfor %}],
+                backgroundColor: Array({{ projects| length }}).fill('#AACE56'),
+                borderColor: Array({{ projects| length }}).fill('#AACE56'),
+                borderWidth: Array({{ projects| length }}).fill(1)
+            }
+        ]
+    };
+
+    // Config for Project Chart
+    const projectConfig = {
+        type: 'bar',
+        data: projectData,
+        options: {
+            indexAxis: 'y',
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'STA Responses by Project'
+                }
+            },
+            scales: {
+                x: {
+                    stacked: true
+                },
+                y: {
+                    stacked: true
+                }
+            }
+        }
+    };
+
+    // Render Project Chart
+    const projectChart = new Chart(
+        document.getElementById('projectChart'),
+        projectConfig
+    );
+</script>
+{% endblock %}
