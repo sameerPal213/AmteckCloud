@@ -76,7 +76,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(',')
+# ALLOWED_HOSTS = os.environ['ALLOWED_HOSTS'].split(',')
+
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+
+DJANGO_SETTINGS_MODULE = 'am_nexus.settings'
 # Application definition
 
 INSTALLED_APPS = [
@@ -167,58 +171,65 @@ WSGI_APPLICATION = 'am_nexus.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mssql',
-        'NAME': DATABASE_NAME,
-        'USER': DATABASE_USERNAME,
-        'PASSWORD': DATABASE_PASSWORD,
-        'HOST': DATABASE_SERVER,
-        'OPTIONS': {'driver': 'ODBC Driver 17 for SQL Server'},
-    },
-    'bronze': {
-        'ENGINE': 'mssql',
-        'NAME': DATABASE_NAME,
-        'USER': DATABASE_USERNAME,
-        'PASSWORD': DATABASE_PASSWORD,
-        'HOST': DATABASE_SERVER,
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'options': '-c search_path=Bronze'
-        },
-    },
-    'silver': {
-        'ENGINE': 'mssql',
-        'NAME': DATABASE_NAME,
-        'USER': DATABASE_USERNAME,
-        'PASSWORD': DATABASE_PASSWORD,
-        'HOST': DATABASE_SERVER,
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'options': '-c search_path=silver'
-        },
-    },
-    'gold': {
-        'ENGINE': 'mssql',
-        'NAME': DATABASE_NAME,
-        'USER': DATABASE_USERNAME,
-        'PASSWORD': DATABASE_PASSWORD,
-        'HOST': DATABASE_SERVER,
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'options': '-c search_path=gold'
-        },
-    },
-    'dbo': {
-        'ENGINE': 'mssql',
-        'NAME': DATABASE_NAME,
-        'USER': DATABASE_USERNAME,
-        'PASSWORD': DATABASE_PASSWORD,
-        'HOST': DATABASE_SERVER,
-        'OPTIONS': {
-            'driver': 'ODBC Driver 17 for SQL Server',
-            'options': '-c search_path=dbo'
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'mssql',
+#         'NAME': DATABASE_NAME,
+#         'USER': DATABASE_USERNAME,
+#         'PASSWORD': DATABASE_PASSWORD,
+#         'HOST': DATABASE_SERVER,
+#         'OPTIONS': {'driver': 'ODBC Driver 17 for SQL Server'},
+#     },
+#     'bronze': {
+#         'ENGINE': 'mssql',
+#         'NAME': DATABASE_NAME,
+#         'USER': DATABASE_USERNAME,
+#         'PASSWORD': DATABASE_PASSWORD,
+#         'HOST': DATABASE_SERVER,
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#             'options': '-c search_path=Bronze'
+#         },
+#     },
+#     'silver': {
+#         'ENGINE': 'mssql',
+#         'NAME': DATABASE_NAME,
+#         'USER': DATABASE_USERNAME,
+#         'PASSWORD': DATABASE_PASSWORD,
+#         'HOST': DATABASE_SERVER,
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#             'options': '-c search_path=silver'
+#         },
+#     },
+#     'gold': {
+#         'ENGINE': 'mssql',
+#         'NAME': DATABASE_NAME,
+#         'USER': DATABASE_USERNAME,
+#         'PASSWORD': DATABASE_PASSWORD,
+#         'HOST': DATABASE_SERVER,
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#             'options': '-c search_path=gold'
+#         },
+#     },
+#     'dbo': {
+#         'ENGINE': 'mssql',
+#         'NAME': DATABASE_NAME,
+#         'USER': DATABASE_USERNAME,
+#         'PASSWORD': DATABASE_PASSWORD,
+#         'HOST': DATABASE_SERVER,
+#         'OPTIONS': {
+#             'driver': 'ODBC Driver 17 for SQL Server',
+#             'options': '-c search_path=dbo'
+#         },
+#     }
+# }
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = None
 

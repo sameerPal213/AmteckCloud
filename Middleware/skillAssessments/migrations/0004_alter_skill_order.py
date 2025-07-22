@@ -9,10 +9,10 @@ class Migration(migrations.Migration):
         ('skillAssessments', '0003_alter_skill_order'),
     ]
 
-    operations = [
-        migrations.AlterField(
-            model_name='skill',
-            name='order',
-            field=models.IntegerField(blank=True, null=True),
-        ),
-    ]
+    # operations = [
+    #     migrations.AlterField(
+    #         model_name='skill',
+    #         name='order',
+    #         field=models.IntegerField(blank=True, null=True),
+    #     ),
+    # ]

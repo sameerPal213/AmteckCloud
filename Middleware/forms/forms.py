@@ -9,7 +9,8 @@ from forms.models import (Qaqc1001Response as qaqc1001,
                           SafetyTaskAnalysisResponse, SafetyTaskAnalysisTool, 
                           SafetyTaskAnalysisToolInspection, STAPostTask, 
                           SafetyTaskAnalysisHazardAssessment, 
-                          STARequiredSpecialCertification, STAPermit)
+                          STARequiredSpecialCertification, STAPermit,
+                          Amq1001Response as amq1001)
 from forms.fields import CheckboxTextField
 from forms.widgets import GroupedSelect
 
@@ -244,3 +245,46 @@ def get_STARequiredSpecialCertificationFormSet():
         STARequiredSpecialCertification, 
         form=STARequiredSpecialCertificationForm , 
         extra=count)
+
+class AMQ100_1_Model_Form(ModelForm):
+    class Meta:
+        model = amq1001
+        fields = "__all__"
+        labels = {
+            "conforms_to_NEC" : _( 
+                'Ensure installation conforms to the appropriate NEC ' 
+                'Article(s)'),
+            "installed_per_iwp_drawing" : _( 
+                'Verify conduit is installed as per IWP drawings and details'),
+            "supports_anchored" : _(
+                'Verify supports are anchored securely'),
+            "conduit_leveled" : _(
+                'Verify conduit is level and parallel or perpindicular to '
+                'structural members'),
+            "material_classification" : _(
+                'Verify material/type is correct for area classification'),
+            "pull_points" : _(
+                'Verify pull points are installed as required'),
+            "expansion_joints" : _(
+                'Verify expansion joints are installed as required'),
+            "low_point_drains" : _(
+                'Verify low point drains are installed as required'),
+            "unions" : _(
+                'Verify unions are installed for equipment removal (if '
+                'required)'),
+            "seals" : _(
+                'Verify seals are of the right type and installed for '
+                'classified areas'),
+            "couplings_tight" : _(
+                'Verify all couplings, fittings, and connectors are tight'),
+            "excessive_threads" : _(
+                'Verify there is no excessive thread exposure (2 threads max)'),
+            "bushings" : _(
+                'Verify that bushings aare installed and of the correct type'),
+            "bonding_jumpers" : _(
+                'Verify bonding jumpers are installed as required'),
+            "mandrel_conduit_per_project" : _(
+                'Mandrel conduit as required per project specs.'),
+            "field_changes_on_drawing" : _(
+                'Document field changes on as-built drawings')
+            }

@@ -25,4 +25,6 @@ urlpatterns = [
         path('jsa/<str:jsa_box_id>/', views.view_jsa_pdf, name='view-jsa-pdf'),
         path('jsa/<int:response_id>/post-task/', views.post_task_assignment, name='post-task-assignment'),
         path('', views.forms_home_page, name='forms-home'),
+
+        path('amq/100_1/new/', views.amq100_1, name="amq_100_1-new"),
         ]

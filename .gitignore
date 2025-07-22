@@ -8,6 +8,7 @@ deleteWebhooks.py
 general.log
 log.txt
 venv
+.venv
 /.vs/
 /am_nexus/bin
 /am_nexus/env

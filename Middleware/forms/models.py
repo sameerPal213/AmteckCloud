@@ -524,3 +524,95 @@ class STAEmployeeAcknowledgement(models.Model):
         db_table = "forms_safetytaskanalysis_employeeacknowledgement"
         verbose_name = _("STA Employee Acknowledgement")
         verbose_name_plural = _("STA Employee Acknowledgements")
+
+class Amq1001Response(models.Model):
+    """
+    Electrical QA/QC checklist for conduit runs (AMQ-100-1).
+    Field names mirror those referenced in AMQ100_1_Model_Form so
+    ModelForm(fields="__all__") will work without extra plumbing.
+    """
+
+    id = models.AutoField(primary_key=True)
+
+    # Foreign keys / metadata
+    project = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    iwp            = models.CharField("IWP #", max_length=100, blank=True, default="", null=True)
+    project_no        = models.IntegerField("Project #", null=True, blank=True)
+    drawing         = models.CharField(max_length=100)
+    conduit_run_from = models.CharField(max_length=20)
+    conduit_run_to   = models.CharField(max_length=20)
+
+    # ------------- Checklist items -------------
+    conforms_to_NEC                           = models.BooleanField(default=False)
+    conforms_to_NEC_corrections_needed        = models.BooleanField(default=False)
+    conforms_to_NEC_corrections_completed     = models.BooleanField(default=False)
+
+    installed_per_iwp_drawing                 = models.BooleanField(default=False)
+    installed_per_iwp_drawing_corrections_needed    = models.BooleanField(default=False)
+    installed_per_iwp_drawing_corrections_completed = models.BooleanField(default=False)
+
+    supports_anchored                         = models.BooleanField(default=False)
+    supports_anchored_corrections_needed      = models.BooleanField(default=False)
+    supports_anchored_corrections_completed   = models.BooleanField(default=False)
+
+    conduit_leveled                           = models.BooleanField(default=False)
+    conduit_leveled_corrections_needed        = models.BooleanField(default=False)
+    conduit_leveled_corrections_completed     = models.BooleanField(default=False)
+
+    material_classification                   = models.BooleanField(default=False)
+    material_classification_corrections_needed    = models.BooleanField(default=False)
+    material_classification_corrections_completed = models.BooleanField(default=False)
+
+    pull_points                               = models.BooleanField(default=False)
+    pull_points_corrections_needed            = models.BooleanField(default=False)
+    pull_points_corrections_completed         = models.BooleanField(default=False)
+
+    expansion_joints                          = models.BooleanField(default=False)
+    expansion_joints_corrections_needed       = models.BooleanField(default=False)
+    expansion_joints_corrections_completed    = models.BooleanField(default=False)
+
+    low_point_drains                          = models.BooleanField(default=False)
+    low_point_drains_corrections_needed       = models.BooleanField(default=False)
+    low_point_drains_corrections_completed    = models.BooleanField(default=False)
+
+    unions                                    = models.BooleanField(default=False)
+    unions_corrections_needed                 = models.BooleanField(default=False)
+    unions_corrections_completed              = models.BooleanField(default=False)
+
+    seals                                     = models.BooleanField(default=False)
+    seals_corrections_needed                  = models.BooleanField(default=False)
+    seals_corrections_completed               = models.BooleanField(default=False)
+
+    couplings_tight                           = models.BooleanField(default=False)
+    couplings_tight_corrections_needed        = models.BooleanField(default=False)
+    couplings_tight_corrections_completed     = models.BooleanField(default=False)
+
+    excessive_threads                         = models.BooleanField(default=False)
+    excessive_threads_corrections_needed      = models.BooleanField(default=False)
+    excessive_threads_corrections_completed   = models.BooleanField(default=False)
+
+    bushings                                  = models.BooleanField(default=False)
+    bushings_corrections_needed               = models.BooleanField(default=False)
+    bushings_corrections_completed            = models.BooleanField(default=False)
+
+    bonding_jumpers                           = models.BooleanField(default=False)
+    bonding_jumpers_corrections_needed        = models.BooleanField(default=False)
+    bonding_jumpers_corrections_completed     = models.BooleanField(default=False)
+
+    mandrel_conduit_per_project               = models.BooleanField(default=False)
+    mandrel_conduit_per_project_corrections_needed    = models.BooleanField(default=False)
+    mandrel_conduit_per_project_corrections_completed = models.BooleanField(default=False)
+
+    field_changes_on_drawing                  = models.BooleanField(default=False)
+    field_changes_on_drawing_corrections_needed    = models.BooleanField(default=False)
+    field_changes_on_drawing_corrections_completed = models.BooleanField(default=False)
+
+    test_signature = JSignatureField(null=True, blank=True)
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_100_1"

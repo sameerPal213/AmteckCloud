@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(default='', max_length=50)),
                 ('description', models.TextField(blank=True, null=True)),
                 ('max_score', models.IntegerField(blank=True, null=True)),
-                ('order', models.CharField(blank=True, max_length=3, null=True)),
+                ('order', models.IntegerField(blank=True, null=True)),
                 ('category', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='skillAssessments.category')),
             ],
             options={
