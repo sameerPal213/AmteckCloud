@@ -616,3 +616,76 @@ class Amq1001Response(models.Model):
     class Meta:
         managed = True
         db_table = "forms_amq_100_1"
+
+class Amq1002Response(models.Model):
+    id = models.AutoField(primary_key=True)
+    project = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    iwp            = models.CharField("IWP #", max_length=100, blank=True, default="", null=True)
+    project_no        = models.IntegerField("Project #", null=True, blank=True)
+    drawing         = models.CharField(max_length=100)
+    conduit_run_from = models.CharField(max_length=20)
+    conduit_run_to   = models.CharField(max_length=20)
+
+    # Checklist
+    conduit_material_thickness = models.BooleanField(default=False)
+    conduit_material_thickness_corrections_needed = models.BooleanField(default=False)
+    conduit_material_thickness_corrections_completed = models.BooleanField(default=False)
+
+    coordinates_stubups = models.BooleanField(default=False)
+    coordinates_stubups_corrections_needed = models.BooleanField(default=False)
+    coordinates_stubups_corrections_completed = models.BooleanField(default=False)
+
+    conduit_radius_manufacturer_specification = models.BooleanField(default=False)
+    conduit_radius_manufacturer_specification_corrections_needed = models.BooleanField(default=False)
+    conduit_radius_manufacturer_specification_corrections_completed = models.BooleanField(default=False)
+
+    conduit_spacing_sufficient = models.BooleanField(default=False)
+    conduit_spacing_sufficient_corrections_needed = models.BooleanField(default=False)
+    conduit_spacing_sufficient_corrections_completed = models.BooleanField(default=False)
+
+    spacing_sufficient_signal_separation = models.BooleanField(default=False)
+    spacing_sufficient_signal_separation_corrections_needed = models.BooleanField(default=False)
+    spacing_sufficient_signal_separation_corrections_completed = models.BooleanField(default=False)
+
+    conduit_material_interval_support = models.BooleanField(default=False)
+    conduit_material_interval_support_corrections_needed = models.BooleanField(default=False)
+    conduit_material_interval_support_corrections_completed = models.BooleanField(default=False)
+
+    trench_sloped_away = models.BooleanField(default=False)
+    trench_sloped_away_corrections_needed = models.BooleanField(default=False)
+    trench_sloped_away_corrections_completed = models.BooleanField(default=False)
+
+    sufficient_distance_conduit = models.BooleanField(default=False)
+    sufficient_distance_conduit_corrections_needed = models.BooleanField(default=False)
+    sufficient_distance_conduit_corrections_completed = models.BooleanField(default=False)
+
+    conduit_clean_debris = models.BooleanField(default=False)
+    conduit_clean_debris_corrections_needed = models.BooleanField(default=False)
+    conduit_clean_debris_corrections_completed = models.BooleanField(default=False)
+
+    stubups_capped = models.BooleanField(default=False)
+    stubups_capped_corrections_needed = models.BooleanField(default=False)
+    stubups_capped_corrections_completed = models.BooleanField(default=False)
+
+    document_field_drawings = models.BooleanField(default=False)
+    document_field_drawings_corrections_needed = models.BooleanField(default=False)
+    document_field_drawings_corrections_completed = models.BooleanField(default=False)
+
+    ground_penetration_sealed = models.BooleanField(default=False)
+    ground_penetration_sealed_corrections_needed = models.BooleanField(default=False)
+    ground_penetration_sealed_corrections_completed = models.BooleanField(default=False)
+
+    mandrel_conduit_per_project = models.BooleanField(default=False)
+    mandrel_conduit_per_project_corrections_needed    = models.BooleanField(default=False)
+    mandrel_conduit_per_project_corrections_completed = models.BooleanField(default=False)
+
+    remarks = models.TextField()
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_100_2"
+

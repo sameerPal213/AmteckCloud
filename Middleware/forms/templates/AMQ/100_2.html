@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+	<title>AMQ 100.2 - Below-Grade / Underground Conduit Checklist</title>
+	<link rel="stylesheet" href="{% static 'forms/amq/100_2.css'%}"/>
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+	<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jSignature/2.1.3/jSignature.min.js" integrity="sha512-lZ7GJNAmaXw7L4bCR5ZgLFu12zSkuxHZGPJdIoAqP6lG+4eoSvwbmKvkyfauz8QyyzHGUGVHyoq/W+3gFHCLjA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+{% endblock %}
+
+{% block title %}
+<h1>AMQ 100.1</h1>
+<h3>Below-Grade / Underground Conduit Checklist</h3>
+{% endblock %}
+
+{% block content %}
+{{ form.media }}
+<form action="" method="post">
+	{% csrf_token %}
+	<div class="package-details grid">
+		<label id="project-label" 
+			style="grid-column: 1 / span 1; grid-row: 1 / span 1">
+			{{form.project.label}}
+		</label>
+		<div style="grid-column:2/span 2; grid-row: 1/span 1">
+			{{form.project}}
+		</div>
+
+		<label id="project-no-label"
+			style="grid-column:1/span 1; grid-row: 2/span 1">
+			{{form.project_no.label}}
+		</label>
+		<div style="grid-column:2/span 1; grid-row: 2/span 1">
+			{{form.project_no}}
+		</div>
+
+		<label id="sheet-no-label"
+			style="grid-column:3/span 1; grid-row: 2/span 1">
+			{{form.iwp.label}}
+		</label>
+		<div style="grid-column:4/span 1; grid-row: 2/span 1">
+			{{form.iwp}}
+		</div>
+
+		<label id="drawing-label"
+			style="grid-column:1/span 1; grid-row: 3/span 1">
+			{{form.drawing.label}}
+		</label>
+		<div style="grid-column:2/span 1; grid-row: 3/span 1">
+			{{form.drawing}}
+		</div>
+
+		<label id="run-from-label"
+			style="grid-column:1/span 1; grid-row: 4/span 1">
+			Conduit Run From:
+		</label>
+		<div style="grid-column:2/span 1; grid-row: 4/span 1">
+			{{form.conduit_run_from}}
+		</div>
+		<label id="run-to-label"
+			style="grid-column:3/span 1; grid-row: 4/span 1">
+			To:
+		</label>
+		<div style="grid-column:4/span 1; grid-row: 4/span 1">
+			{{form.conduit_run_to}}
+		</div>
+	</div>
+
+    <div class="grid checkitems">
+        <p>Item</p>
+        <p>Description</p>
+        <p>Corrections Needed</p>
+        <p>Corrections Completed</p>
+
+        <!-- 1 -->
+        <p><b>.</b></p>
+        <div>{{ form.conduit_material_thickness }} {{ form.conduit_material_thickness.label }}</div>
+        {{ form.conduit_material_thickness_corrections_needed }}
+        {{ form.conduit_material_thickness_corrections_completed }}
+
+        <!-- 2 -->
+        <p><b>.</b></p>
+        <div>{{ form.coordinates_stubups }} {{ form.coordinates_stubups.label }}</div>
+        {{ form.coordinates_stubups_corrections_needed }}
+        {{ form.coordinates_stubups_corrections_completed }}
+
+        <!-- 3 -->
+        <p><b>.</b></p>
+        <div>{{ form.conduit_radius_manufacturer_specification }} {{ form.conduit_radius_manufacturer_specification.label }}</div>
+        {{ form.conduit_radius_manufacturer_specification_corrections_needed }}
+        {{ form.conduit_radius_manufacturer_specification_corrections_completed }}
+
+        <!-- 4 -->
+        <p><b>.</b></p>
+        <div>{{ form.conduit_spacing_sufficient }} {{ form.conduit_spacing_sufficient.label }}</div>
+        {{ form.conduit_spacing_sufficient_corrections_needed }}
+        {{ form.conduit_spacing_sufficient_corrections_completed }}
+
+        <!-- 5 -->
+        <p><b>.</b></p>
+        <div>{{ form.spacing_sufficient_signal_separation }} {{ form.spacing_sufficient_signal_separation.label }}</div>
+        {{ form.spacing_sufficient_signal_separation_corrections_needed }}
+        {{ form.spacing_sufficient_signal_separation_corrections_completed }}
+
+        <!-- 6 -->
+        <p><b>.</b></p>
+        <div>{{ form.conduit_material_interval_support }} {{ form.conduit_material_interval_support.label }}</div>
+        {{ form.conduit_material_interval_support_corrections_needed }}
+        {{ form.conduit_material_interval_support_corrections_completed }}
+
+        <!-- 7 -->
+        <p><b>.</b></p>
+        <div>{{ form.trench_sloped_away }} {{ form.trench_sloped_away.label }}</div>
+        {{ form.trench_sloped_away_corrections_needed }}
+        {{ form.trench_sloped_away_corrections_completed }}
+
+        <!-- 8 -->
+        <p><b>.</b></p>
+        <div>{{ form.sufficient_distance_conduit }} {{ form.sufficient_distance_conduit.label }}</div>
+        {{ form.sufficient_distance_conduit_corrections_needed }}
+        {{ form.sufficient_distance_conduit_corrections_completed }}
+
+        <!-- 9 -->
+        <p><b>.</b></p>
+        <div>{{ form.conduit_clean_debris }} {{ form.conduit_clean_debris.label }}</div>
+        {{ form.conduit_clean_debris_corrections_needed }}
+        {{ form.conduit_clean_debris_corrections_completed }}
+
+        <!-- 10 -->
+        <p><b>.</b></p>
+        <div>{{ form.stubups_capped }} {{ form.stubups_capped.label }}</div>
+        {{ form.stubups_capped_corrections_needed }}
+        {{ form.stubups_capped_corrections_completed }}
+
+        <!-- 11 -->
+        <p><b>.</b></p>
+        <div>{{ form.ground_penetration_sealed }} {{ form.ground_penetration_sealed.label }}</div>
+        {{ form.ground_penetration_sealed_corrections_needed }}
+        {{ form.ground_penetration_sealed_corrections_completed }}
+
+        <!-- 12 -->
+        <p><b>.</b></p>
+        <div>{{ form.mandrel_conduit_per_project }} {{ form.mandrel_conduit_per_project.label }}</div>
+        {{ form.mandrel_conduit_per_project_corrections_needed }}
+        {{ form.mandrel_conduit_per_project_corrections_completed }}
+
+        <!-- 13 -->
+        <p><b>.</b></p>
+        <div>{{ form.document_field_drawings }} {{ form.document_field_drawings.label }}</div>
+        {{ form.document_field_drawings_corrections_needed }}
+        {{ form.document_field_drawings_corrections_completed }}
+    </div>
+
+
+	{{form.remarks}}
+	<input type="submit" value="Submit">
+</form>
+
+
+{% endblock %}
+
+
+

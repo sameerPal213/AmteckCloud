@@ -27,4 +27,5 @@ urlpatterns = [
         path('', views.forms_home_page, name='forms-home'),
 
         path('amq/100_1/new/', views.amq100_1, name="amq_100_1-new"),
+        path('amq/100_2/new/', views.amq100_2, name="amq_100_2-new"),
         ]

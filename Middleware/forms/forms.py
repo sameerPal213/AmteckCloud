@@ -10,7 +10,7 @@ from forms.models import (Qaqc1001Response as qaqc1001,
                           SafetyTaskAnalysisToolInspection, STAPostTask, 
                           SafetyTaskAnalysisHazardAssessment, 
                           STARequiredSpecialCertification, STAPermit,
-                          Amq1001Response as amq1001)
+                          Amq1001Response as amq1001, Amq1002Response as amq1002)
 from forms.fields import CheckboxTextField
 from forms.widgets import GroupedSelect
 
@@ -288,3 +288,45 @@ class AMQ100_1_Model_Form(ModelForm):
             "field_changes_on_drawing" : _(
                 'Document field changes on as-built drawings')
             }
+
+class AMQ100_2_Model_Form(ModelForm):
+    class Meta:
+        model = amq1002
+        fields = "__all__"
+        labels = {
+            "conduit_material_thickness" : _(
+                "Verify conduit is of the material and wall thickness specified"),
+            "coordinates_stubups" : _(
+                "Verify coordinates for stub-ups"),
+            "conduit_radius_manufacturer_specification" : _(
+                "Verify conduits radiuses are within cable manufacturers "
+                "specifications"),
+            "conduit_spacing_sufficient" : _(
+                "Verify conduit spacing is sufficient as per NEC Article 310 and "
+                "Annex B"),
+            "spacing_sufficient_signal_separation" : _(
+                "Verify spacing is sufficient for signal separation as per IEEE "
+                "or project specifications"),
+            "conduit_material_interval_support" : _(
+                "Verify conduit support materials (chairs, rebar, etc.) are placed "
+                "on intervals to support the conduit as per the NEC and the "
+                "rigors of concrete pouring or back filling"),
+            "trench_sloped_away" : _(
+                "Verify trench is sloped away from building / equipment to "
+                "allow for drainage"),
+            "sufficient_distance_conduit" : _(
+                "Verify sufficient distance between conduit and finished grade "
+                "to conform with NEC Table 300.5 & Table 300.50 as required"),
+            "conduit_clean_debris" : _(
+                "Verify conduit is clean and free of debris"),
+            "stubups_capped" : _(
+                "Verify stub-ups are capped for back fill or concrete pouring"),
+            "ground_penetration_sealed" : _(
+                "Verify thru slab/ground penetrations have been properly "
+                "sealed"),
+            "mandrel_conduit_per_project" : _(
+                'Mandrel conduit as required per project specifications'),    
+            "document_field_drawings" : _(
+                "Document field changes on as-built drawings")
+        }
+

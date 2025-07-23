@@ -18,6 +18,7 @@ from coins.models import Project
 from .forms import (
     QAQC100_1_Model_Form as QAQC100_1, SafetyTaskAnalysisForm, STAPostTaskForm, 
     AMQ100_1_Model_Form as AMQ100_1,
+    AMQ100_2_Model_Form as AMQ100_2,
     get_STAEmployeeAcknowledgementFormSet, get_STAHazardMitigationFormSet, 
     get_STARequiredEmployeeCertificationFormSet, get_STARequiredPermitFormSet, 
     get_STARequiredProcedureFormSet, get_STARequiredSpecialCertificationFormSet, 
@@ -807,3 +808,22 @@ def amq100_1(request):
     else:
         form = AMQ100_1()
     return render(request, "AMQ/100_1.html", {"form": form})
+
+# @login_required
+def amq100_2(request):
+    # process the data if a post request
+    if request.method == "POST":
+        form = AMQ100_2(request.POST)
+        if form.is_valid():
+            # save the response if valid
+            form.save()
+            # after submitting send the user to the list of responses for the
+            # form
+            # return HttpResponseRedirect("/forms/qaqc/100_1/")
+            form = AMQ100_2()
+            return render(request, "AMQ/100_2.html", {"form": form})
+        else:
+            print(form.errors)
+    else:
+        form = AMQ100_2()
+    return render(request, "AMQ/100_2.html", {"form": form})
