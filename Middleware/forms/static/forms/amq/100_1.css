@@ -18,3 +18,13 @@
     font-size: 2rem;
     line-height: 1;
 }
+
+form .submit-row {
+	margin-top: 10px;
+    text-align: left;       /* or center / left */
+    grid-column: 1 / -1;     /* span full width */
+}
+
+.package-details select {
+    width: 100%;
+}

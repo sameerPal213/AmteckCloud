@@ -14,11 +14,6 @@
 	grid-template-columns: 75px 500px 100px 100px;
 }
 
-.checkitems p > b {
-    font-size: 2rem;
-    line-height: 1;
-}
-
 /* ❶ make the wrapper span all columns */
 .remarks-row { grid-column: 1 / -1; }
 

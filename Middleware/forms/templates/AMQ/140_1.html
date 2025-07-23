@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <title>AMQ 140.1 - Cable Tray</title>
+    <link rel="stylesheet" href="{% static 'forms/amq/140_1.css' %}">
+    {{ form.media }}
+{% endblock %}
+
+{% block title %}
+<h1>AMQ 140.1</h1>
+<h3>Cable Tray</h3>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+
+    <!-- header -->
+    <div class="package-details grid">
+        <label id="project-label" 
+			style="grid-column: 1 / span 1; grid-row: 1 / span 1">
+			{{form.project.label}}
+		</label>
+		<div style="grid-column:2/span 2; grid-row: 1/span 1">
+			{{ form.project }}
+		</div>
+        <label id="project-no-label"
+			style="grid-column:1/span 1; grid-row: 2/span 1">
+			{{form.project_no.label}}
+		</label>
+		<div style="grid-column:2/span 1; grid-row: 2/span 1">
+			{{form.project_no}}
+		</div>
+        <label id="iwp-label"
+            style="grid-column:3/span 1; grid-row: 2/span 1">
+            {{form.iwp.label}}
+        </label>
+        <div style="grid-column:4/span 1; grid-row: 2/span 1">
+            {{form.iwp}}
+        </div>
+        <label id="drawing-label"
+            style="grid-column:1/span 1; grid-row: 3/span 1">
+            {{form.drawing.label}}
+        </label> 
+        <div style="grid-column:2/span 1; grid-row: 3/span 1">
+            {{form.drawing}}
+        </div>
+
+        <label id="cable_tray_run_from-label"
+			style="grid-column:1/span 1; grid-row: 4/span 1">
+			Cable tray run from:
+		</label>
+		<div style="grid-column:2/span 1; grid-row: 4/span 1">
+			{{form.cable_tray_run_from}}
+		</div>
+		<label id="cable_tray_run_to-label"
+			style="grid-column:3/span 1; grid-row: 4/span 1">
+			To:
+		</label>
+		<div style="grid-column:4/span 1; grid-row: 4/span 1">
+			{{form.cable_tray_run_to}}
+		</div>
+    </div>
+
+    <div class="grid checkitems">
+        <p>Item</p>
+        <p>Description</p>
+        <p>Corrections Needed</p>
+        <p>Corrections Completed</p>
+
+        <!-- 1 -->
+        <p><b>.</b></p>
+        <div>{{ form.nec_article_392 }} {{ form.nec_article_392.label }}</div>
+        {{ form.nec_article_392_corrections_needed }}
+        {{ form.nec_article_392_corrections_completed }}
+
+        <!-- 2 -->
+        <p><b>.</b></p>
+        <div>{{ form.installed_per_drawings }} {{ form.installed_per_drawings.label }}</div>
+        {{ form.installed_per_drawings_corrections_needed }}
+        {{ form.installed_per_drawings_corrections_completed }}
+
+        <!-- 3 -->
+        <p><b>.</b></p>
+        <div>{{ form.supports_anchored_securely }} {{ form.supports_anchored_securely.label }}</div>
+        {{ form.supports_anchored_securely_corrections_needed }}
+        {{ form.supports_anchored_securely_corrections_completed }}
+
+        <!-- 4 -->
+        <p><b>.</b></p>
+        <div>{{ form.fitting_radiuses_correct }} {{ form.fitting_radiuses_correct.label }}</div>
+        {{ form.fitting_radiuses_correct_corrections_needed }}
+        {{ form.fitting_radiuses_correct_corrections_completed }}
+
+        <!-- 5 -->
+        <p><b>.</b></p>
+        <div>{{ form.cuts_edges_smooth_recoated }} {{ form.cuts_edges_smooth_recoated.label }}</div>
+        {{ form.cuts_edges_smooth_recoated_corrections_needed }}
+        {{ form.cuts_edges_smooth_recoated_corrections_completed }}
+
+        <!-- 6 -->
+        <p><b>.</b></p>
+        <div>{{ form.dividers_installed_securely }} {{ form.dividers_installed_securely.label }}</div>
+        {{ form.dividers_installed_securely_corrections_needed }}
+        {{ form.dividers_installed_securely_corrections_completed }}
+
+        <!-- 7 -->
+        <p><b>.</b></p>
+        <div>{{ form.expansion_joints_bond_jumpers }} {{ form.expansion_joints_bond_jumpers.label }}</div>
+        {{ form.expansion_joints_bond_jumpers_corrections_needed }}
+        {{ form.expansion_joints_bond_jumpers_corrections_completed }}
+
+        <!-- 8 -->
+        <p><b>.</b></p>
+        <div>{{ form.tray_grounded_confirm_size }} {{ form.tray_grounded_confirm_size.label }}</div>
+        {{ form.tray_grounded_confirm_size_corrections_needed }}
+        {{ form.tray_grounded_confirm_size_corrections_completed }}
+
+        <!-- 9 -->
+        <p><b>.</b></p>
+        <div>{{ form.cables_tied_down_intervals }} {{ form.cables_tied_down_intervals.label }}</div>
+        {{ form.cables_tied_down_intervals_corrections_needed }}
+        {{ form.cables_tied_down_intervals_corrections_completed }}
+
+        <!-- 10 -->
+        <p><b>.</b></p>
+        <div>{{ form.correct_voltage_designation }} {{ form.correct_voltage_designation.label }}</div>
+        {{ form.correct_voltage_designation_corrections_needed }}
+        {{ form.correct_voltage_designation_corrections_completed }}
+
+        <!-- 11 -->
+        <p><b>.</b></p>
+        <div>{{ form.warning_labels_installed }} {{ form.warning_labels_installed.label }}</div>
+        {{ form.warning_labels_installed_corrections_needed }}
+        {{ form.warning_labels_installed_corrections_completed }}
+
+        <!-- 12 -->
+        <p><b>.</b></p>
+        <div>{{ form.id_labels_installed }} {{ form.id_labels_installed.label }}</div>
+        {{ form.id_labels_installed_corrections_needed }}
+        {{ form.id_labels_installed_corrections_completed }}
+
+        <!-- 13 -->
+        <p><b>.</b></p>
+        <div>{{ form.penetrations_fire_caulked }} {{ form.penetrations_fire_caulked.label }}</div>
+        {{ form.penetrations_fire_caulked_corrections_needed }}
+        {{ form.penetrations_fire_caulked_corrections_completed }}
+
+        <!-- 14 -->
+        <p><b>.</b></p>
+        <div>{{ form.covers_installed_secured }} {{ form.covers_installed_secured.label }}</div>
+        {{ form.covers_installed_secured_corrections_needed }}
+        {{ form.covers_installed_secured_corrections_completed }}
+
+        <!-- 15 -->
+        <p><b>.</b></p>
+        <div>{{ form.field_changes_documented }} {{ form.field_changes_documented.label }}</div>
+        {{ form.field_changes_documented_corrections_needed }}
+        {{ form.field_changes_documented_corrections_completed }}
+
+        <!-- 16 -->
+        <p><b>.</b></p>
+        <div>{{ form.photographs_taken }} {{ form.photographs_taken.label }}</div>
+        {{ form.photographs_taken_corrections_needed }}
+        {{ form.photographs_taken_corrections_completed }}
+    </div>
+
+    <div class="remarks-row">{{ form.remarks }}</div>
+    <div class="submit-row"><button type="submit">Submit</button></div>
+</form>
+{% endblock %}

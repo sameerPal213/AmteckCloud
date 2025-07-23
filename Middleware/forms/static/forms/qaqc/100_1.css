@@ -6,6 +6,10 @@
 	align-items: center;
 }
 
+.package-details select {
+    width: 100%;
+}
+
 .package-details {
 	grid-template-columns: 75px 200px 75px;
 }

@@ -1,0 +1,184 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <title>AMQ 100.3 - Underground Stub-Up Installation Checklist</title>
+    <link rel="stylesheet" href="{% static 'forms/amq/100_3.css' %}">
+    {{ form.media }}   {# Select2 / jSignature etc. will still load #}
+{% endblock %}
+
+{% block title %}
+<h1>AMQ 100.3</h1>
+<h3>Underground Stub-Up Installation Checklist</h3>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    {% csrf_token %}
+
+    <!-- ───────── package info (same grid structure) ───────── -->
+    <div class="package-details grid">
+		<label id="project-label" 
+			style="grid-column: 1 / span 1; grid-row: 1 / span 1">
+			{{form.project.label}}
+		</label>
+		<div style="grid-column:2/span 2; grid-row: 1/span 1">
+			{{ form.project }}
+		</div>
+
+		<label id="project-no-label"
+			style="grid-column:1/span 1; grid-row: 2/span 1">
+			{{form.project_no.label}}
+		</label>
+		<div style="grid-column:2/span 1; grid-row: 2/span 1">
+			{{form.project_no}}
+		</div>
+
+		<label id="sheet-no-label"
+			style="grid-column:3/span 1; grid-row: 2/span 1">
+			{{form.iwp.label}}
+		</label>
+		<div style="grid-column:4/span 1; grid-row: 2/span 1">
+			{{form.iwp}}
+		</div>
+
+		<label id="drawing-label"
+			style="grid-column:1/span 1; grid-row: 3/span 1">
+			{{form.drawing.label}}
+		</label>
+		<div style="grid-column:2/span 1; grid-row: 3/span 1">
+			{{form.drawing}}
+		</div>
+
+		<label id="run-from-label"
+			style="grid-column:1/span 1; grid-row: 4/span 1">
+			Conduit Run From:
+		</label>
+		<div style="grid-column:2/span 1; grid-row: 4/span 1">
+			{{form.conduit_run_from}}
+		</div>
+		<label id="run-to-label"
+			style="grid-column:3/span 1; grid-row: 4/span 1">
+			To:
+		</label>
+		<div style="grid-column:4/span 1; grid-row: 4/span 1">
+			{{form.conduit_run_to}}
+		</div>
+        <label id="equipment-description-label"
+			style="grid-column:1/span 1; grid-row: 5/span 1">
+			{{form.equipment_description.label}}
+		</label>
+		<div style="grid-column:2/span 1; grid-row: 5/span 1">
+			{{form.equipment_description}}
+		</div>
+	</div>
+
+    <!-- ───────── checklist table ───────── -->
+    <div class="grid checkitems">
+        <p>Item</p>
+        <p>Description</p>
+        <p>Corrections Needed</p>
+        <p>Corrections Completed</p>
+
+        <!-- 1 -->
+        <p><b>.</b></p>
+        <div>{{ form.conduit_material_specification }} {{ form.conduit_material_specification.label }}</div>
+        {{ form.conduit_material_specification_corrections_needed }}
+        {{ form.conduit_material_specification_corrections_completed }}
+
+        <!-- 2 -->
+        <p><b>.</b></p>
+        <div>{{ form.window_size_stubup }} {{ form.window_size_stubup.label }}</div>
+        {{ form.window_size_stubup_corrections_needed }}
+        {{ form.window_size_stubup_corrections_completed }}
+
+        <!-- 3 -->
+        <p><b>.</b></p>
+        <div>{{ form.coordinates_stubups }} {{ form.coordinates_stubups.label }}</div>
+        {{ form.coordinates_stubups_corrections_needed }}
+        {{ form.coordinates_stubups_corrections_completed }}
+
+        <!-- 4 -->
+        <p><b>.</b></p>
+        <div>{{ form.stubup_spacing_endbells }} {{ form.stubup_spacing_endbells.label }}</div>
+        {{ form.stubup_spacing_endbells_corrections_needed }}
+        {{ form.stubup_spacing_endbells_corrections_completed }}
+
+        <!-- 5 -->
+        <p><b>.</b></p>
+        <div>{{ form.stubups_plumb_level }} {{ form.stubups_plumb_level.label }}</div>
+        {{ form.stubups_plumb_level_corrections_needed }}
+        {{ form.stubups_plumb_level_corrections_completed }}
+
+        <!-- 6 -->
+        <p><b>.</b></p>
+        <div>{{ form.equipment_location_correct }} {{ form.equipment_location_correct.label }}</div>
+        {{ form.equipment_location_correct_corrections_needed }}
+        {{ form.equipment_location_correct_corrections_completed }}
+
+        <!-- 7 -->
+        <p><b>.</b></p>
+        <div>{{ form.grounding_tails_stubbed }} {{ form.grounding_tails_stubbed.label }}</div>
+        {{ form.grounding_tails_stubbed_corrections_needed }}
+        {{ form.grounding_tails_stubbed_corrections_completed }}
+
+        <!-- 8 -->
+        <p><b>.</b></p>
+        <div>{{ form.stubup_size_count_match }} {{ form.stubup_size_count_match.label }}</div>
+        {{ form.stubup_size_count_match_corrections_needed }}
+        {{ form.stubup_size_count_match_corrections_completed }}
+
+        <!-- 9 -->
+        <p><b>.</b></p>
+        <div>{{ form.stubup_seal_at_SOG }} {{ form.stubup_seal_at_SOG.label }}</div>
+        {{ form.stubup_seal_at_SOG_corrections_needed }}
+        {{ form.stubup_seal_at_SOG_corrections_completed }}
+
+        <!-- 10 -->
+        <p><b>.</b></p>
+        <div>{{ form.stubups_blown_clean }} {{ form.stubups_blown_clean.label }}</div>
+        {{ form.stubups_blown_clean_corrections_needed }}
+        {{ form.stubups_blown_clean_corrections_completed }}
+
+        <!-- 11 -->
+        <p><b>.</b></p>
+        <div>{{ form.pull_string_installed }} {{ form.pull_string_installed.label }}</div>
+        {{ form.pull_string_installed_corrections_needed }}
+        {{ form.pull_string_installed_corrections_completed }}
+
+        <!-- 12 -->
+        <p><b>.</b></p>
+        <div>{{ form.stubups_labeled }} {{ form.stubups_labeled.label }}</div>
+        {{ form.stubups_labeled_corrections_needed }}
+        {{ form.stubups_labeled_corrections_completed }}
+
+        <!-- 13 -->
+        <p><b>.</b></p>
+        <div>{{ form.slab_penetrations_sealed }} {{ form.slab_penetrations_sealed.label }}</div>
+        {{ form.slab_penetrations_sealed_corrections_needed }}
+        {{ form.slab_penetrations_sealed_corrections_completed }}
+
+        <!-- 14 -->
+        <p><b>.</b></p>
+        <div>{{ form.stubup_ends_sealed }} {{ form.stubup_ends_sealed.label }}</div>
+        {{ form.stubup_ends_sealed_corrections_needed }}
+        {{ form.stubup_ends_sealed_corrections_completed }}
+
+        <!-- 15 -->
+        <p><b>.</b></p>
+        <div>{{ form.installation_photos_video }} {{ form.installation_photos_video.label }}</div>
+        {{ form.installation_photos_video_corrections_needed }}
+        {{ form.installation_photos_video_corrections_completed }}
+
+        <!-- 16 -->
+        <p><b>.</b></p>
+        <div>{{ form.supporting_documentation_attached }} {{ form.supporting_documentation_attached.label }}</div>
+        {{ form.supporting_documentation_attached_corrections_needed }}
+        {{ form.supporting_documentation_attached_corrections_completed }}
+    </div>
+
+    <!-- remarks + submit -->
+    <div class="remarks-row">{{ form.remarks }}</div>
+    <div class="submit-row"><button type="submit">Submit</button></div>
+</form>
+{% endblock %}

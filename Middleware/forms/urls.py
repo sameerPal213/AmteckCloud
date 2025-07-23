@@ -28,4 +28,7 @@ urlpatterns = [
 
         path('amq/100_1/new/', views.amq100_1, name="amq_100_1-new"),
         path('amq/100_2/new/', views.amq100_2, name="amq_100_2-new"),
+        path('amq/100_3/new/', views.amq100_3, name="amq_100_3-new"),
+        path('amq/130_1/new/', views.amq130_1, name="amq_130_1-new"),
+        path('amq/140_1/new/', views.amq140_1, name="amq_140_1-new"),
         ]

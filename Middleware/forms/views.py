@@ -19,6 +19,9 @@ from .forms import (
     QAQC100_1_Model_Form as QAQC100_1, SafetyTaskAnalysisForm, STAPostTaskForm, 
     AMQ100_1_Model_Form as AMQ100_1,
     AMQ100_2_Model_Form as AMQ100_2,
+    AMQ100_3_Model_Form as AMQ100_3,
+    AMQ130_1_Model_Form as AMQ130_1,
+    AMQ140_1_Model_Form as AMQ140_1,
     get_STAEmployeeAcknowledgementFormSet, get_STAHazardMitigationFormSet, 
     get_STARequiredEmployeeCertificationFormSet, get_STARequiredPermitFormSet, 
     get_STARequiredProcedureFormSet, get_STARequiredSpecialCertificationFormSet, 
@@ -27,7 +30,7 @@ from .models import (Qaqc1001Response, STAEmployeeAcknowledgement, STAEmployeeCe
                     STAPermit, STAProcedure, STARequiredEmployeeCertification, STARequiredPermit, 
                     STARequiredProcedure, STARequiredSpecialCertification, STASpecialCertification, 
                     SafetyTaskAnalysisHazardAssessment, SafetyTaskAnalysisResponse, SafetyTaskAnalysisTool, 
-                    SafetyTaskAnalysisToolInspection, Amq1001Response)
+                    SafetyTaskAnalysisToolInspection)
 from .serializers import SafetyTaskAnalysisResponseSerializer
 from reportlab.pdfgen import canvas
 from reportlab.pdfbase.pdfmetrics import stringWidth
@@ -827,3 +830,60 @@ def amq100_2(request):
     else:
         form = AMQ100_2()
     return render(request, "AMQ/100_2.html", {"form": form})
+
+# @login_required
+def amq100_3(request):
+    # process the data if a post request
+    if request.method == "POST":
+        form = AMQ100_3(request.POST)
+        if form.is_valid():
+            # save the response if valid
+            form.save()
+            # after submitting send the user to the list of responses for the
+            # form
+            # return HttpResponseRedirect("/forms/qaqc/100_1/")
+            form = AMQ100_3()
+            return render(request, "AMQ/100_3.html", {"form": form})
+        else:
+            print(form.errors)
+    else:
+        form = AMQ100_3()
+    return render(request, "AMQ/100_3.html", {"form": form})
+
+# @login_required
+def amq130_1(request):
+    # process the data if a post request
+    if request.method == "POST":
+        form = AMQ130_1(request.POST)
+        if form.is_valid():
+            # save the response if valid
+            form.save()
+            # after submitting send the user to the list of responses for the
+            # form
+            # return HttpResponseRedirect("/forms/qaqc/100_1/")
+            form = AMQ130_1()
+            return render(request, "AMQ/130_1.html", {"form": form})
+        else:
+            print(form.errors)
+    else:
+        form = AMQ130_1()
+    return render(request, "AMQ/130_1.html", {"form": form})
+
+# @login_required
+def amq140_1(request):
+    # process the data if a post request
+    if request.method == "POST":
+        form = AMQ140_1(request.POST)
+        if form.is_valid():
+            # save the response if valid
+            form.save()
+            # after submitting send the user to the list of responses for the
+            # form
+            # return HttpResponseRedirect("/forms/qaqc/100_1/")
+            form = AMQ140_1()
+            return render(request, "AMQ/140_1.html", {"form": form})
+        else:
+            print(form.errors)
+    else:
+        form = AMQ140_1()
+    return render(request, "AMQ/140_1.html", {"form": form})

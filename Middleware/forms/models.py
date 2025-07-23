@@ -689,3 +689,276 @@ class Amq1002Response(models.Model):
         managed = True
         db_table = "forms_amq_100_2"
 
+class Amq1003Response(models.Model):
+    """
+    Underground Stub-Up Installation Checklist (QAQC 100.3)
+    """
+
+    id = models.AutoField(primary_key=True)
+
+    # ─── package‑metadata ───────────────────────────────────────
+    project      = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    iwp          = models.CharField(_("IWP #"), max_length=100, blank=True, default="", null=True)
+    project_no   = models.IntegerField(_("Project #"), blank=True, null=True)
+    drawing      = models.CharField(max_length=100, blank=True, default="")
+    conduit_run_from = models.CharField(max_length=20, blank=True, default="")
+    conduit_run_to   = models.CharField(max_length=20, blank=True, default="")
+    equipment_description = models.CharField(max_length=100, blank=True, default="")
+
+    # ─── checklist items ───────────────────────────────────────
+    conduit_material_specification = models.BooleanField(default=False)
+    conduit_material_specification_corrections_needed = models.BooleanField(default=False)
+    conduit_material_specification_corrections_completed = models.BooleanField(default=False)
+
+    window_size_stubup = models.BooleanField(default=False)
+    window_size_stubup_corrections_needed = models.BooleanField(default=False)
+    window_size_stubup_corrections_completed = models.BooleanField(default=False)
+
+    coordinates_stubups = models.BooleanField(default=False)
+    coordinates_stubups_corrections_needed = models.BooleanField(default=False)
+    coordinates_stubups_corrections_completed = models.BooleanField(default=False)
+
+    stubup_spacing_endbells = models.BooleanField(default=False)
+    stubup_spacing_endbells_corrections_needed = models.BooleanField(default=False)
+    stubup_spacing_endbells_corrections_completed = models.BooleanField(default=False)
+
+    stubups_plumb_level = models.BooleanField(default=False)
+    stubups_plumb_level_corrections_needed = models.BooleanField(default=False)
+    stubups_plumb_level_corrections_completed = models.BooleanField(default=False)
+
+    equipment_location_correct = models.BooleanField(default=False)
+    equipment_location_correct_corrections_needed = models.BooleanField(default=False)
+    equipment_location_correct_corrections_completed = models.BooleanField(default=False)
+
+    grounding_tails_stubbed = models.BooleanField(default=False)
+    grounding_tails_stubbed_corrections_needed = models.BooleanField(default=False)
+    grounding_tails_stubbed_corrections_completed = models.BooleanField(default=False)
+
+    stubup_size_count_match = models.BooleanField(default=False)
+    stubup_size_count_match_corrections_needed = models.BooleanField(default=False)
+    stubup_size_count_match_corrections_completed = models.BooleanField(default=False)
+
+    stubup_seal_at_SOG = models.BooleanField(default=False)
+    stubup_seal_at_SOG_corrections_needed = models.BooleanField(default=False)
+    stubup_seal_at_SOG_corrections_completed = models.BooleanField(default=False)
+
+    stubups_blown_clean = models.BooleanField(default=False)
+    stubups_blown_clean_corrections_needed = models.BooleanField(default=False)
+    stubups_blown_clean_corrections_completed = models.BooleanField(default=False)
+
+    pull_string_installed = models.BooleanField(default=False)
+    pull_string_installed_corrections_needed = models.BooleanField(default=False)
+    pull_string_installed_corrections_completed = models.BooleanField(default=False)
+
+    stubups_labeled = models.BooleanField(default=False)
+    stubups_labeled_corrections_needed = models.BooleanField(default=False)
+    stubups_labeled_corrections_completed = models.BooleanField(default=False)
+
+    slab_penetrations_sealed = models.BooleanField(default=False)
+    slab_penetrations_sealed_corrections_needed = models.BooleanField(default=False)
+    slab_penetrations_sealed_corrections_completed = models.BooleanField(default=False)
+
+    stubup_ends_sealed = models.BooleanField(default=False)
+    stubup_ends_sealed_corrections_needed = models.BooleanField(default=False)
+    stubup_ends_sealed_corrections_completed = models.BooleanField(default=False)
+
+    installation_photos_video = models.BooleanField(default=False)
+    installation_photos_video_corrections_needed = models.BooleanField(default=False)
+    installation_photos_video_corrections_completed = models.BooleanField(default=False)
+
+    supporting_documentation_attached = models.BooleanField(default=False)
+    supporting_documentation_attached_corrections_needed = models.BooleanField(default=False)
+    supporting_documentation_attached_corrections_completed = models.BooleanField(default=False)
+
+    # remarks box
+    remarks = models.TextField(blank=True)
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_100_3"
+
+class Amq1301Response(models.Model):
+    id = models.AutoField(primary_key=True)
+    project = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    project_no = models.IntegerField("Project #", null=True, blank=True)
+    drawing = models.CharField(max_length=100, blank=True, default="")
+    cable_size = models.CharField("Cable Size", max_length=50, blank=True, default="")
+    gnd_size = models.CharField("GND Size", max_length=50, blank=True, default="")
+    cable_tag_id = models.CharField("Cable Tag / ID", max_length=100, blank=True, default="")
+    cable_per_phase = models.CharField("Cable's Per Phase", max_length=50, blank=True, default="")
+    iwp = models.CharField("IWP #", max_length=100, blank=True, default="")
+
+    # Checklist items
+    raceways_inspected = models.BooleanField(default=False)
+    raceways_inspected_corrections_needed = models.BooleanField(default=False)
+    raceways_inspected_corrections_completed = models.BooleanField(default=False)
+
+    underground_conduits_swabbed = models.BooleanField(default=False)
+    underground_conduits_swabbed_corrections_needed = models.BooleanField(default=False)
+    underground_conduits_swabbed_corrections_completed = models.BooleanField(default=False)
+
+    pull_rope_size = models.BooleanField(default=False)
+    pull_rope_size_corrections_needed = models.BooleanField(default=False)
+    pull_rope_size_corrections_completed = models.BooleanField(default=False)
+
+    cables_brought_up_safe_temp = models.BooleanField(default=False)
+    cables_brought_up_safe_temp_corrections_needed = models.BooleanField(default=False)
+    cables_brought_up_safe_temp_corrections_completed = models.BooleanField(default=False)
+
+    pulling_tension_monitor = models.BooleanField(default=False)
+    pulling_tension_monitor_corrections_needed = models.BooleanField(default=False)
+    pulling_tension_monitor_corrections_completed = models.BooleanField(default=False)
+
+    pulling_lubricants = models.BooleanField(default=False)
+    pulling_lubricants_corrections_needed = models.BooleanField(default=False)
+    pulling_lubricants_corrections_completed = models.BooleanField(default=False)
+
+    cable_bending_radii = models.BooleanField(default=False)
+    cable_bending_radii_corrections_needed = models.BooleanField(default=False)
+    cable_bending_radii_corrections_completed = models.BooleanField(default=False)
+
+    cable_marked_identified = models.BooleanField(default=False)
+    cable_marked_identified_corrections_needed = models.BooleanField(default=False)
+    cable_marked_identified_corrections_completed = models.BooleanField(default=False)
+
+    reference_specification_sheets = models.BooleanField(default=False)
+    reference_specification_sheets_corrections_needed = models.BooleanField(default=False)
+    reference_specification_sheets_corrections_completed = models.BooleanField(default=False)
+
+    cable_connectors_installation = models.BooleanField(default=False)
+    cable_connectors_installation_corrections_needed = models.BooleanField(default=False)
+    cable_connectors_installation_corrections_completed = models.BooleanField(default=False)
+
+    cable_ends_sealed = models.BooleanField(default=False)
+    cable_ends_sealed_corrections_needed = models.BooleanField(default=False)
+    cable_ends_sealed_corrections_completed = models.BooleanField(default=False)
+
+    insulation_stripped = models.BooleanField(default=False)
+    insulation_stripped_corrections_needed = models.BooleanField(default=False)
+    insulation_stripped_corrections_completed = models.BooleanField(default=False)
+
+    conductors_tagged = models.BooleanField(default=False)
+    conductors_tagged_corrections_needed = models.BooleanField(default=False)
+    conductors_tagged_corrections_completed = models.BooleanField(default=False)
+
+    termination_points_per_drawings = models.BooleanField(default=False)
+    termination_points_per_drawings_corrections_needed = models.BooleanField(default=False)
+    termination_points_per_drawings_corrections_completed = models.BooleanField(default=False)
+
+    cables_routed_secured = models.BooleanField(default=False)
+    cables_routed_secured_corrections_needed = models.BooleanField(default=False)
+    cables_routed_secured_corrections_completed = models.BooleanField(default=False)
+
+    termination_kits = models.BooleanField(default=False)
+    termination_kits_corrections_needed = models.BooleanField(default=False)
+    termination_kits_corrections_completed = models.BooleanField(default=False)
+
+    installation_conforms_NEC = models.BooleanField(default=False)
+    installation_conforms_NEC_corrections_needed = models.BooleanField(default=False)
+    installation_conforms_NEC_corrections_completed = models.BooleanField(default=False)
+
+    remarks = models.TextField(blank=True, null=True)
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_130_1"
+
+class Amq1401Response(models.Model):
+    """
+    AMQ 140.1 - Cable Tray Installation Checklist
+    """
+
+    id = models.AutoField(primary_key=True)
+
+    # ── header / package‑info ──────────────────────────────────
+    project      = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    project_no   = models.IntegerField(_("Project #"), null=True, blank=True)
+    drawing      = models.CharField(_("Drawing #"), max_length=100, blank=True, default="")
+    cable_tray_run_from = models.CharField(_("Cable Tray Run From"), max_length=50, blank=True, default="")
+    cable_tray_run_to   = models.CharField(_("Cable Tray Run To"),   max_length=50, blank=True, default="")
+    iwp          = models.CharField(_("IWP #"), max_length=100, blank=True, default="")
+
+    # ── checklist items (16) ──────────────────────────────────
+    nec_article_392 = models.BooleanField(default=False)
+    nec_article_392_corrections_needed = models.BooleanField(default=False)
+    nec_article_392_corrections_completed = models.BooleanField(default=False)
+
+    installed_per_drawings = models.BooleanField(default=False)
+    installed_per_drawings_corrections_needed = models.BooleanField(default=False)
+    installed_per_drawings_corrections_completed = models.BooleanField(default=False)
+
+    supports_anchored_securely = models.BooleanField(default=False)
+    supports_anchored_securely_corrections_needed = models.BooleanField(default=False)
+    supports_anchored_securely_corrections_completed = models.BooleanField(default=False)
+
+    fitting_radiuses_correct = models.BooleanField(default=False)
+    fitting_radiuses_correct_corrections_needed = models.BooleanField(default=False)
+    fitting_radiuses_correct_corrections_completed = models.BooleanField(default=False)
+
+    cuts_edges_smooth_recoated = models.BooleanField(default=False)
+    cuts_edges_smooth_recoated_corrections_needed = models.BooleanField(default=False)
+    cuts_edges_smooth_recoated_corrections_completed = models.BooleanField(default=False)
+
+    dividers_installed_securely = models.BooleanField(default=False)
+    dividers_installed_securely_corrections_needed = models.BooleanField(default=False)
+    dividers_installed_securely_corrections_completed = models.BooleanField(default=False)
+
+    expansion_joints_bond_jumpers = models.BooleanField(default=False)
+    expansion_joints_bond_jumpers_corrections_needed = models.BooleanField(default=False)
+    expansion_joints_bond_jumpers_corrections_completed = models.BooleanField(default=False)
+
+    tray_grounded_confirm_size = models.BooleanField(default=False)
+    tray_grounded_confirm_size_corrections_needed = models.BooleanField(default=False)
+    tray_grounded_confirm_size_corrections_completed = models.BooleanField(default=False)
+
+    cables_tied_down_intervals = models.BooleanField(default=False)
+    cables_tied_down_intervals_corrections_needed = models.BooleanField(default=False)
+    cables_tied_down_intervals_corrections_completed = models.BooleanField(default=False)
+
+    correct_voltage_designation = models.BooleanField(default=False)
+    correct_voltage_designation_corrections_needed = models.BooleanField(default=False)
+    correct_voltage_designation_corrections_completed = models.BooleanField(default=False)
+
+    warning_labels_installed = models.BooleanField(default=False)
+    warning_labels_installed_corrections_needed = models.BooleanField(default=False)
+    warning_labels_installed_corrections_completed = models.BooleanField(default=False)
+
+    id_labels_installed = models.BooleanField(default=False)
+    id_labels_installed_corrections_needed = models.BooleanField(default=False)
+    id_labels_installed_corrections_completed = models.BooleanField(default=False)
+
+    penetrations_fire_caulked = models.BooleanField(default=False)
+    penetrations_fire_caulked_corrections_needed = models.BooleanField(default=False)
+    penetrations_fire_caulked_corrections_completed = models.BooleanField(default=False)
+
+    covers_installed_secured = models.BooleanField(default=False)
+    covers_installed_secured_corrections_needed = models.BooleanField(default=False)
+    covers_installed_secured_corrections_completed = models.BooleanField(default=False)
+
+    field_changes_documented = models.BooleanField(default=False)
+    field_changes_documented_corrections_needed = models.BooleanField(default=False)
+    field_changes_documented_corrections_completed = models.BooleanField(default=False)
+
+    photographs_taken = models.BooleanField(default=False)
+    photographs_taken_corrections_needed = models.BooleanField(default=False)
+    photographs_taken_corrections_completed = models.BooleanField(default=False)
+
+    # remarks
+    remarks = models.TextField(blank=True)
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_140_1"
+

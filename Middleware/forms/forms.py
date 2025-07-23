@@ -10,7 +10,9 @@ from forms.models import (Qaqc1001Response as qaqc1001,
                           SafetyTaskAnalysisToolInspection, STAPostTask, 
                           SafetyTaskAnalysisHazardAssessment, 
                           STARequiredSpecialCertification, STAPermit,
-                          Amq1001Response as amq1001, Amq1002Response as amq1002)
+                          Amq1001Response as amq1001, Amq1002Response as amq1002,
+                          Amq1003Response as Amq1003, Amq1301Response as Amq1301,
+                          Amq1401Response as Amq1401)
 from forms.fields import CheckboxTextField
 from forms.widgets import GroupedSelect
 
@@ -330,3 +332,123 @@ class AMQ100_2_Model_Form(ModelForm):
                 "Document field changes on as-built drawings")
         }
 
+class AMQ100_3_Model_Form(ModelForm):
+    class Meta:
+        model  = Amq1003
+        fields = "__all__"
+        labels = {
+            "conduit_material_specification": _(
+                "Confirm stub-up conduit material is correct per specifications, GRC / PVC."),
+            "window_size_stubup":             _(
+                "Verify window size of stub-up locations"),
+            "coordinates_stubups":            _(
+                "Verify coordinates for stub-ups"),
+            "stubup_spacing_endbells":        _(
+                "Verify stub-up spacing is adequate for End Bells, Terminal Adapters, Lock Rings"),
+            "stubups_plumb_level":            _(
+                "Verify that all stub-ups are plumb/level before and after backfilling operations"),
+            "equipment_location_correct":     _(
+                "Verify equipment location is correct per plans"),
+            "grounding_tails_stubbed":        _(
+                "Verify grounding tails are stubbed up in the right sections"),
+            "stubup_size_count_match":        _(
+                "Verify stub-up size and count match the plans"),
+            "stubup_seal_at_SOG":             _(
+                "Verify stub-ups at equipment have the SOG seal broken (see UG Conduit Detail)"),
+            "stubups_blown_clean":            _(
+                "Verify all stub-ups have been blown clean or a duct cleaner pulled through"),
+            "pull_string_installed":          _(
+                "Verify pull string or mule tape is installed"),
+            "stubups_labeled":                _(
+                "Verify that all stub-ups are properly labeled"),
+            "slab_penetrations_sealed":       _(
+                "Verify thru slab/ground penetrations have been properly sealed"),
+            "stubup_ends_sealed":             _(
+                "Verify stub-up ends are properly sealed to prevent debris from falling in"),
+            "installation_photos_video":      _(
+                "Confirm installation with corresponding pictures and/or video"),
+            "supporting_documentation_attached": _(
+                "Attach all supporting documentation used to install stub-ups"),
+        }
+
+class AMQ130_1_Model_Form(ModelForm):
+    class Meta:
+        model = Amq1301
+        fields = "__all__"
+        labels = {
+            "raceways_inspected": _(
+                "Verify raceways have been inspected, cleaned out and accepted prior" \
+                " to cable installation"),
+            "underground_conduits_swabbed": _(
+                "Verify all associated underground conduits have been swabbed / mandrel prior to cable installation, "\
+                "if applicable"),
+            "pull_rope_size": _(
+                "Verify adequate pull rope size for distance and weight"),
+            "cables_brought_up_safe_temp": _(
+                "Verify cables are brought up to a safe pulling temperature"),
+            "pulling_tension_monitor": _(
+                "Verify maximum pulling tension. Monitor if applicable"),
+            "pulling_lubricants": _(
+                "Verify pulling lubricants are appropriate"),
+            "cable_bending_radii": _(
+                "Verify cable-bending radiuses are within manufacturers recommendations"),
+            "cable_marked_identified": _(
+                "Verify cable is properly marked and identified"),
+            "reference_specification_sheets": _(
+                "Reference applicable specification sheets prior to installation"),
+            "cable_connectors_installation": _(
+                "Verify proper installation of cable connectors if applicable"),
+            "cable_ends_sealed": _(
+                "Verify cable ends are properly sealed as required"),
+            "insulation_stripped": _(
+                "Verify insulation is stripped to the proper length, and ALL conductor " \
+                "stranding is within the terminal lug"),
+            "conductors_tagged": _(
+                "Verify conductors are properly tagged as per drawings and specifications"),
+            "termination_points_per_drawings": _(
+                "Verify termination points are as per drawings"),
+            "cables_routed_secured": _(
+                "Verify cables and conductors are properly routed and securely supported"),
+            "termination_kits": _(
+                "Verify proper installation of termination kits if applicable"),
+            "installation_conforms_NEC": _(
+                "Verify installation conforms to ALL applicable NEC articles"),
+        }
+class AMQ140_1_Model_Form(ModelForm):
+    class Meta:
+        model  = Amq1401
+        fields = "__all__"
+        labels = {
+            "nec_article_392": _(
+                "Conforms to NEC Article 392"),
+            "installed_per_drawings": _(
+                "Installed per drawings and details"),
+            "supports_anchored_securely": _(
+                "Cable Tray and supports anchored securely"),
+            "fitting_radiuses_correct": _(
+                "Fitting radiuses sized correctly and are as seamless as possible"),
+            "cuts_edges_smooth_recoated": _(
+                "Cuts and edges are smooth and recoated"),
+            "dividers_installed_securely": _(
+                "Dividers are installed securely"),
+            "expansion_joints_bond_jumpers": _(
+                "Expansion joints and bonding jumpers at proper intervals"),
+            "tray_grounded_confirm_size": _(
+                "Cable Tray grounded as required - Confirm ground size"),
+            "cables_tied_down_intervals": _(
+                "Cables are tied down at required intervals"),
+            "correct_voltage_designation": _(
+                "Correct voltage / signal type per designation"),
+            "warning_labels_installed": _(
+                "Warning labels installed as required"),
+            "id_labels_installed": _(
+                "Identification labels installed as required"),
+            "penetrations_fire_caulked": _(
+                "Verify penetrations are properly fire caulked / sealed as required"),
+            "covers_installed_secured": _(
+                "Covers are installed and anchored securely"),
+            "field_changes_documented": _(
+                "Field changes documented on as-built drawings"),
+            "photographs_taken": _(
+                "Photographs have been taken of the installation"),
+        }
