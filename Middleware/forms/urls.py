@@ -31,4 +31,9 @@ urlpatterns = [
         path('amq/100_3/new/', views.amq100_3, name="amq_100_3-new"),
         path('amq/130_1/new/', views.amq130_1, name="amq_130_1-new"),
         path('amq/140_1/new/', views.amq140_1, name="amq_140_1-new"),
+        path('amq/200_1/new/', views.amq200_1, name="amq_200_1-new"),
+        path('amq/160_1/new/', views.amq160_1, name="amq_160_1-new"),
+        path('amq/160_2/new/', views.amq160_2, name="amq_160_2-new"),
+        path('amq/150_2/new/', views.amq150_2, name="amq_150_2-new"),
+        path('amq/150_1/new/', views.amq150_1, name="amq_150_1-new"),
         ]

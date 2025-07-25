@@ -1,0 +1,39 @@
+.grid {
+	display: grid;
+	column-gap: 10px;
+	row-gap: 15px;
+	margin-top: 15px;
+	align-items: center;
+}
+
+.package-details {
+	grid-template-columns: 75px 200px 75px;
+}
+
+.checkitems {
+	grid-template-columns: 75px 500px 100px 100px;
+}
+
+
+/* ❶ make the wrapper span all columns */
+.remarks-row { grid-column: 1 / -1; }
+
+/* ❷ style ONLY the textarea inside that row */
+.remarks-row textarea {
+    width: 100%;
+    min-height: 8rem;
+    box-sizing: border-box;
+    font: inherit;
+}
+
+.package-details select {
+    width: 100%;
+}
+
+
+/* ❹ optional: right‑align the submit button */
+form .submit-row {
+    text-align: right;       /* or center / left */
+    grid-column: 1 / -1;     /* span full width */
+}
+

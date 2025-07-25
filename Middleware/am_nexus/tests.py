@@ -9,149 +9,149 @@ from forms.models import Qaqc1001Response  # Import your Project model
 from coins.models import Project, Job  # Import the Project model from coins app
 
 # job = Job.objects.get(project_id=1)
-project = Project.objects.get(id=5)
-job = Job.objects.get(project=project)
+# project = Project.objects.get(id=5)
+# job = Job.objects.get(project=project)
 
-# def insert_project():
-#     # Insert data into Project table
-#     project = Qaqc1001Response.objects.create(
-#         fc_code='FC001',
-#         kco=1,
-#         mkf_status='Active',
-#         mkg_code='MKG001',
-#         mkm_code='MKM001',
-#         mkm_reserverel=100,
-#         msg_code='MSG001',
-#         pfc_type='TypeA',
-#         pij_abstract='1',
-#         pij_annual='0',
-#         pij_archived='0',
-#         pij_biddue_time='12:00',
-#         pij_client1=101,
-#         pij_client2=102,
-#         pij_coinsid='COINS001',
-#         pij_contractno='CN001',
-#         pij_country='CountryA',
-#         pij_currency='USD',
-#         pij_dispno='DISP001',
-#         pij_formofexec='Exec1',
-#         pij_invcvo='1',
-#         pij_isparent='0',
-#         pij_lastrev=123.45678,
-#         pij_leadno='Lead1',
-#         pij_manual='1',
-#         pij_marginperc=10.5,
-#         pij_marketSector='Sector1',
-#         pij_multibids='1',
-#         pij_name='Project One',
-#         pij_num='NUM001',
-#         pij_origweeks=10,
-#         pij_our_value=1000,
-#         pij_out_comment='Comment1',
-#         pij_outcome='Outcome1',
-#         pij_parent='Parent1',
-#         pij_plrevmore='1',
-#         pij_revby='RevBy1',
-#         pij_revver='Ver1',
-#         pij_screvmore='0',
-#         pij_shippcode='Ship1',
-#         pij_tend_value=500,
-#         pij_tenderno='Tender1',
-#         pij_value=1500,
-#         pij_winprob='WinProb1',
-#         pij_worklist='Worklist1',
-#         por_type='TypeP',
-#         ppc_seq=1,
-#         ppc_seq2=2,
-#         ppo_seq='PS1',
-#         ppo_seq2='PS2',
-#         ppo_seq3='PS3',
-#         ppo_seq4='PS4',
-#         pst_type='PST1',
-#         pty_type='PTY1',
-#         boxID='Box1'
-#     )
-#     print(f"Inserted Project with ID {project.id} and Name {project.pij_name}")
+def insert_project():
+    # Insert data into Project table
+    project = Qaqc1001Response.objects.create(
+        fc_code='FC001',
+        kco=1,
+        mkf_status='Active',
+        mkg_code='MKG001',
+        mkm_code='MKM001',
+        mkm_reserverel=100,
+        msg_code='MSG001',
+        pfc_type='TypeA',
+        pij_abstract='1',
+        pij_annual='0',
+        pij_archived='0',
+        pij_biddue_time='12:00',
+        pij_client1=101,
+        pij_client2=102,
+        pij_coinsid='COINS001',
+        pij_contractno='CN001',
+        pij_country='CountryA',
+        pij_currency='USD',
+        pij_dispno='DISP001',
+        pij_formofexec='Exec1',
+        pij_invcvo='1',
+        pij_isparent='0',
+        pij_lastrev=123.45678,
+        pij_leadno='Lead1',
+        pij_manual='1',
+        pij_marginperc=10.5,
+        pij_marketSector='Sector1',
+        pij_multibids='1',
+        pij_name='Project One',
+        pij_num='NUM001',
+        pij_origweeks=10,
+        pij_our_value=1000,
+        pij_out_comment='Comment1',
+        pij_outcome='Outcome1',
+        pij_parent='Parent1',
+        pij_plrevmore='1',
+        pij_revby='RevBy1',
+        pij_revver='Ver1',
+        pij_screvmore='0',
+        pij_shippcode='Ship1',
+        pij_tend_value=500,
+        pij_tenderno='Tender1',
+        pij_value=1500,
+        pij_winprob='WinProb1',
+        pij_worklist='Worklist1',
+        por_type='TypeP',
+        ppc_seq=1,
+        ppc_seq2=2,
+        ppo_seq='PS1',
+        ppo_seq2='PS2',
+        ppo_seq3='PS3',
+        ppo_seq4='PS4',
+        pst_type='PST1',
+        pty_type='PTY1',
+        boxID='Box1'
+    )
+    print(f"Inserted Project with ID {project.id} and Name {project.pij_name}")
 
-# if __name__ == "__main__":
-#     insert_project()
+if __name__ == "__main__":
+    insert_project()
 
 
 # # project = Project.objects.get(id=5)
 
 # # Insert sample data
-record = Qaqc1001Response.objects.create(
-    project=job,
-    area="North Wing",
-    sheet_no=101,
-    drawing="DRW-2025-001",
-    conduit_run_from="Panel A",
-    conduit_run_to="Panel B",
+# record = Qaqc1001Response.objects.create(
+#     project=job,
+#     area="North Wing",
+#     sheet_no=101,
+#     drawing="DRW-2025-001",
+#     conduit_run_from="Panel A",
+#     conduit_run_to="Panel B",
     
-    conforms_to_NEC=True,
-    conforms_to_NEC_corrections_needed=False,
-    conforms_to_NEC_corrections_completed=False,
+#     conforms_to_NEC=True,
+#     conforms_to_NEC_corrections_needed=False,
+#     conforms_to_NEC_corrections_completed=False,
 
-    installed_per_drawing=True,
-    installed_per_drawing_corrections_needed=False,
-    installed_per_drawing_corrections_completed=False,
+#     installed_per_drawing=True,
+#     installed_per_drawing_corrections_needed=False,
+#     installed_per_drawing_corrections_completed=False,
 
-    supports_anchored=True,
-    supports_anchored_corrections_needed=False,
-    supports_anchored_corrections_completed=False,
+#     supports_anchored=True,
+#     supports_anchored_corrections_needed=False,
+#     supports_anchored_corrections_completed=False,
 
-    conduit_leveled=True,
-    conduit_leveled_corrections_needed=False,
-    conduit_leveled_corrections_completed=False,
+#     conduit_leveled=True,
+#     conduit_leveled_corrections_needed=False,
+#     conduit_leveled_corrections_completed=False,
 
-    material_classification=True,
-    material_classification_corrections_needed=False,
-    material_classification_corrections_completed=False,
+#     material_classification=True,
+#     material_classification_corrections_needed=False,
+#     material_classification_corrections_completed=False,
 
-    pull_points=True,
-    pull_points_corrections_needed=False,
-    pull_points_corrections_completed=False,
+#     pull_points=True,
+#     pull_points_corrections_needed=False,
+#     pull_points_corrections_completed=False,
 
-    expansion_joints=False,
-    expansion_joints_corrections_needed=False,
-    expansion_joints_corrections_completed=False,
+#     expansion_joints=False,
+#     expansion_joints_corrections_needed=False,
+#     expansion_joints_corrections_completed=False,
 
-    low_point_drains=False,
-    low_point_drains_corrections_needed=False,
-    low_point_drains_corrections_completed=False,
+#     low_point_drains=False,
+#     low_point_drains_corrections_needed=False,
+#     low_point_drains_corrections_completed=False,
 
-    unions=True,
-    unions_corrections_needed=False,
-    unions_corrections_completed=False,
+#     unions=True,
+#     unions_corrections_needed=False,
+#     unions_corrections_completed=False,
 
-    seals=True,
-    seals_corrections_needed=False,
-    seals_corrections_completed=False,
+#     seals=True,
+#     seals_corrections_needed=False,
+#     seals_corrections_completed=False,
 
-    couplings_tight=True,
-    couplings_tight_corrections_needed=False,
-    couplings_tight_corrections_completed=False,
+#     couplings_tight=True,
+#     couplings_tight_corrections_needed=False,
+#     couplings_tight_corrections_completed=False,
 
-    excessive_threads=False,
-    excessive_threads_corrections_needed=False,
-    excessive_threads_corrections_completed=False,
+#     excessive_threads=False,
+#     excessive_threads_corrections_needed=False,
+#     excessive_threads_corrections_completed=False,
 
-    bushings=True,
-    bushings_corrections_needed=False,
-    bushings_corrections_completed=False,
+#     bushings=True,
+#     bushings_corrections_needed=False,
+#     bushings_corrections_completed=False,
 
-    bonding_jumpers=True,
-    bonding_jumpers_corrections_needed=False,
-    bonding_jumpers_corrections_completed=False,
+#     bonding_jumpers=True,
+#     bonding_jumpers_corrections_needed=False,
+#     bonding_jumpers_corrections_completed=False,
 
-    field_changes_on_drawing=False,
-    field_changes_on_drawing_corrections_needed=False,
-    field_changes_on_drawing_corrections_completed=False,
+#     field_changes_on_drawing=False,
+#     field_changes_on_drawing_corrections_needed=False,
+#     field_changes_on_drawing_corrections_completed=False,
 
-    test_signature=None  # You can set this if you have a signature value
-)
+#     test_signature=None  # You can set this if you have a signature value
+# )
 
-print(f"Inserted record with ID {record.id}")
+# print(f"Inserted record with ID {record.id}")
 
 
 

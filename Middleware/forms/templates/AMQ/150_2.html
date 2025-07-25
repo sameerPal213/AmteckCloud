@@ -1,0 +1,246 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+    <title>AMQ 150.2 - Panelboards and Loadcenters Checklist</title>
+    <link rel="stylesheet" href="{% static 'forms/amq/150_2.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{% endblock %}
+
+{% block title %}
+<h1>AMQ 150.2</h1>
+<h3>Panelboards and Loadcenters Checklist</h3>
+{% endblock %}
+
+{% block content %}
+{{ form.media }}
+<form method="post">
+    {% csrf_token %}
+
+    <!-- Header Section -->
+    <div class="package-details grid">
+        <label style="grid-column: 1 / span 1; grid-row: 1">
+            {{ form.project.label }}
+        </label>
+        <div style="grid-column: 2 / span 2; grid-row: 1">
+            {{ form.project }}
+        </div>
+
+        <label style="grid-column: 1; grid-row: 2">
+            {{ form.project_no.label }}
+        </label>
+        <div style="grid-column: 2; grid-row: 2">
+            {{ form.project_no }}
+        </div>
+
+        <label style="grid-column: 3; grid-row: 2">
+            {{ form.drawing_no.label }}
+        </label>
+        <div style="grid-column: 4; grid-row: 2">
+            {{ form.drawing_no }}
+        </div>
+
+        <label style="grid-column: 1; grid-row: 3">
+            {{ form.panel_board_id.label }}
+        </label>
+        <div style="grid-column: 2; grid-row: 3">
+            {{ form.panel_board_id }}
+        </div>
+
+        <label style="grid-column: 3; grid-row: 3">
+            {{ form.iwp.label }}
+        </label>
+        <div style="grid-column: 4; grid-row: 3">
+            {{ form.iwp }}
+        </div>
+
+        <label style="grid-column: 1; grid-row: 4">
+            {{ form.bus_amp_rating.label }}
+        </label>
+        <div style="grid-column: 2; grid-row: 4">
+            {{ form.bus_amp_rating }}
+        </div>
+
+        <label style="grid-column: 3; grid-row: 4">
+            {{ form.main_oc_rating.label }}
+        </label>
+        <div style="grid-column: 4; grid-row: 4">
+            {{ form.main_oc_rating }}
+        </div>
+
+        <label style="grid-column: 1; grid-row: 5">
+            {{ form.interrupting_capacity.label }}
+        </label>
+        <div style="grid-column: 2; grid-row: 5">
+            {{ form.interrupting_capacity }}
+        </div>
+
+        <label style="grid-column: 3; grid-row: 5">
+            {{ form.feeder_info.label }}
+        </label>
+        <div style="grid-column: 4; grid-row: 5">
+            {{ form.feeder_info }}
+        </div>
+
+        <label style="grid-column: 1; grid-row: 6">
+            {{ form.voltage.label }}
+        </label>
+        <div style="grid-column: 2; grid-row: 6">
+            {{ form.voltage }}
+        </div>
+
+        <label style="grid-column: 3; grid-row: 6">
+            {{ form.phase.label }}
+        </label>
+        <div style="grid-column: 4; grid-row: 6">
+            {{ form.phase }}
+        </div>
+
+        <label style="grid-column: 1; grid-row: 7">
+            {{ form.manufacture.label }}
+        </label>
+        <div style="grid-column: 2; grid-row: 7">
+            {{ form.manufacture }}
+        </div>
+
+        <label style="grid-column: 3; grid-row: 7">
+            {{ form.enclosure_rating.label }}
+        </label>
+        <div style="grid-column: 4; grid-row: 7">
+            {{ form.enclosure_rating }}
+        </div>
+    </div>
+
+    <!-- Checklist Items -->
+    <div class="grid checkitems">
+        <p>Item</p>
+        <p>Description</p>
+        <p>Corrections Needed</p>
+        <p>Corrections Completed</p>
+
+        <p>1</p>
+        <div>{{ form.article_408_nec }} {{ form.article_408_nec.label }}</div>
+        {{ form.article_408_nec_corrections_needed }}
+        {{ form.article_408_nec_corrections_completed }}
+
+        <p>2</p>
+        <div>{{ form.compare_nameplate }} {{ form.compare_nameplate.label }}</div>
+        {{ form.compare_nameplate_corrections_needed }}
+        {{ form.compare_nameplate_corrections_completed }}
+
+        <p>3</p>
+        <div>{{ form.physical_condition_verified }} {{ form.physical_condition_verified.label }}</div>
+        {{ form.physical_condition_verified_corrections_needed }}
+        {{ form.physical_condition_verified_corrections_completed }}
+
+        <p>4</p>
+        <div>{{ form.mounting_verified }} {{ form.mounting_verified.label }}</div>
+        {{ form.mounting_verified_corrections_needed }}
+        {{ form.mounting_verified_corrections_completed }}
+
+        <p>5</p>
+        <div>{{ form.clearance_verified }} {{ form.clearance_verified.label }}</div>
+        {{ form.clearance_verified_corrections_needed }}
+        {{ form.clearance_verified_corrections_completed }}
+
+        <p>6</p>
+        <div>{{ form.equipment_cleaned }} {{ form.equipment_cleaned.label }}</div>
+        {{ form.equipment_cleaned_corrections_needed }}
+        {{ form.equipment_cleaned_corrections_completed }}
+
+        <p>7</p>
+        <div>{{ form.breaker_sizes_verified }} {{ form.breaker_sizes_verified.label }}</div>
+        {{ form.breaker_sizes_verified_corrections_needed }}
+        {{ form.breaker_sizes_verified_corrections_completed }}
+
+        <p>8</p>
+        <div>{{ form.main_breaker_rating_verified }} {{ form.main_breaker_rating_verified.label }}</div>
+        {{ form.main_breaker_rating_verified_corrections_needed }}
+        {{ form.main_breaker_rating_verified_corrections_completed }}
+
+        <p>9</p>
+        <div>{{ form.grounding_verified }} {{ form.grounding_verified.label }}</div>
+        {{ form.grounding_verified_corrections_needed }}
+        {{ form.grounding_verified_corrections_completed }}
+
+        <p>10</p>
+        <div>{{ form.enclosure_rating_applicable }} {{ form.enclosure_rating_applicable.label }}</div>
+        {{ form.enclosure_rating_applicable_corrections_needed }}
+        {{ form.enclosure_rating_applicable_corrections_completed }}
+
+        <p>11</p>
+        <div>{{ form.openings_sealed }} {{ form.openings_sealed.label }}</div>
+        {{ form.openings_sealed_corrections_needed }}
+        {{ form.openings_sealed_corrections_completed }}
+
+        <p>12</p>
+        <div>{{ form.electrical_connections_torqued }} {{ form.electrical_connections_torqued.label }}</div>
+        {{ form.electrical_connections_torqued_corrections_needed }}
+        {{ form.electrical_connections_torqued_corrections_completed }}
+
+        <p>13</p>
+        <div>{{ form.paperwork_removed }} {{ form.paperwork_removed.label }}</div>
+        {{ form.paperwork_removed_corrections_needed }}
+        {{ form.paperwork_removed_corrections_completed }}
+
+        <p>14</p>
+        <div>{{ form.directory_correct }} {{ form.directory_correct.label }}</div>
+        {{ form.directory_correct_corrections_needed }}
+        {{ form.directory_correct_corrections_completed }}
+
+        <p>15</p>
+        <div>{{ form.parts_lubricated }} {{ form.parts_lubricated.label }}</div>
+        {{ form.parts_lubricated_corrections_needed }}
+        {{ form.parts_lubricated_corrections_completed }}
+
+        <p>16</p>
+        <div>{{ form.id_markings_clear }} {{ form.id_markings_clear.label }}</div>
+        {{ form.id_markings_clear_corrections_needed }}
+        {{ form.id_markings_clear_corrections_completed }}
+
+        <p>17</p>
+        <div>{{ form.remote_devices_functioning }} {{ form.remote_devices_functioning.label }}</div>
+        {{ form.remote_devices_functioning_corrections_needed }}
+        {{ form.remote_devices_functioning_corrections_completed }}
+
+        <p>18</p>
+        <div>{{ form.physical_damage_inspection }} {{ form.physical_damage_inspection.label }}</div>
+        {{ form.physical_damage_inspection_corrections_needed }}
+        {{ form.physical_damage_inspection_corrections_completed }}
+
+        <p>19</p>
+        <div>{{ form.voltage_to_ground_verified }} {{ form.voltage_to_ground_verified.label }}</div>
+        {{ form.voltage_to_ground_verified_corrections_needed }}
+        {{ form.voltage_to_ground_verified_corrections_completed }}
+
+        <p>20</p>
+        <div>{{ form.arc_flash_labels_installed }} {{ form.arc_flash_labels_installed.label }}</div>
+        {{ form.arc_flash_labels_installed_corrections_needed }}
+        {{ form.arc_flash_labels_installed_corrections_completed }}
+
+        <p>21</p>
+        <div>{{ form.photos_attached }} {{ form.photos_attached.label }}</div>
+        {{ form.photos_attached_corrections_needed }}
+        {{ form.photos_attached_corrections_completed }}
+
+        <p>22</p>
+        <div>{{ form.screws_installed }} {{ form.screws_installed.label }}</div>
+        {{ form.screws_installed_corrections_needed }}
+        {{ form.screws_installed_corrections_completed }}
+
+        <p>23</p>
+        <div>{{ form.energization_form_attached }} {{ form.energization_form_attached.label }}</div>
+        {{ form.energization_form_attached_corrections_needed }}
+        {{ form.energization_form_attached_corrections_completed }}
+    </div>
+
+
+    <!-- Remarks -->
+    <div class="remarks-row">{{ form.remarks }}</div>
+
+    <!-- Submit -->
+    <div class="submit-row"><button type="submit">Submit</button></div>
+</form>
+{% endblock %}

@@ -12,7 +12,9 @@ from forms.models import (Qaqc1001Response as qaqc1001,
                           STARequiredSpecialCertification, STAPermit,
                           Amq1001Response as amq1001, Amq1002Response as amq1002,
                           Amq1003Response as Amq1003, Amq1301Response as Amq1301,
-                          Amq1401Response as Amq1401)
+                          Amq1401Response as Amq1401, Amq2001Response as Amq2001,
+                          Amq1601Response as Amq1601, Amq1602Response as Amq1602,
+                          Amq1502Response as Amq1502, Amq1501Response as Amq1501)
 from forms.fields import CheckboxTextField
 from forms.widgets import GroupedSelect
 
@@ -451,4 +453,219 @@ class AMQ140_1_Model_Form(ModelForm):
                 "Field changes documented on as-built drawings"),
             "photographs_taken": _(
                 "Photographs have been taken of the installation"),
+        }
+
+class AMQ200_1_Model_Form(ModelForm):
+    class Meta:
+        model = Amq2001
+        fields = "__all__"
+        labels = {
+            "nec_article_250": _(
+                "Ensure installation conforms to NEC Article 250"),
+            "backfill_coverage": _(
+                "Backfill was monitored to verify proper coverage"),
+            "electrode_type": _(
+                "Verify electrode type, size, location, and depth"),
+            "thermal_compression_connections": _(
+                "Verify thermal / compression connections are correct"),
+            "conductor_size_type_color": _(
+                "Verify conductor is correct size, type, and color"),
+            "grounding_conductor_anchored": _(
+                "Verify grounding conductor is securely anchored"),
+            "hardware_correct": _(
+                "Verify hardware is correct type and material for application"),
+            "ground_test_performed": _(
+                "Verify if ground test is required and performed (Attach Test Form)"),
+            "field_changes_documented": _(
+                "Document field changes on as-built drawings"),
+            "hammer_test": _(
+                "Hammer test thermal welds as required"),
+            "photos_attached": _(
+                "Include and attach clear and identifiable dated photos"),
+        }
+
+class AMQ160_1_Model_Form(ModelForm):
+    class Meta:
+        model = Amq1601
+        fields = "__all__"
+        labels = {
+            "article_410_nec": _(
+                "Ensure installation conforms to Article 410 of the latest edition of the NEC"),
+            "installed_per_drawing": _(
+                "Verify lighting fixtures are installed as per drawings and specifications"),
+            "fixtures_secure": _(
+                "Verify lighting fixtures are securely mounted as per spec for each individual location and circumstance (e.g., hurricane straps, screws, or grid wire etc.)"),
+            "fixtures_grounded": _(
+                "Verify lighting fixtures are grounded as required"),
+            "cushioned_hangers": _(
+                "Verify installation of flexible cushioned fixture hangers where required"),
+            "multi_tap_ballasts": _(
+                "Verify connection is made to the proper voltage taps in multi-tap ballasts and any unused taps are capped off and concealed within electrical housing"),
+            "correct_lamps_installed": _(
+                "Verify correct lamps are installed"),
+            "accessories_installed": _(
+                "Verify installation and connection of accessories"),
+            "circuits_correct": _(
+                "Verify lights are circuited correctly"),
+            "housings_applicable": _(
+                "Verify housings are applicable for the area classification"),
+            "temp_rating_acceptable": _(
+                "Verify temperature rating of lighting fixtures is acceptable for the environment"),
+            "location_restrictions_met": _(
+                "Verify fixture complies with location restrictions ( e.g., damp location, dusty location) "),
+        }
+
+class AMQ160_2_Model_Form(ModelForm):
+    class Meta:
+        model = Amq1602
+        fields = "__all__"
+        labels = {
+            "article_410_nec": _(
+                "Ensure installation conforms to Article 410 of the latest edition of the NEC"),
+            "installed_per_drawing": _(
+                "Verify lighting fixtures are installed as per drawings and specifications"),
+            "fixtures_secure": _(
+                "Verify lighting fixtures are securely mounted as per spec for each individual location and circumstance (e.g., hurricane straps, screws, or grid wire etc.)"),
+            "fixtures_grounded": _(
+                "Verify lighting fixtures are grounded as required"),
+            "occupancy_sensors_set": _(
+                "Occupancy sensors are set to proper range and timing"),
+            "emergency_lights_verified": _(
+                "Verify batteries installed in Emergency lights/egress lights has the specified capacity to last the specified duration.  30 min, 90 min etc.."),
+            "correct_lamps_installed": _(
+                "Verify correct lamps are installed and operational"),
+            "location_control_lighting": _(
+                "Lighting can be controlled from each individual location as intended by owners"),
+            "circuits_correct": _(
+                "Verify lights are circuited correctly"),
+            "housings_applicable": _(
+                "Verify housings are applicable for area classification"),
+            "temp_rating_acceptable": _(
+                "Verify temperature rating of lighting fixtures is acceptable for the environment"),
+            "location_restrictions_met": _(
+                "Verify fixture complies with location restrictions (e.g., damp location, dusty location) "),
+            "control_devices_verified": _(
+                "Verify functionality of any installed control devices and that they’re working together to meet or exceed customer specifications. I.E- Switches, contactors, timers, occupancy sensors, daylight harvesting, photocells"),
+            "clean_laser_film": _(
+                "Verify each fixture is clean, and laser film has been removed"),
+            "control_panel_vacuumed": _(
+                " Verify any and all lighting control panels and or contactor boxes are vacuumed clean and free of lose hardware"),
+        }
+
+class AMQ150_2_Model_Form(ModelForm):
+    class Meta:
+        model = Amq1502
+        fields = "__all__"
+        labels = {
+            "article_408_nec": _(
+                "Review NEC article 408 to ensure installation conforms to code"),
+            "compare_nameplate": _(
+                "Compare equipment nameplate is installed, and data corresponds with information shown above"),
+            "physical_condition_verified": _(
+                "Verify physical and mechanical condition of the equipment"),
+            "mounting_verified": _(
+                "Verify mounting is plumb and square"),
+            "clearance_verified": _(
+                "Verify adequate code clearance for doors and covers"),
+            "equipment_cleaned": _(
+                "Verify equipment has been vacuum cleaned and is free of loose hardware"),
+            "breaker_sizes_verified": _(
+                "Verify circuit breaker sizes correspond to drawings"),
+            "main_breaker_rating_verified": _(
+                "Verify main breaker rating is applicable for bus rating"),
+            "grounding_verified": _(
+                "Verify grounding and bonding is as required"),
+            "enclosure_rating_applicable": _(
+                "Verify the enclosure is applicable for the environment (N1, N3R)"),
+            "openings_sealed": _(
+                "Verify all openings are properly sealed and closed"),
+            "electrical_connections_torqued": _(
+                "Verify main electrical connections are properly torqued. Main lugs are torqued to  ft./lbs"),
+            "paperwork_removed": _(
+                "Verify that all manufactures paperwork is removed from interior sections and stored for turn over to client"),
+            "directory_correct": _(
+                "Verify panel directory is correct and complete"),
+            "parts_lubricated": _(
+                "Verify all / any moving parts are properly lubricated"),
+            "id_markings_clear": _(
+                "Verify all identification markings are unobstructed and visible"),
+            "remote_devices_functioning": _(
+                "Verify remotely operated devices are functioning properly"),
+            "physical_damage_inspection": _(
+                "Inspect main section for evidence of physical damage"),
+            "voltage_to_ground_verified": _(
+                "Verify voltage to ground, neutral and between all phases corresponds to data above"),
+            "arc_flash_labels_installed": _(
+                "Verify all Arc Flash Labels are installed per study"),
+            "photos_attached": _(
+                "Include and attach clear and identifiable dated photos"),
+            "screws_installed": _(
+                "Verify all equipment provided screws for covers have been properly installed"),
+            "energization_form_attached": _(
+                "Verify energization form has been attached to this sheet"),
+        }
+
+class AMQ150_1_Model_Form(ModelForm):
+    class Meta:
+        model = Amq1501
+        fields = "__all__"
+        labels = {
+            "nec_article_408": _(
+                "Review NEC article 408 to ensure installation conforms to code"),
+            "nec_table_110_26": _(
+                "Review NEC table 110.26 to ensure clearances conform to code (on back)"),
+            "physical_condition": _(
+                "Verify physical and mechanical condition of the equipment"),
+            "anchorage_alignment": _(
+                "Verify anchorage and alignment of sections"),
+            "clearance_verified": _(
+                "Verify adequate clearance for doors and covers"),
+            "equipment_cleaned": _(
+                "Verify equipment has been cleaned, free of debris and shipping & loose hardware have been removed"),
+            "breaker_sizes_verified": _(
+                "Verify fuse / circuit breaker sizes correspond to drawings"),
+            "transformer_ratios_verified": _(
+                "Verify that current and voltage transformer ratios correspond to drawings"),
+            "insulators_clean_securely": _(
+                "Verify insulators are clean and securely installed"),
+            "barrier_shutter_verified": _(
+                "Verify correct barrier and shutter installation and operation"),
+            "grounding_per_design": _(
+                "Verify grounding is per design"),
+            "electrical_connections_torqued": _(
+                "Verify all bolted electrical connections are correctly torqued, marked & logged on the proper form. Include micro-ohm testing results if required"),
+            "compartment_heaters": _(
+                "Verify installation of and connection of compartment heaters / thermostat if required"),
+            "interconnection_wiring_complete": _(
+                "Verify all compartment interconnecting control, device net or communication wiring is complete and terminated"),           
+            "ventilation_filters": _(
+                "Verify ventilation filters are clean and in place"),
+            "equipment_openings_sealed": _(
+                "Verify all equipment openings are properly sealed"),
+            "paperwork_removed": _(
+                "Verify that all manufactures paperwork is removed from interior sections and stored, then turned over to client"),
+            "nameplates_installed": _(
+                "Verify name plates installed as required and information matches data shown above"),
+            "lifting_apparatus": _(
+                "Verify proper installation / storage of lifting and test apparatuses"),
+            "arc_flash_labels": _(
+                "Verify all Arc Flash Labels are installed per study"),
+            "include_dated_photos": _(
+                "Include dated photos are taken prior to final door/cover installation"),
+            "screws_installed": _(
+                "Verify all equipment provided screws for covers have been properly installed"),
+            "ground_fault_set": _(
+                "Verify ground fault has been properly set to recommended requirements"),
+            "instantaneous_set": _(
+                "Verify instantaneous has been properly set to recommended requirements"),
+            "short_time_set": _(
+                "Verify short time has been properly set to recommended requirements"),
+            "long_time_set": _(
+                "Verify long time has been properly set to recommended requirements"),
+            "micro_ohm_readings": _(
+                "Verify micro-ohm readings are within recommended requirements"),
+            "energization_form_attached": _(
+                "Verify energization form has been attached to this sheet"),
+            "interior_exterior_photos": _(
+                "Ensure dated interior & exterior photos are taken and attached"),
         }

@@ -962,3 +962,515 @@ class Amq1401Response(models.Model):
         managed = True
         db_table = "forms_amq_140_1"
 
+class Amq2001Response(models.Model):
+    """
+    AMQ 200.1 - Grounding Checklist
+    """
+
+    id = models.AutoField(primary_key=True)
+
+    # Header Fields
+    project = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    project_no = models.IntegerField(_("Project #"), null=True, blank=True)
+    drawing = models.CharField(_("Drawing #"), max_length=100, blank=True, default="")
+    gec_size = models.CharField(_("GEC Size"), max_length=50, blank=True, default="")
+    grd_rod_size = models.CharField(_("GRD Rod Size"), max_length=50, blank=True, default="")
+    grd_rod_qty = models.IntegerField(_("GRD Rod Qty"), null=True, blank=True)
+    grid_size = models.CharField(_("GRID Size"), max_length=50, blank=True, default="")
+    iwp = models.CharField(_("IWP #"), max_length=100, blank=True, default="")
+
+    # Checklist Items (11)
+    nec_article_250 = models.BooleanField(default=False)
+    nec_article_250_corrections_needed = models.BooleanField(default=False)
+    nec_article_250_corrections_completed = models.BooleanField(default=False)
+
+    backfill_coverage = models.BooleanField(default=False)
+    backfill_coverage_corrections_needed = models.BooleanField(default=False)
+    backfill_coverage_corrections_completed = models.BooleanField(default=False)
+
+    electrode_type = models.BooleanField(default=False)
+    electrode_type_corrections_needed = models.BooleanField(default=False)
+    electrode_type_corrections_completed = models.BooleanField(default=False)
+
+    thermal_compression_connections = models.BooleanField(default=False)
+    thermal_compression_connections_corrections_needed = models.BooleanField(default=False)
+    thermal_compression_connections_corrections_completed = models.BooleanField(default=False)
+
+    conductor_size_type_color = models.BooleanField(default=False)
+    conductor_size_type_color_corrections_needed = models.BooleanField(default=False)
+    conductor_size_type_color_corrections_completed = models.BooleanField(default=False)
+
+    grounding_conductor_anchored = models.BooleanField(default=False)
+    grounding_conductor_anchored_corrections_needed = models.BooleanField(default=False)
+    grounding_conductor_anchored_corrections_completed = models.BooleanField(default=False)
+
+    hardware_correct = models.BooleanField(default=False)
+    hardware_correct_corrections_needed = models.BooleanField(default=False)
+    hardware_correct_corrections_completed = models.BooleanField(default=False)
+
+    ground_test_performed = models.BooleanField(default=False)
+    ground_test_performed_corrections_needed = models.BooleanField(default=False)
+    ground_test_performed_corrections_completed = models.BooleanField(default=False)
+
+    field_changes_documented = models.BooleanField(default=False)
+    field_changes_documented_corrections_needed = models.BooleanField(default=False)
+    field_changes_documented_corrections_completed = models.BooleanField(default=False)
+
+    hammer_test = models.BooleanField(default=False)
+    hammer_test_corrections_needed = models.BooleanField(default=False)
+    hammer_test_corrections_completed = models.BooleanField(default=False)
+
+    photos_attached = models.BooleanField(default=False)
+    photos_attached_corrections_needed = models.BooleanField(default=False)
+    photos_attached_corrections_completed = models.BooleanField(default=False)
+
+    # Remarks
+    remarks = models.TextField(blank=True)
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_200_1"
+
+class Amq1601Response(models.Model):
+    """
+    AMQ 160.1 - Lighting Checklist
+    """
+
+    # Header Fields
+    project = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    project_no = models.CharField(_("Project #"), max_length=100, blank=True, default="")
+    drawing_no = models.CharField(_("Drawing No"), max_length=100, blank=True, default="")
+    voltage = models.CharField(_("Voltage"), max_length=50, blank=True, default="")
+    area_classification = models.CharField(_("Area Classification"), max_length=100, blank=True, default="")
+    manufacture_type = models.CharField(_("Manufacture / Type"), max_length=100, blank=True, default="")
+    iwp = models.CharField(_("IWP"), max_length=100, blank=True, default="")
+    ckt_id = models.CharField(_("CKT ID"), max_length=100, blank=True, default="")
+    temperature_rating_required = models.CharField(_("Temperature Rating Required"), max_length=100, blank=True, default="")
+
+    # Checklist Items (12)
+    article_410_nec = models.BooleanField(default=False)
+    article_410_nec_corrections_needed = models.BooleanField(default=False)
+    article_410_nec_corrections_completed = models.BooleanField(default=False)
+
+    installed_per_drawing = models.BooleanField(default=False)
+    installed_per_drawing_corrections_needed = models.BooleanField(default=False)
+    installed_per_drawing_corrections_completed = models.BooleanField(default=False)
+
+    fixtures_secure = models.BooleanField(default=False)
+    fixtures_secure_corrections_needed = models.BooleanField(default=False)
+    fixtures_secure_corrections_completed = models.BooleanField(default=False)
+
+    fixtures_grounded = models.BooleanField(default=False)
+    fixtures_grounded_corrections_needed = models.BooleanField(default=False)
+    fixtures_grounded_corrections_completed = models.BooleanField(default=False)
+
+    cushioned_hangers = models.BooleanField(default=False)
+    cushioned_hangers_corrections_needed = models.BooleanField(default=False)
+    cushioned_hangers_corrections_completed = models.BooleanField(default=False)
+
+    multi_tap_ballasts = models.BooleanField(default=False)
+    multi_tap_ballasts_corrections_needed = models.BooleanField(default=False)
+    multi_tap_ballasts_corrections_completed = models.BooleanField(default=False)
+
+    correct_lamps_installed = models.BooleanField(default=False)
+    correct_lamps_installed_corrections_needed = models.BooleanField(default=False)
+    correct_lamps_installed_corrections_completed = models.BooleanField(default=False)
+
+    accessories_installed = models.BooleanField(default=False)
+    accessories_installed_corrections_needed = models.BooleanField(default=False)
+    accessories_installed_corrections_completed = models.BooleanField(default=False)
+
+    circuits_correct = models.BooleanField(default=False)
+    circuits_correct_corrections_needed = models.BooleanField(default=False)
+    circuits_correct_corrections_completed = models.BooleanField(default=False)
+
+    housings_applicable = models.BooleanField(default=False)
+    housings_applicable_corrections_needed = models.BooleanField(default=False)
+    housings_applicable_corrections_completed = models.BooleanField(default=False)
+
+    temp_rating_acceptable = models.BooleanField(default=False)
+    temp_rating_acceptable_corrections_needed = models.BooleanField(default=False)
+    temp_rating_acceptable_corrections_completed = models.BooleanField(default=False)
+
+    location_restrictions_met = models.BooleanField(default=False)
+    location_restrictions_met_corrections_needed = models.BooleanField(default=False)
+    location_restrictions_met_corrections_completed = models.BooleanField(default=False)
+
+    # Remarks and Signatures
+    remarks = models.TextField(blank=True)
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_160_1"
+
+class Amq1602Response(models.Model):
+    """
+    AMQ 160.2 - Lighting Control Checklist
+    """
+
+    # Header Fields
+    project = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    project_no = models.CharField(_("Project #"), max_length=100, blank=True, default="")
+    drawing_no = models.CharField(_("Drawing No"), max_length=100, blank=True, default="")
+    voltage = models.CharField(_("Voltage"), max_length=50, blank=True, default="")
+    area_classification = models.CharField(_("Area Classification"), max_length=100, blank=True, default="")
+    brand_name = models.CharField(_("Brand Name"), max_length=100, blank=True, default="")
+    controller_type = models.CharField(_("Controller Type"), max_length=100, blank=True, default="")
+    circuits_controlled = models.CharField(_("Number of Circuits Controlled"), max_length=100, blank=True, default="")
+    iwp = models.CharField(_("IWP"), max_length=100, blank=True, default="")
+
+    # Checklist Items
+    article_410_nec = models.BooleanField(default=False)
+    article_410_nec_corrections_needed = models.BooleanField(default=False)
+    article_410_nec_corrections_completed = models.BooleanField(default=False)
+
+    installed_per_drawing = models.BooleanField(default=False)
+    installed_per_drawing_corrections_needed = models.BooleanField(default=False)
+    installed_per_drawing_corrections_completed = models.BooleanField(default=False)
+
+    fixtures_secure = models.BooleanField(default=False)
+    fixtures_secure_corrections_needed = models.BooleanField(default=False)
+    fixtures_secure_corrections_completed = models.BooleanField(default=False)
+
+    fixtures_grounded = models.BooleanField(default=False)
+    fixtures_grounded_corrections_needed = models.BooleanField(default=False)
+    fixtures_grounded_corrections_completed = models.BooleanField(default=False)
+
+    occupancy_sensors_set = models.BooleanField(default=False)
+    occupancy_sensors_set_corrections_needed = models.BooleanField(default=False)
+    occupancy_sensors_set_corrections_completed = models.BooleanField(default=False)
+
+    emergency_lights_verified = models.BooleanField(default=False)
+    emergency_lights_verified_corrections_needed = models.BooleanField(default=False)
+    emergency_lights_verified_corrections_completed = models.BooleanField(default=False)
+
+    correct_lamps_installed = models.BooleanField(default=False)
+    correct_lamps_installed_corrections_needed = models.BooleanField(default=False)
+    correct_lamps_installed_corrections_completed = models.BooleanField(default=False)
+
+    location_control_lighting = models.BooleanField(default=False)
+    location_control_lighting_corrections_needed = models.BooleanField(default=False)
+    location_control_lighting_corrections_completed = models.BooleanField(default=False)
+
+    circuits_correct = models.BooleanField(default=False)
+    circuits_correct_corrections_needed = models.BooleanField(default=False)
+    circuits_correct_corrections_completed = models.BooleanField(default=False)
+
+    housings_applicable = models.BooleanField(default=False)
+    housings_applicable_corrections_needed = models.BooleanField(default=False)
+    housings_applicable_corrections_completed = models.BooleanField(default=False)
+
+    temp_rating_acceptable = models.BooleanField(default=False)
+    temp_rating_acceptable_corrections_needed = models.BooleanField(default=False)
+    temp_rating_acceptable_corrections_completed = models.BooleanField(default=False)
+
+    location_restrictions_met = models.BooleanField(default=False)
+    location_restrictions_met_corrections_needed = models.BooleanField(default=False)
+    location_restrictions_met_corrections_completed = models.BooleanField(default=False)
+
+    control_devices_verified = models.BooleanField(default=False)
+    control_devices_verified_corrections_needed = models.BooleanField(default=False)
+    control_devices_verified_corrections_completed = models.BooleanField(default=False)
+
+    clean_laser_film = models.BooleanField(default=False)
+    clean_laser_film_corrections_needed = models.BooleanField(default=False)
+    clean_laser_film_corrections_completed = models.BooleanField(default=False)
+
+    control_panel_vacuumed = models.BooleanField(default=False)
+    control_panel_vacuumed_corrections_needed = models.BooleanField(default=False)
+    control_panel_vacuumed_corrections_completed = models.BooleanField(default=False)
+
+    # Remarks
+    remarks = models.TextField(blank=True)
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_160_2"
+
+class Amq1502Response(models.Model):
+    """
+    AMQ 150.2 - Panelboards and Loadcenters Checklist
+    """
+
+    # Header Fields
+    project = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    project_no = models.CharField(_("Project #"), max_length=100, blank=True, default="")
+    drawing_no = models.CharField(_("Drawing No"), max_length=100, blank=True, default="")
+    panel_board_id = models.CharField(_("Panel Board / LC ID"), max_length=100, blank=True, default="")
+    iwp = models.CharField(_("IWP"), max_length=100, blank=True, default="")
+    bus_amp_rating = models.CharField(_("Bus Amp Rating"), max_length=100, blank=True, default="")
+    main_oc_rating = models.CharField(_("Main Overcurrent Rating"), max_length=100, blank=True, default="")
+    interrupting_capacity = models.CharField(_("Interrupting Capacity"), max_length=100, blank=True, default="")
+    feeder_info = models.CharField(_("Feeder Size & No. of Runs"), max_length=100, blank=True, default="")
+    voltage = models.CharField(_("Voltage"), max_length=100, blank=True, default="")
+    phase = models.CharField(_("Phase"), max_length=100, blank=True, default="")
+    manufacture = models.CharField(_("Manufacture"), max_length=100, blank=True, default="")
+    enclosure_rating = models.CharField(_("Enclosure Rating"), max_length=100, blank=True, default="")
+
+    # Checklist Items (Triplet Fields)
+    article_408_nec = models.BooleanField(default=False)
+    article_408_nec_corrections_needed = models.BooleanField(default=False)
+    article_408_nec_corrections_completed = models.BooleanField(default=False)
+
+    compare_nameplate = models.BooleanField(default=False)
+    compare_nameplate_corrections_needed = models.BooleanField(default=False)
+    compare_nameplate_corrections_completed = models.BooleanField(default=False)
+
+    physical_condition_verified = models.BooleanField(default=False)
+    physical_condition_verified_corrections_needed = models.BooleanField(default=False)
+    physical_condition_verified_corrections_completed = models.BooleanField(default=False)
+
+    mounting_verified = models.BooleanField(default=False)
+    mounting_verified_corrections_needed = models.BooleanField(default=False)
+    mounting_verified_corrections_completed = models.BooleanField(default=False)
+
+    clearance_verified = models.BooleanField(default=False)
+    clearance_verified_corrections_needed = models.BooleanField(default=False)
+    clearance_verified_corrections_completed = models.BooleanField(default=False)
+
+    equipment_cleaned = models.BooleanField(default=False)
+    equipment_cleaned_corrections_needed = models.BooleanField(default=False)
+    equipment_cleaned_corrections_completed = models.BooleanField(default=False)
+
+    breaker_sizes_verified = models.BooleanField(default=False)
+    breaker_sizes_verified_corrections_needed = models.BooleanField(default=False)
+    breaker_sizes_verified_corrections_completed = models.BooleanField(default=False)
+
+    main_breaker_rating_verified = models.BooleanField(default=False)
+    main_breaker_rating_verified_corrections_needed = models.BooleanField(default=False)
+    main_breaker_rating_verified_corrections_completed = models.BooleanField(default=False)
+
+    grounding_verified = models.BooleanField(default=False)
+    grounding_verified_corrections_needed = models.BooleanField(default=False)
+    grounding_verified_corrections_completed = models.BooleanField(default=False)
+
+    enclosure_rating_applicable = models.BooleanField(default=False)
+    enclosure_rating_applicable_corrections_needed = models.BooleanField(default=False)
+    enclosure_rating_applicable_corrections_completed = models.BooleanField(default=False)
+
+    openings_sealed = models.BooleanField(default=False)
+    openings_sealed_corrections_needed = models.BooleanField(default=False)
+    openings_sealed_corrections_completed = models.BooleanField(default=False)
+
+    electrical_connections_torqued = models.BooleanField(default=False)
+    electrical_connections_torqued_corrections_needed = models.BooleanField(default=False)
+    electrical_connections_torqued_corrections_completed = models.BooleanField(default=False)
+
+    main_lugs_torqued = models.BooleanField(default=False)
+    main_lugs_torqued_corrections_needed = models.BooleanField(default=False)
+    main_lugs_torqued_corrections_completed = models.BooleanField(default=False)
+
+    paperwork_removed = models.BooleanField(default=False)
+    paperwork_removed_corrections_needed = models.BooleanField(default=False)
+    paperwork_removed_corrections_completed = models.BooleanField(default=False)
+
+    directory_correct = models.BooleanField(default=False)
+    directory_correct_corrections_needed = models.BooleanField(default=False)
+    directory_correct_corrections_completed = models.BooleanField(default=False)
+
+    parts_lubricated = models.BooleanField(default=False)
+    parts_lubricated_corrections_needed = models.BooleanField(default=False)
+    parts_lubricated_corrections_completed = models.BooleanField(default=False)
+
+    id_markings_clear = models.BooleanField(default=False)
+    id_markings_clear_corrections_needed = models.BooleanField(default=False)
+    id_markings_clear_corrections_completed = models.BooleanField(default=False)
+
+    remote_devices_functioning = models.BooleanField(default=False)
+    remote_devices_functioning_corrections_needed = models.BooleanField(default=False)
+    remote_devices_functioning_corrections_completed = models.BooleanField(default=False)
+
+    physical_damage_inspection = models.BooleanField(default=False)
+    physical_damage_inspection_corrections_needed = models.BooleanField(default=False)
+    physical_damage_inspection_corrections_completed = models.BooleanField(default=False)
+
+    voltage_to_ground_verified = models.BooleanField(default=False)
+    voltage_to_ground_verified_corrections_needed = models.BooleanField(default=False)
+    voltage_to_ground_verified_corrections_completed = models.BooleanField(default=False)
+
+    arc_flash_labels_installed = models.BooleanField(default=False)
+    arc_flash_labels_installed_corrections_needed = models.BooleanField(default=False)
+    arc_flash_labels_installed_corrections_completed = models.BooleanField(default=False)
+
+    photos_attached = models.BooleanField(default=False)
+    photos_attached_corrections_needed = models.BooleanField(default=False)
+    photos_attached_corrections_completed = models.BooleanField(default=False)
+
+    screws_installed = models.BooleanField(default=False)
+    screws_installed_corrections_needed = models.BooleanField(default=False)
+    screws_installed_corrections_completed = models.BooleanField(default=False)
+
+    energization_form_attached = models.BooleanField(default=False)
+    energization_form_attached_corrections_needed = models.BooleanField(default=False)
+    energization_form_attached_corrections_completed = models.BooleanField(default=False)
+
+    # Remarks
+    remarks = models.TextField(blank=True)
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_150_2"
+
+class Amq1501Response(models.Model):
+    """
+    AMQ 150.1 - Switchgear Installation Checklist
+    """
+
+    # Header fields
+    project = models.ForeignKey(
+        Job,
+        on_delete=models.CASCADE,
+        limit_choices_to={"job_active": "a"},
+    )
+    project_no = models.CharField(_("Project #"), max_length=100, blank=True, default="")
+    drawing_no = models.CharField(_("Drawing No."), max_length=100, blank=True, default="")
+    swbd_id = models.CharField(_("SWBD ID"), max_length=100, blank=True, default="")
+    iwp = models.CharField(_("IWP"), max_length=100, blank=True, default="")
+    bus_amp_rating = models.CharField(_("Bus Amp Rating"), max_length=100, blank=True, default="")
+    main_oc_rating = models.CharField(_("Main Overcurrent Rating"), max_length=100, blank=True, default="")
+    interrupting_capacity = models.CharField(_("Interrupting Capacity"), max_length=100, blank=True, default="")
+    voltage = models.CharField(_("Voltage"), max_length=100, blank=True, default="")
+    feeder_info = models.CharField(_("Feeder Size & No. of Runs"), max_length=100, blank=True, default="")
+    gec_size = models.CharField(_("GEC Size"), max_length=100, blank=True, default="")
+    manufacture = models.CharField(_("Manufacture"), max_length=100, blank=True, default="")
+
+    # Checklist fields (triplet format)
+    nec_article_408 = models.BooleanField(default=False)
+    nec_article_408_corrections_needed = models.BooleanField(default=False)
+    nec_article_408_corrections_completed = models.BooleanField(default=False)
+
+    nec_table_110_26 = models.BooleanField(default=False)
+    nec_table_110_26_corrections_needed = models.BooleanField(default=False)
+    nec_table_110_26_corrections_completed = models.BooleanField(default=False)
+
+    physical_condition = models.BooleanField(default=False)
+    physical_condition_corrections_needed = models.BooleanField(default=False)
+    physical_condition_corrections_completed = models.BooleanField(default=False)
+
+    anchorage_alignment = models.BooleanField(default=False)
+    anchorage_alignment_corrections_needed = models.BooleanField(default=False)
+    anchorage_alignment_corrections_completed = models.BooleanField(default=False)
+
+    clearance_verified = models.BooleanField(default=False)
+    clearance_verified_corrections_needed = models.BooleanField(default=False)
+    clearance_verified_corrections_completed = models.BooleanField(default=False)
+
+    equipment_cleaned = models.BooleanField(default=False)
+    equipment_cleaned_corrections_needed = models.BooleanField(default=False)
+    equipment_cleaned_corrections_completed = models.BooleanField(default=False)
+
+    breaker_sizes_verified = models.BooleanField(default=False)
+    breaker_sizes_verified_corrections_needed = models.BooleanField(default=False)
+    breaker_sizes_verified_corrections_completed = models.BooleanField(default=False)
+
+    transformer_ratios_verified = models.BooleanField(default=False)
+    transformer_ratios_verified_corrections_needed = models.BooleanField(default=False)
+    transformer_ratios_verified_corrections_completed = models.BooleanField(default=False)
+
+    insulators_clean_securely = models.BooleanField(default=False)
+    insulators_clean_securely_corrections_needed = models.BooleanField(default=False)
+    insulators_clean_securely_corrections_completed = models.BooleanField(default=False)
+
+    barrier_shutter_verified = models.BooleanField(default=False)
+    barrier_shutter_verified_corrections_needed = models.BooleanField(default=False)
+    barrier_shutter_verified_corrections_completed = models.BooleanField(default=False)
+
+    grounding_per_design = models.BooleanField(default=False)
+    grounding_per_design_corrections_needed = models.BooleanField(default=False)
+    grounding_per_design_corrections_completed = models.BooleanField(default=False)
+
+    electrical_connections_torqued = models.BooleanField(default=False)
+    electrical_connections_torqued_corrections_needed = models.BooleanField(default=False)
+    electrical_connections_torqued_corrections_completed = models.BooleanField(default=False)
+
+    compartment_heaters = models.BooleanField(default=False)
+    compartment_heaters_corrections_needed = models.BooleanField(default=False)
+    compartment_heaters_corrections_completed = models.BooleanField(default=False)
+
+    interconnection_wiring_complete = models.BooleanField(default=False)
+    interconnection_wiring_complete_corrections_needed = models.BooleanField(default=False)
+    interconnection_wiring_complete_corrections_completed = models.BooleanField(default=False)
+
+    ventilation_filters = models.BooleanField(default=False)
+    ventilation_filters_corrections_needed = models.BooleanField(default=False)
+    ventilation_filters_corrections_completed = models.BooleanField(default=False)
+
+    equipment_openings_sealed = models.BooleanField(default=False)
+    equipment_openings_sealed_corrections_needed = models.BooleanField(default=False)
+    equipment_openings_sealed_corrections_completed = models.BooleanField(default=False)
+
+    paperwork_removed = models.BooleanField(default=False)
+    paperwork_removed_corrections_needed = models.BooleanField(default=False)
+    paperwork_removed_corrections_completed = models.BooleanField(default=False)
+
+    nameplates_installed = models.BooleanField(default=False)
+    nameplates_installed_corrections_needed = models.BooleanField(default=False)
+    nameplates_installed_corrections_completed = models.BooleanField(default=False)
+
+    lifting_apparatus = models.BooleanField(default=False)
+    lifting_apparatus_corrections_needed = models.BooleanField(default=False)
+    lifting_apparatus_corrections_completed = models.BooleanField(default=False)
+
+    arc_flash_labels = models.BooleanField(default=False)
+    arc_flash_labels_corrections_needed = models.BooleanField(default=False)
+    arc_flash_labels_corrections_completed = models.BooleanField(default=False)
+
+    include_dated_photos = models.BooleanField(default=False)
+    include_dated_photos_corrections_needed = models.BooleanField(default=False)
+    include_dated_photos_corrections_completed = models.BooleanField(default=False)
+
+    screws_installed = models.BooleanField(default=False)
+    screws_installed_corrections_needed = models.BooleanField(default=False)
+    screws_installed_corrections_completed = models.BooleanField(default=False)
+
+    ground_fault_set = models.BooleanField(default=False)
+    ground_fault_set_corrections_needed = models.BooleanField(default=False)
+    ground_fault_set_corrections_completed = models.BooleanField(default=False)
+
+    instantaneous_set = models.BooleanField(default=False)
+    instantaneous_set_corrections_needed = models.BooleanField(default=False)
+    instantaneous_set_corrections_completed = models.BooleanField(default=False)
+
+    short_time_set = models.BooleanField(default=False)
+    short_time_set_corrections_needed = models.BooleanField(default=False)
+    short_time_set_corrections_completed = models.BooleanField(default=False)
+
+    long_time_set = models.BooleanField(default=False)
+    long_time_set_corrections_needed = models.BooleanField(default=False)
+    long_time_set_corrections_completed = models.BooleanField(default=False)
+
+    micro_ohm_readings = models.BooleanField(default=False)
+    micro_ohm_readings_corrections_needed = models.BooleanField(default=False)
+    micro_ohm_readings_corrections_completed = models.BooleanField(default=False)
+
+    energization_form_attached = models.BooleanField(default=False)
+    energization_form_attached_corrections_needed = models.BooleanField(default=False)
+    energization_form_attached_corrections_completed = models.BooleanField(default=False)
+
+    interior_exterior_photos = models.BooleanField(default=False)
+    interior_exterior_photos_corrections_needed = models.BooleanField(default=False)
+    interior_exterior_photos_corrections_completed = models.BooleanField(default=False)
+
+    # Remarks
+    remarks = models.TextField(blank=True)
+
+    class Meta:
+        managed = True
+        db_table = "forms_amq_150_1"
+

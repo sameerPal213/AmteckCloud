@@ -22,6 +22,11 @@ from .forms import (
     AMQ100_3_Model_Form as AMQ100_3,
     AMQ130_1_Model_Form as AMQ130_1,
     AMQ140_1_Model_Form as AMQ140_1,
+    AMQ200_1_Model_Form as AMQ200_1,
+    AMQ160_1_Model_Form as AMQ160_1,
+    AMQ160_2_Model_Form as AMQ160_2,
+    AMQ150_2_Model_Form as AMQ150_2,
+    AMQ150_1_Model_Form as AMQ150_1,
     get_STAEmployeeAcknowledgementFormSet, get_STAHazardMitigationFormSet, 
     get_STARequiredEmployeeCertificationFormSet, get_STARequiredPermitFormSet, 
     get_STARequiredProcedureFormSet, get_STARequiredSpecialCertificationFormSet, 
@@ -801,9 +806,7 @@ def amq100_1(request):
         if form.is_valid():
             # save the response if valid
             form.save()
-            # after submitting send the user to the list of responses for the
-            # form
-            # return HttpResponseRedirect("/forms/qaqc/100_1/")
+  
             form = AMQ100_1()
             return render(request, "AMQ/100_1.html", {"form": form})
         else:
@@ -820,9 +823,7 @@ def amq100_2(request):
         if form.is_valid():
             # save the response if valid
             form.save()
-            # after submitting send the user to the list of responses for the
-            # form
-            # return HttpResponseRedirect("/forms/qaqc/100_1/")
+         
             form = AMQ100_2()
             return render(request, "AMQ/100_2.html", {"form": form})
         else:
@@ -839,9 +840,7 @@ def amq100_3(request):
         if form.is_valid():
             # save the response if valid
             form.save()
-            # after submitting send the user to the list of responses for the
-            # form
-            # return HttpResponseRedirect("/forms/qaqc/100_1/")
+           
             form = AMQ100_3()
             return render(request, "AMQ/100_3.html", {"form": form})
         else:
@@ -858,9 +857,7 @@ def amq130_1(request):
         if form.is_valid():
             # save the response if valid
             form.save()
-            # after submitting send the user to the list of responses for the
-            # form
-            # return HttpResponseRedirect("/forms/qaqc/100_1/")
+           
             form = AMQ130_1()
             return render(request, "AMQ/130_1.html", {"form": form})
         else:
@@ -877,9 +874,7 @@ def amq140_1(request):
         if form.is_valid():
             # save the response if valid
             form.save()
-            # after submitting send the user to the list of responses for the
-            # form
-            # return HttpResponseRedirect("/forms/qaqc/100_1/")
+           
             form = AMQ140_1()
             return render(request, "AMQ/140_1.html", {"form": form})
         else:
@@ -887,3 +882,88 @@ def amq140_1(request):
     else:
         form = AMQ140_1()
     return render(request, "AMQ/140_1.html", {"form": form})
+
+# @login_required
+def amq200_1(request):
+    # process the data if a post request
+    if request.method == "POST":
+        form = AMQ200_1(request.POST)
+        if form.is_valid():
+            # save the response if valid
+            form.save()
+            
+            form = AMQ200_1()
+            return render(request, "AMQ/200_1.html", {"form": form})
+        else:
+            print(form.errors)
+    else:
+        form = AMQ200_1()
+    return render(request, "AMQ/200_1.html", {"form": form})
+
+# @login_required
+def amq160_1(request):
+    # process the data if a post request
+    if request.method == "POST":
+        form = AMQ160_1(request.POST)
+        if form.is_valid():
+            # save the response if valid
+            form.save()
+            
+            form = AMQ160_1()
+            return render(request, "AMQ/160_1.html", {"form": form})
+        else:
+            print(form.errors)
+    else:
+        form = AMQ160_1()
+    return render(request, "AMQ/160_1.html", {"form": form})
+
+# @login_required
+def amq160_2(request):
+    # process the data if a post request
+    if request.method == "POST":
+        form = AMQ160_2(request.POST)
+        if form.is_valid():
+            # save the response if valid
+            form.save()
+            
+            form = AMQ160_2()
+            return render(request, "AMQ/160_2.html", {"form": form})
+        else:
+            print(form.errors)
+    else:
+        form = AMQ160_2()
+    return render(request, "AMQ/160_2.html", {"form": form})
+
+# @login_required
+def amq150_2(request):
+    # process the data if a post request
+    if request.method == "POST":
+        form = AMQ150_2(request.POST)
+        if form.is_valid():
+            # save the response if valid
+            form.save()
+            
+            form = AMQ150_2()
+            return render(request, "AMQ/150_2.html", {"form": form})
+        else:
+            print(form.errors)
+    else:
+        form = AMQ150_2()
+    return render(request, "AMQ/150_2.html", {"form": form})
+
+# @login_required
+def amq150_1(request):
+    # process the data if a post request
+    if request.method == "POST":
+        form = AMQ150_1(request.POST)
+        if form.is_valid():
+            # save the response if valid
+            form.save()
+            
+            form = AMQ150_1()
+            return render(request, "AMQ/150_1.html", {"form": form})
+        else:
+            print(form.errors)
+    else:
+        form = AMQ150_1()
+    return render(request, "AMQ/150_1.html", {"form": form})
