@@ -52,7 +52,8 @@ This project is a Django-based application that utilizes multiple apps and custo
 
    - Apply migrations (this creates the database schema):
      ```bash
-     python3 manage.py migrate
+     python manage.py makemigrations
+     python manage.py migrate
      ```
 
    - (Optional) Create a superuser for admin access:
