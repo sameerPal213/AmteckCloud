@@ -21,10 +21,36 @@
 
 form .submit-row {
 	margin-top: 10px;
-    text-align: left;       /* or center / left */
+    text-align: right;       /* or center / left */
     grid-column: 1 / -1;     /* span full width */
 }
 
 .package-details select {
     width: 100%;
 }
+
+.signoff-section {
+	margin-top: 30px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.signoff-row {
+	display: grid;
+	grid-template-columns: 250px 200px 50px 200px 50px 200px;
+	align-items: center;
+	column-gap: 10px;
+	row-gap: 10px;
+}
+
+.signoff-section label {
+	font-weight: bold;
+}
+
+.signoff-section input[type="text"],
+.signoff-section input[type="date"] {
+	width: 100%;
+	padding: 4px 6px;
+}
+

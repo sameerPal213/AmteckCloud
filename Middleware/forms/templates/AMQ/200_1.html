@@ -145,6 +145,37 @@
     <!-- Remarks -->
     <div class="remarks-row">{{ form.remarks }}</div>
 
+    {% block extra_field %}
+    <div class="signoff-section">
+        <div class="signoff-row">
+            <label for="completed_by">Completed By:</label>
+            <input type="text" id="completed_by" name="completed_by" />
+            <label for="completed_by_title">Title:</label>
+            <input type="text" id="completed_by_title" name="completed_by_title" />
+            <label for="completed_by_date">Date:</label>
+            <input type="date" id="completed_by_date" name="completed_by_date" />
+        </div>
+
+	    <div class="signoff-row">
+            <label for="client_rep">Approved By (Client Representative):</label>
+            <input type="text" id="client_rep" name="client_rep" />
+            <label for="client_rep_title">Title:</label>
+            <input type="text" id="client_rep_title" name="client_rep_title" />
+            <label for="client_rep_date">Date:</label>
+            <input type="date" id="client_rep_date" name="client_rep_date" />
+	    </div>
+
+	    <div class="signoff-row">
+            <label for="owner_rep">Approved By (Owner Representative):</label>
+            <input type="text" id="owner_rep" name="owner_rep" />
+            <label for="owner_rep_title">Title:</label>
+            <input type="text" id="owner_rep_title" name="owner_rep_title" />
+            <label for="owner_rep_date">Date:</label>
+            <input type="date" id="owner_rep_date" name="owner_rep_date" />
+	    </div>
+    </div>
+    {% endblock %}
+
     <!-- Submit -->
     <div class="submit-row"><button type="submit">Submit</button></div>
 </form>

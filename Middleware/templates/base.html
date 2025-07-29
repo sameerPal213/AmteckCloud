@@ -52,9 +52,13 @@
 				</div>
 
 				<div id="content">
-					{% block content %}
-					{% endblock %}
-				</div>
+                    {% block content %}
+                    
+                    {% block extra_field %}
+                    {% endblock %}
+                    
+                    {% endblock %}
+                </div>
 			</main>
 		</div>
 		<script src="{% static 'menu_app/script.js' %}"></script>
