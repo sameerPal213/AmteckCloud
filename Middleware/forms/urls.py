@@ -36,4 +36,5 @@ urlpatterns = [
         path('amq/160_2/new/', views.amq160_2, name="amq_160_2-new"),
         path('amq/150_2/new/', views.amq150_2, name="amq_150_2-new"),
         path('amq/150_1/new/', views.amq150_1, name="amq_150_1-new"),
+        path("confirmation/", views.confirmation_page, name="confirmation-page"),
         ]

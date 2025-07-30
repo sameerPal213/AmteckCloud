@@ -808,7 +808,8 @@ def amq100_1(request):
             form.save()
   
             form = AMQ100_1()
-            return render(request, "AMQ/100_1.html", {"form": form})
+            # return render(request, "AMQ/100_1.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
@@ -825,7 +826,8 @@ def amq100_2(request):
             form.save()
          
             form = AMQ100_2()
-            return render(request, "AMQ/100_2.html", {"form": form})
+            # return render(request, "AMQ/100_2.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
@@ -842,7 +844,8 @@ def amq100_3(request):
             form.save()
            
             form = AMQ100_3()
-            return render(request, "AMQ/100_3.html", {"form": form})
+            # return render(request, "AMQ/100_3.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
@@ -859,7 +862,8 @@ def amq130_1(request):
             form.save()
            
             form = AMQ130_1()
-            return render(request, "AMQ/130_1.html", {"form": form})
+            # return render(request, "AMQ/130_1.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
@@ -876,7 +880,8 @@ def amq140_1(request):
             form.save()
            
             form = AMQ140_1()
-            return render(request, "AMQ/140_1.html", {"form": form})
+            # return render(request, "AMQ/140_1.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
@@ -893,7 +898,8 @@ def amq200_1(request):
             form.save()
             
             form = AMQ200_1()
-            return render(request, "AMQ/200_1.html", {"form": form})
+            # return render(request, "AMQ/200_1.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
@@ -910,7 +916,8 @@ def amq160_1(request):
             form.save()
             
             form = AMQ160_1()
-            return render(request, "AMQ/160_1.html", {"form": form})
+            # return render(request, "AMQ/160_1.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
@@ -927,7 +934,8 @@ def amq160_2(request):
             form.save()
             
             form = AMQ160_2()
-            return render(request, "AMQ/160_2.html", {"form": form})
+            # return render(request, "AMQ/160_2.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
@@ -944,7 +952,8 @@ def amq150_2(request):
             form.save()
             
             form = AMQ150_2()
-            return render(request, "AMQ/150_2.html", {"form": form})
+            # return render(request, "AMQ/150_2.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
@@ -961,9 +970,13 @@ def amq150_1(request):
             form.save()
             
             form = AMQ150_1()
-            return render(request, "AMQ/150_1.html", {"form": form})
+            # return render(request, "AMQ/150_1.html", {"form": form})
+            return redirect('forms:confirmation-page')
         else:
             print(form.errors)
     else:
         form = AMQ150_1()
     return render(request, "AMQ/150_1.html", {"form": form})
+
+def confirmation_page(request):
+    return render(request, "ConfirmationPage/confirmation_page.html")
