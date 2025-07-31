@@ -293,7 +293,7 @@ LOGOUT_REDIRECT_URL = 'https://amteck.com'
 LOGOUT_URL          = '/accounts/logout/'
 
 AUTHENTICATION_BACKENDS = [
-    'django_auth_ldap.backend.LDAPBackend',
+    'django_auth_ldap.backend.LDAPBackend','django.contrib.auth.backends.ModelBackend'
 ]
 
 # LDAP settings

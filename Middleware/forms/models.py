@@ -886,8 +886,8 @@ class Amq1401Response(models.Model):
     )
     project_no   = models.IntegerField(_("Project #"), null=True, blank=True)
     drawing      = models.CharField(_("Drawing #"), max_length=100, blank=True, default="")
-    cable_tray_run_from = models.CharField(_("Cable Tray Run From"), max_length=50, blank=True, default="")
-    cable_tray_run_to   = models.CharField(_("Cable Tray Run To"),   max_length=50, blank=True, default="")
+    cable_tray_run_from = models.CharField(_("Cable Tray Run From"), max_length=50, blank=True, default="")
+    cable_tray_run_to   = models.CharField(_("Cable Tray Run To"),   max_length=50, blank=True, default="")
     iwp          = models.CharField(_("IWP #"), max_length=100, blank=True, default="")
 
     # ── checklist items (16) ──────────────────────────────────
