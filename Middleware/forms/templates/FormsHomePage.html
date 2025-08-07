@@ -1,16 +1,45 @@
-<!-- forms/templates/FormsHomePage.html -->
 {% extends 'base.html' %}
 
-{% block title %}Forms{% endblock %}
+{% load static %}
+
+{% block head %}
+    <title>Forms Home Page</title>
+    <link rel="stylesheet" href="{% static 'forms/FormsHomePage.css' %}"/>
+{% endblock %}
+
+{% block title %}Forms List{% endblock %}
 
 {% block content %}
-<div class="card">
-    <h1>Safety</h1>
-    <a href="{% url 'forms:new-jsa-form' %}">New STA Response</a><br />
-    <a href="{% url 'forms:staresponse-list' %}">View STA Responses</a>
-</div>
-<div class="card">
-    <h1>People Operations</h1>
-    <a href="{% url 'new-score' %}">Skill Assessment</a>
+
+<div class="forms-container">
+    <div class="card">
+        <h1>Safety</h1>
+        <a href="{% url 'forms:new-jsa-form' %}">New STA Response</a>
+        <a href="{% url 'forms:staresponse-list' %}">View STA Responses</a>
+    </div>
+
+    <div class="card">
+        <h1>People Operations</h1>
+        <a href="{% url 'new-score' %}">Skill Assessment</a>
+    </div>
+
+    <div class="card">
+        <h1>AMQ</h1>
+        <a href="{% url 'forms:amq_100_1-new' %}">Above Ground Conduit Checklist</a>
+        <a href="{% url 'forms:amq_100_2-new' %}">Below-Grade / Underground Conduit Checklist</a>
+        <a href="{% url 'forms:amq_100_3-new' %}">Underground Stub-Up Installation Checklist</a>
+        <a href="{% url 'forms:amq_130_1-new' %}">Cable Installation Checklist</a>
+        <a href="{% url 'forms:amq_140_1-new' %}">Cable Tray Checklist</a>
+        <a href="{% url 'forms:amq_150_1-new' %}">Switchgear Checklist</a>
+        <a href="{% url 'forms:amq_150_2-new' %}">Panelboards and Loadcenters Checklist</a>
+        <a href="{% url 'forms:amq_160_1-new' %}">Lighting Checklist</a>
+        <a href="{% url 'forms:amq_160_2-new' %}">Lighting Control Checklist</a>
+        <a href="{% url 'forms:amq_200_1-new' %}">Grounding Checklist</a>
+    </div>
+
+    <div class="card">
+        <h1>QAQC</h1>
+        <a href="{% url 'forms:100_1-new' %}">Above Ground Conduit Checklist</a>
+    </div>
 </div>
 {% endblock %}

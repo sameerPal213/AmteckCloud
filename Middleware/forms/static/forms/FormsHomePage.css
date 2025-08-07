@@ -1,0 +1,37 @@
+.forms-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .card:hover {
+        transform: scale(1.02);
+    }
+
+    .card h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #b00a2b;
+    }
+
+    .card a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+    }
+
+    .card a:hover {
+        color: #b00a2b;
+        text-decoration: underline;
+    }
